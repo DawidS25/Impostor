@@ -6,7 +6,7 @@
     "Besti",
     "wix"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -23,16 +23,14 @@
   },
   "submissions": {
     "Heheszek": [],
-    "Besti": [
-      "pizza"
-    ],
+    "Besti": [],
     "wix": []
   },
-  "impostor_guess": "pizza",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "category": "Jedzenie",
   "word": "Pizza",
-  "impostor": "Besti",
+  "impostor": "wix",
   "roles": {
     "Heheszek": {
       "role": "player",
@@ -40,13 +38,13 @@
       "word": "Pizza"
     },
     "Besti": {
-      "role": "impostor",
-      "category": "Jedzenie"
-    },
-    "wix": {
       "role": "player",
       "category": "Jedzenie",
       "word": "Pizza"
+    },
+    "wix": {
+      "role": "impostor",
+      "category": "Jedzenie"
     }
   }
 }
