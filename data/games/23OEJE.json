@@ -7,7 +7,7 @@
     "Bestia1",
     "Wixa"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": 5,
@@ -15,5 +15,29 @@
       "Jedzenie",
       "Zwierzęta"
     ]
-  }
+  },
+  "category": "Jedzenie",
+  "word": "Pizza",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    },
+    "Bestia": {
+      "role": "impostor"
+    },
+    "Bestia1": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    }
+  },
+  "round": 1
 }
