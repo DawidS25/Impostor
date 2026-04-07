@@ -26,8 +26,8 @@
     "Besti": [],
     "wix": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "sa",
+  "guess_status": "pending_host_review",
   "category": "Zwierzęta",
   "word": "Kot",
   "impostor": "Heheszek",
