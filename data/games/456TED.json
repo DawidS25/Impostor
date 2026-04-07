@@ -50,5 +50,7 @@
       "role": "impostor",
       "category": "Zwierzęta"
     }
-  }
+  },
+  "voted_out": null,
+  "round_winner": null
 }
