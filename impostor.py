@@ -480,6 +480,62 @@ elif st.session_state.screen == "game":
                         st.error(f"Błąd przejścia do następnej rundy: {result}")
 
         st.stop()
+    
+        if game_data.get("status") == "voting":
+            st.subheader("Głosowanie")
+
+            st.write("Wskaż, kto według Ciebie jest impostorem.")
+
+            available_targets = [p for p in game_data.get("players", []) if p != player_name]
+
+            current_vote = game_data.get("votes", {}).get(player_name)
+
+            if available_targets:
+                default_index = 0
+                if current_vote in available_targets:
+                    default_index = available_targets.index(current_vote)
+
+                vote_target = st.selectbox(
+                    "Na kogo głosujesz?",
+                    available_targets,
+                    index=default_index,
+                    key=f"vote_target_{player_name}"
+                )
+
+                if st.button("Oddaj głos", key=f"submit_vote_{player_name}", use_container_width=True):
+                    if "votes" not in game_data:
+                        game_data["votes"] = {}
+
+                    game_data["votes"][player_name] = vote_target
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.success("Głos zapisany.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd zapisu głosu: {result}")
+
+            st.write("### Status głosowania")
+            votes = game_data.get("votes", {})
+            for p in game_data.get("players", []):
+                if p in votes:
+                    st.write(f"**{p}:** zagłosował")
+                else:
+                    st.write(f"**{p}:** jeszcze nie zagłosował")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                if st.button("Odśwież", key="refresh_voting", use_container_width=True):
+                    st.rerun()
+
+            with col2:
+                if st.session_state.is_host:
+                    if st.button("Zakończ głosowanie", key="finish_voting", use_container_width=True):
+                        st.info("Na razie samo zapisanie głosów działa. Rozliczenie dodamy w następnym kroku.")
+
+            st.stop()
 
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
@@ -701,3 +757,4 @@ elif st.session_state.screen == "game":
                     st.rerun()
                 else:
                     st.error(f"Błąd zapisu zgadywania: {result}")
+
