@@ -428,6 +428,10 @@ elif st.session_state.screen == "game":
 
     success, game_data = get_game_file(game_code)
 
+    if not success:
+        st.error("Nie udało się wczytać danych gry.")
+        st.stop()
+
     if game_data.get("status") == "round_result":
         st.subheader("Koniec rundy")
 
@@ -449,17 +453,24 @@ elif st.session_state.screen == "game":
         if guessed_word:
             st.write(f"**Zgadywanie impostora:** {guessed_word}")
 
-        if st.session_state.is_host:
-            if st.button("Przejdź do następnej rundy", use_container_width=True):
-                new_data = next_round_logic(game_data)
+        col1, col2 = st.columns(2)
 
-                updated, result = update_game_file(game_code, new_data)
+        with col1:
+            if st.button("Odśwież", key="refresh_round_result", use_container_width=True):
+                st.rerun()
 
-                if updated:
-                    st.success("Rozpoczęto nową rundę.")
-                    st.rerun()
-                else:
-                    st.error(f"Błąd przejścia do następnej rundy: {result}")
+        with col2:
+            if st.session_state.is_host:
+                if st.button("Przejdź do następnej rundy", key="next_round_result", use_container_width=True):
+                    new_data = next_round_logic(game_data)
+
+                    updated, result = update_game_file(game_code, new_data)
+
+                    if updated:
+                        st.success("Rozpoczęto nową rundę.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd przejścia do następnej rundy: {result}")
 
         st.stop()
 
