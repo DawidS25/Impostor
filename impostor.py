@@ -490,37 +490,6 @@ elif st.session_state.screen == "game":
             if "hint" in my_role:
                 st.write(f"**Podpowiedź:** {my_role['hint']}")
 
-            st.write("### Zgadnij właściwe hasło")
-            with st.form(key=f"guess_form_{player_name}", clear_on_submit=True):
-                impostor_guess_input = st.text_input(
-                    "Wpisz zgadywane hasło",
-                    key=f"guess_input_{player_name}"
-                )
-                guess_submitted = st.form_submit_button("Zgłoś zgadywanie", use_container_width=True)
-
-            if guess_submitted:
-                new_guess = impostor_guess_input.strip()
-
-                if not new_guess:
-                    st.error("Wpisz hasło do zgadnięcia.")
-                else:
-                    game_data["impostor_guess"] = new_guess
-
-                    real_word = game_data.get("word", "").strip().lower()
-
-                if new_guess.lower() == real_word:
-                    game_data["guess_status"] = "exact"
-                    game_data["status"] = "finished"
-                else:
-                    game_data["guess_status"] = "pending_host_review"
-
-                updated, result = update_game_file(game_code, game_data)
-
-                if updated:
-                    st.success("Zgadywanie zapisane.")
-                    st.rerun()
-                else:
-                    st.error(f"Błąd zapisu zgadywania: {result}")
 
         else:
             st.success("Jesteś zwykłym graczem")
