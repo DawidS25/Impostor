@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -27,7 +27,7 @@
     "Bestia": []
   },
   "impostor_guess": "sa",
-  "guess_status": "pending_host_review",
+  "guess_status": "approved_by_host",
   "category": "Zwierzęta",
   "word": "Kot",
   "impostor": "Heheszek",
