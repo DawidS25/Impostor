@@ -16,28 +16,28 @@
       "Zwierzęta"
     ]
   },
-  "category": "Jedzenie",
-  "word": "Pizza",
-  "impostor": "Bestia",
+  "category": "Zwierzęta",
+  "word": "Pies",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
+      "category": "Zwierzęta",
+      "word": "Pies"
     },
     "Bestia": {
-      "role": "impostor"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
     },
     "Bestia1": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
+      "category": "Zwierzęta",
+      "word": "Pies"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
+      "role": "impostor"
     }
   },
-  "round": 1
+  "round": 2
 }
