@@ -6,7 +6,7 @@
     "Besti",
     "wix"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 11,
+  "round": 12,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -26,25 +26,25 @@
     "Besti": [],
     "wix": []
   },
-  "impostor_guess": "sa",
-  "guess_status": "approved_by_host",
-  "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Heheszek",
+  "impostor_guess": "",
+  "guess_status": "none",
+  "category": "Jedzenie",
+  "word": "Spaghetti",
+  "impostor": "wix",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Spaghetti"
     },
     "Besti": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Spaghetti"
     },
     "wix": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor",
+      "category": "Jedzenie"
     }
   }
 }
