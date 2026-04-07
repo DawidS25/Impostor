@@ -8,28 +8,28 @@
     "Wixa3"
   ],
   "status": "started",
-  "category": "Jedzenie",
-  "word": "Burger",
-  "impostor": "Wixa3",
+  "category": "Zwierzęta",
+  "word": "Tygrys",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     },
     "Bestia": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "role": "impostor"
     },
     "Wixa": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     },
     "Wixa3": {
-      "role": "impostor"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     }
   },
-  "round": 3
+  "round": 4
 }
