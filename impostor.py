@@ -230,6 +230,7 @@ elif st.session_state.screen == "game":
         if my_role["role"] == "impostor":
             st.error("Jesteś IMPOSTOREM")
             st.write("Spróbuj wtopić się w grupę.")
+            st.write(f"**Kategoria:** {my_role['category']}")
         else:
             st.success("Jesteś zwykłym graczem")
             st.write(f"**Kategoria:** {my_role['category']}")
