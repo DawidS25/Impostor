@@ -15,37 +15,34 @@
       "Zwierzęta"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
     "Bestia": 0
   },
   "submissions": {
-    "Heheszek": [
-      "kot",
-      "pies"
-    ],
+    "Heheszek": [],
     "Wixa": [],
     "Bestia": []
   },
   "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Wixa",
+  "word": "Pies",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Kot"
+      "word": "Pies"
     },
     "Wixa": {
-      "role": "impostor",
-      "category": "Zwierzęta"
-    },
-    "Bestia": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Kot"
+      "word": "Pies"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Zwierzęta"
     }
   }
 }
