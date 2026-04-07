@@ -223,8 +223,8 @@ elif st.session_state.screen == "game":
             st.error("Brak 'roles' w game_data")
             st.stop()
 
-        st.write("### DEBUG - dostępne role")
-        st.write(list(game_data["roles"].keys()))
+        #st.write("### DEBUG - dostępne role")
+        #st.write(list(game_data["roles"].keys()))
 
         if player_name not in game_data["roles"]:
             st.error("Nie znaleziono Twojej roli.")
@@ -232,8 +232,8 @@ elif st.session_state.screen == "game":
 
         my_role = game_data["roles"][player_name]
 
-        st.write("### DEBUG - moja rola")
-        st.json(my_role)
+        #st.write("### DEBUG - moja rola")
+        #st.json(my_role)
 
         if my_role["role"] == "impostor":
             st.error("Jesteś IMPOSTOREM")
