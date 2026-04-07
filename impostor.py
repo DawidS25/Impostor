@@ -480,6 +480,7 @@ elif st.session_state.screen == "game":
             st.write("### DEBUG zgadywania")
             st.write("guess_status:", game_data.get("guess_status", "brak"))
             st.write("impostor_guess:", game_data.get("impostor_guess", "brak"))
+           
             st.error("Jesteś IMPOSTOREM")
             st.write("Spróbuj wtopić się w grupę.")
 
@@ -506,6 +507,20 @@ elif st.session_state.screen == "game":
                     game_data["impostor_guess"] = new_guess
 
                     real_word = game_data.get("word", "").strip().lower()
+
+                if new_guess.lower() == real_word:
+                    game_data["guess_status"] = "exact"
+                    game_data["status"] = "finished"
+                else:
+                    game_data["guess_status"] = "pending_host_review"
+
+                updated, result = update_game_file(game_code, game_data)
+
+                if updated:
+                    st.success("Zgadywanie zapisane.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd zapisu zgadywania: {result}")
 
         else:
             st.success("Jesteś zwykłym graczem")
