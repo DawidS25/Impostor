@@ -86,6 +86,7 @@ def start_game_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["roles"] = roles
+    game_data["submissions"] = {player: "" for player in players}
 
     return True, game_data
 
@@ -188,7 +189,10 @@ elif st.session_state.screen == "host":
                     "round": 0,
                     "scores": {
                         player_name.strip(): 0
-                    }
+                    },
+                    "submissions": {
+                       player_name.strip(): ""
+}
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -238,6 +242,11 @@ elif st.session_state.screen == "join":
                     else:
                         game_data["players"].append(player_name.strip())
                         game_data["scores"][player_name.strip()] = 0
+                        
+                        if "submissions" not in game_data:
+                            game_data["submissions"] = {}
+                        game_data["submissions"][player_name.strip()] = ""
+                        
                         updated, result = update_game_file(game_code, game_data)
 
                         if updated:
@@ -277,6 +286,10 @@ elif st.session_state.screen == "lobby":
 
         if "round" not in game_data:
             game_data["round"] = 0
+            changed = True
+        
+        if "submissions" not in game_data:
+            game_data["submissions"] = {player: "" for player in game_data.get("players", [])}
             changed = True
 
         if changed:
@@ -453,6 +466,42 @@ elif st.session_state.screen == "game":
             st.success("Jesteś zwykłym graczem")
             st.write(f"**Kategoria:** {my_role['category']}")
             st.write(f"**Hasło:** {my_role['word']}")
+        
+
+        st.write("### Twoje hasło")
+
+        current_submission = game_data.get("submissions", {}).get(player_name, "")
+
+        submission_text = st.text_input(
+            "Wpisz swoje hasło / skojarzenie",
+            value=current_submission,
+            key=f"submission_input_{player_name}"
+        )
+
+        st.write("### Hasła graczy")
+
+        submissions = game_data.get("submissions", {})
+
+        for player in game_data.get("players", []):
+            player_text = submissions.get(player, "")
+            if player_text:
+                st.write(f"**{player}:** {player_text}")
+            else:
+                st.write(f"**{player}:** (brak)")
+
+        if st.button("Zapisz moje hasło", use_container_width=True):
+            if "submissions" not in game_data:
+                game_data["submissions"] = {}
+
+            game_data["submissions"][player_name] = submission_text.strip()
+
+            updated, result = update_game_file(game_code, game_data)
+
+            if updated:
+                st.success("Hasło zapisane.")
+                st.rerun()
+            else:
+                st.error(f"Błąd zapisu hasła: {result}")
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
@@ -467,3 +516,14 @@ elif st.session_state.screen == "game":
                     st.rerun()
                 else:
                     st.error(f"Błąd: {result}")
+        if st.session_state.is_host:
+            if st.button("Zakończ grę", use_container_width=True):
+                game_data["status"] = "finished"
+
+                updated, result = update_game_file(game_code, game_data)
+
+                if updated:
+                    st.success("Gra zakończona przez hosta.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd zakończenia gry: {result}")        
