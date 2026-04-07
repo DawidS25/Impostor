@@ -3,7 +3,8 @@
   "host": "kjkj",
   "players": [
     "kjkj",
-    "fgg"
+    "fgg",
+    "tfgghfgf"
   ],
   "status": "waiting",
   "settings": {
@@ -17,11 +18,13 @@
   "round": 0,
   "scores": {
     "kjkj": 0,
-    "fgg": 0
+    "fgg": 0,
+    "tfgghfgf": 0
   },
   "submissions": {
     "kjkj": [],
-    "fgg": []
+    "fgg": [],
+    "tfgghfgf": []
   },
   "impostor_guess": "",
   "guess_status": "none",
