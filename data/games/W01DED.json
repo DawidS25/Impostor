@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 2,
+  "round": 3,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
@@ -29,22 +29,22 @@
   "impostor_guess": "",
   "guess_status": "none",
   "category": "Zwierzęta",
-  "word": "Pies",
-  "impostor": "Wixa",
+  "word": "Kot",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Pies"
-    },
-    "Wixa": {
       "role": "impostor",
       "category": "Zwierzęta"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Bestia": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Pies"
+      "word": "Kot"
     }
   }
 }
