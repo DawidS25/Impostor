@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "finished",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -45,6 +45,6 @@
       "word": "Burger"
     }
   },
-  "impostor_guess": "burg",
-  "guess_status": "pending_host_review"
+  "impostor_guess": "burger",
+  "guess_status": "exact"
 }
