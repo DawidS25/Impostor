@@ -1,0 +1,16 @@
+{
+  "code": "Z4FH8S",
+  "host": "Heheszek",
+  "players": [
+    "Heheszek"
+  ],
+  "status": "waiting",
+  "settings": {
+    "hint_mode": "off",
+    "round_limit": 10,
+    "selected_categories": [
+      "Jedzenie",
+      "Zwierzęta"
+    ]
+  }
+}
