@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,31 +15,24 @@
       "Zwierzęta"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "kjkj": 0,
     "fgg": 0,
     "tfgghfgf": 0
   },
   "submissions": {
-    "kjkj": [
-      "8giyugiygiyhu"
-    ],
-    "fgg": [
-      "gyuvvughy"
-    ],
-    "tfgghfgf": [
-      "u8goyuygiuyg",
-      "ugvyhuvhg"
-    ]
+    "kjkj": [],
+    "fgg": [],
+    "tfgghfgf": []
   },
-  "impostor_guess": "burger7",
-  "guess_status": "approved_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
   "category": "Jedzenie",
-  "word": "Burger",
+  "word": "Spaghetti",
   "impostor": "kjkj",
   "roles": {
     "kjkj": {
@@ -49,12 +42,12 @@
     "fgg": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Burger"
+      "word": "Spaghetti"
     },
     "tfgghfgf": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Burger"
+      "word": "Spaghetti"
     }
   }
 }
