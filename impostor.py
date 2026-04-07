@@ -40,8 +40,17 @@ def start_game_logic(game_data):
     if len(players) < 3:
         return False, "Do startu potrzeba co najmniej 3 graczy."
 
+    settings = game_data.get("settings", {})
+    selected_categories = settings.get("selected_categories", list(WORDS.keys()))
+    hint_mode = settings.get("hint_mode", "off")
+
+    available_categories = [cat for cat in selected_categories if cat in WORDS]
+
+    if not available_categories:
+        return False, "Brak dostępnych kategorii do losowania."
+
     impostor = random.choice(players)
-    category = random.choice(list(WORDS.keys()))
+    category = random.choice(available_categories)
     word = random.choice(WORDS[category])
 
     roles = {}
@@ -50,6 +59,12 @@ def start_game_logic(game_data):
             roles[player] = {
                 "role": "impostor"
             }
+
+            if hint_mode == "category":
+                roles[player]["category"] = category
+            elif hint_mode == "hint":
+                roles[player]["hint"] = "Brak podpowiedzi tekstowej na tym etapie"
+
         else:
             roles[player] = {
                 "role": "player",
@@ -62,15 +77,23 @@ def start_game_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["roles"] = roles
-    game_data["round"] = game_data.get("round", 0) + 1
 
     return True, game_data
 
 def next_round_logic(game_data):
     players = game_data["players"]
 
+    settings = game_data.get("settings", {})
+    selected_categories = settings.get("selected_categories", list(WORDS.keys()))
+    hint_mode = settings.get("hint_mode", "off")
+
+    available_categories = [cat for cat in selected_categories if cat in WORDS]
+
+    if not available_categories:
+        return game_data
+
     impostor = random.choice(players)
-    category = random.choice(list(WORDS.keys()))
+    category = random.choice(available_categories)
     word = random.choice(WORDS[category])
 
     roles = {}
@@ -79,6 +102,12 @@ def next_round_logic(game_data):
             roles[player] = {
                 "role": "impostor"
             }
+
+            if hint_mode == "category":
+                roles[player]["category"] = category
+            elif hint_mode == "hint":
+                roles[player]["hint"] = "Brak podpowiedzi tekstowej na tym etapie"
+
         else:
             roles[player] = {
                 "role": "player",
@@ -345,6 +374,12 @@ elif st.session_state.screen == "game":
         if my_role["role"] == "impostor":
             st.error("Jesteś IMPOSTOREM")
             st.write("Spróbuj wtopić się w grupę.")
+
+            if "category" in my_role:
+                st.write(f"**Podpowiedź - kategoria:** {my_role['category']}")
+
+            if "hint" in my_role:
+                st.write(f"**Podpowiedź:** {my_role['hint']}")
         else:
             st.success("Jesteś zwykłym graczem")
             st.write(f"**Kategoria:** {my_role['category']}")
