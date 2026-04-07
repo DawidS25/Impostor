@@ -14,7 +14,7 @@
       "Jedzenie"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
@@ -26,13 +26,13 @@
     "Bestia": "długie"
   },
   "category": "Jedzenie",
-  "word": "Pizza",
+  "word": "Spaghetti",
   "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Pizza"
+      "word": "Spaghetti"
     },
     "Wixa": {
       "role": "impostor",
@@ -41,7 +41,7 @@
     "Bestia": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Pizza"
+      "word": "Spaghetti"
     }
   }
 }
