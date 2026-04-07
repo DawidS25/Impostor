@@ -1,4 +1,4 @@
 import streamlit as st
 
-token = st.secrets["GITHUB_TOKEN"]
+token = st.secrets["GIT_TOKEN"]
 print(token)
