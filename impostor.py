@@ -1,6 +1,12 @@
 import requests
 import streamlit as st
 
+if "GIT_TOKEN" not in st.secrets:
+    st.error("Brak GIT_TOKEN w secrets")
+    st.stop()
+
+token = st.secrets["GIT_TOKEN"]
+
 token = st.secrets["GIT_TOKEN"]
 
 headers = {
