@@ -221,3 +221,5 @@ elif st.session_state.screen == "game":
         my_role = game_data["roles"][player_name]
 
         st.write(f"**Kod gry:** {game_code}")
+        if st.button("Odśwież", use_container_width=True):
+                st.rerun()
