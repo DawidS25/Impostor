@@ -134,6 +134,8 @@ def next_round_logic(game_data):
     if is_game_over(game_data):
         game_data["status"] = "finished"
 
+    game_data["submissions"] = {player: "" for player in players}
+
     return game_data
 
 def get_winners(game_data):
