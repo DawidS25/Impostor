@@ -496,6 +496,7 @@ elif st.session_state.screen == "game":
                 updated, result = update_game_file(game_code, game_data)
 
                 if updated:
+                    st.session_state[f"submission_input_{player_name}"] = ""
                     st.success("Hasło dodane.")
                     st.rerun()
                 else:
