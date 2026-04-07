@@ -2,7 +2,8 @@
   "code": "JXJ5KJ",
   "host": "Heheszek",
   "players": [
-    "Heheszek"
+    "Heheszek",
+    "Besti"
   ],
   "status": "waiting",
   "settings": {
@@ -15,10 +16,12 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0
+    "Heheszek": 0,
+    "Besti": 0
   },
   "submissions": {
-    "Heheszek": []
+    "Heheszek": [],
+    "Besti": []
   },
   "impostor_guess": "",
   "guess_status": "none"
