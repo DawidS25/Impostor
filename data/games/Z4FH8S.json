@@ -16,16 +16,16 @@
   },
   "category": "Zwierzęta",
   "word": "Pies",
-  "impostor": "Heheszek",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Zwierzęta"
-    },
-    "Bestia": {
       "role": "player",
       "category": "Zwierzęta",
       "word": "Pies"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Zwierzęta"
     },
     "Wixa": {
       "role": "player",
@@ -33,5 +33,5 @@
       "word": "Pies"
     }
   },
-  "round": 4
+  "round": 5
 }
