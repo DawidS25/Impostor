@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 10,
+  "round": 11,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -30,12 +30,11 @@
   "guess_status": "none",
   "category": "Zwierzęta",
   "word": "Kot",
-  "impostor": "wix",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor",
+      "category": "Zwierzęta"
     },
     "Besti": {
       "role": "player",
@@ -43,8 +42,9 @@
       "word": "Kot"
     },
     "wix": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     }
   }
 }
