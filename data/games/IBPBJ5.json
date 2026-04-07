@@ -9,27 +9,27 @@
   ],
   "status": "started",
   "category": "Zwierzęta",
-  "word": "Delfin",
-  "impostor": "Bestia",
+  "word": "Kot",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Delfin"
+      "word": "Kot"
     },
     "Bestia": {
-      "role": "impostor"
-    },
-    "Wixa": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Delfin"
+      "word": "Kot"
+    },
+    "Wixa": {
+      "role": "impostor"
     },
     "Wixa3": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Delfin"
+      "word": "Kot"
     }
   },
-  "round": 1
+  "round": 2
 }
