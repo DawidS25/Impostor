@@ -6,7 +6,7 @@
     "Besti",
     "wix"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -27,7 +27,7 @@
     "wix": []
   },
   "impostor_guess": "dsf",
-  "guess_status": "pending_host_review",
+  "guess_status": "approved_by_host",
   "category": "Zwierzęta",
   "word": "Kot",
   "impostor": "Heheszek",
