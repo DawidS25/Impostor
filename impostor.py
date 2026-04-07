@@ -1,4 +1,5 @@
 import streamlit as st
 
 token = st.secrets["GIT_TOKEN"]
-print(token)
+
+st.write("Token wczytany:", token[:5] + "...")
