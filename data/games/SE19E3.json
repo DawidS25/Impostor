@@ -45,6 +45,6 @@
       "word": "Burger"
     }
   },
-  "impostor_guess": "",
-  "guess_status": "none"
+  "impostor_guess": "burg",
+  "guess_status": "pending_host_review"
 }
