@@ -130,7 +130,12 @@ elif st.session_state.screen == "host":
                     "code": game_code,
                     "host": player_name.strip(),
                     "players": [player_name.strip()],
-                    "status": "waiting"
+                    "status": "waiting",
+                    "settings": {
+                        "hint_mode": "off",
+                        "round_limit": 10,
+                        "selected_categories": list(WORDS.keys())
+                    }
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -164,6 +169,13 @@ elif st.session_state.screen == "join":
                 st.error("Podaj kod gry.")
             else:
                 success, game_data = get_game_file(game_code)
+                if success and "settings" not in game_data:
+                    game_data["settings"] = {
+                        "hint_mode": "off",
+                        "round_limit": 10,
+                        "selected_categories": list(WORDS.keys())
+                    }
+                    update_game_file(game_code, game_data)
 
                 if not success:
                     st.error("Gra o takim kodzie nie istnieje.")
@@ -209,6 +221,79 @@ elif st.session_state.screen == "lobby":
         st.write("### Gracze:")
         for player in game_data["players"]:
             st.write(f"- {player}")
+            st.write("### Aktualne ustawienia")
+            st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
+            st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
+            st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
+
+        if is_host:
+            st.write("### Ustawienia gry")
+
+            current_settings = game_data.get("settings", {})
+
+            hint_mode_map = {
+                "Wyłączone": "off",
+                "Kategoria": "category",
+                "Podpowiedź": "hint"
+            }
+
+            round_limit_map = {
+                "5": 5,
+                "10": 10,
+                "20": 20,
+                "Bez limitu": None
+            }
+
+            current_hint_value = current_settings.get("hint_mode", "off")
+            current_round_value = current_settings.get("round_limit", 10)
+            current_categories = current_settings.get("selected_categories", list(WORDS.keys()))
+
+            hint_labels = list(hint_mode_map.keys())
+            round_labels = list(round_limit_map.keys())
+
+            current_hint_label = next(
+                (label for label, value in hint_mode_map.items() if value == current_hint_value),
+                "Wyłączone"
+            )
+
+            current_round_label = next(
+                (label for label, value in round_limit_map.items() if value == current_round_value),
+                "10"
+            )
+
+            selected_hint_label = st.selectbox(
+                "Podpowiedzi dla impostora",
+                hint_labels,
+                index=hint_labels.index(current_hint_label)
+            )
+
+            selected_round_label = st.selectbox(
+                "Liczba rund",
+                round_labels,
+                index=round_labels.index(current_round_label)
+            )
+
+            selected_categories = st.multiselect(
+                "Aktywne kategorie",
+                list(WORDS.keys()),
+                default=current_categories
+            )
+
+            if st.button("Zapisz ustawienia", use_container_width=True):
+                if not selected_categories:
+                    st.error("Wybierz przynajmniej jedną kategorię.")
+                else:
+                    game_data["settings"]["hint_mode"] = hint_mode_map[selected_hint_label]
+                    game_data["settings"]["round_limit"] = round_limit_map[selected_round_label]
+                    game_data["settings"]["selected_categories"] = selected_categories
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.success("Ustawienia zapisane.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd zapisu ustawień: {result}")
 
         col1, col2 = st.columns(2)
 

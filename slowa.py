@@ -2,29 +2,10 @@ WORDS = {
     "Jedzenie": [
         "Pizza",
         "Burger",
-        "Spaghetti",
-        "Sushi",
-        "Lody"
+        "Spaghetti"
     ],
     "Zwierzęta": [
         "Kot",
-        "Pies",
-        "Tygrys",
-        "Koń",
-        "Delfin"
-    ],
-    "Miejsca": [
-        "Szkoła",
-        "Lotnisko",
-        "Plaża",
-        "Hotel",
-        "Szpital"
-    ],
-    "Przedmioty": [
-        "Telefon",
-        "Krzesło",
-        "Lodówka",
-        "Telewizor",
-        "Plecak"
+        "Pies"
     ]
 }
