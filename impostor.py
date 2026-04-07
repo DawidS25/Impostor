@@ -250,10 +250,10 @@ elif st.session_state.screen == "lobby":
         st.write("### Gracze:")
         for player in game_data["players"]:
             st.write(f"- {player}")
-            st.write("### Aktualne ustawienia")
-            st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
-            st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
-            st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
+        st.write("### Aktualne ustawienia")
+        st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
+        st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
+        st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
 
         if is_host:
             st.write("### Ustawienia gry")
