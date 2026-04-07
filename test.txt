@@ -1,0 +1,259 @@
+TEST
+cd .\Testy
+& ..\.venv\Scripts\python.exe -m streamlit run .\streamlit_app.py
+
+# UPLOAD NA GITHUB - najpierw trzeba zapisać lokalnie
+git pull origin main --rebase
+git add .
+git commit -m "test"
+git push
+
+# ODPALENIE APLIKACJI LOKALNIE - do testowania
+python -m streamlit run streamlit_app.py
+
+# SPRAWDZENIE AKTUALNEGO REPO - dla pewności
+git remote -v
+
+RZECZY DO ZROBIENIA:
+1. skrócenie kodu, fragmentów w funkcję:
+    - Wyniki
+    - Pobieranie pliku excel
+    - Przyciski punktów
+    - Tworzenie nowego st.session_state
+    - DOdawnie wyników rundy do pamięci
+    - Przyciski końcowe
+
+
+# 🔥 NAJWAŻNIEJSZA RZECZ (architektura)
+
+To co chcesz zrobić to:
+👉 „pseudo multiplayer bez serwera”
+
+I to robimy tak:
+
+* **GitHub = baza danych (JSON)**
+* każdy gracz:
+
+  * pobiera stan gry
+  * zapisuje zmiany
+
+---
+
+# 📁 1. STRUKTURA DANYCH (kluczowe)
+
+Zamiast „jakiegoś pliku”, zrób jeden plik:
+
+```text
+game_state.json
+```
+
+Przykład:
+
+```json
+{
+  "code": "12345",
+  "players": ["Jan", "Ola", "Kuba", "Zosia"],
+  "impostors": [1],
+  "word": "Samolot",
+  "category": "Transport",
+  "settings": {
+    "num_impostors": 1,
+    "hints": true
+  },
+  "phase": "lobby"
+}
+```
+
+👉 Ten plik trzymasz na GitHubie i aktualizujesz.
+
+---
+
+# 🧠 2. EKRANY = STANY APLIKACJI
+
+W Streamlicie robisz to przez:
+
+```python
+st.session_state["screen"]
+```
+
+### Twoje ekrany:
+
+1. `"join"` – wpisanie kodu
+2. `"players"` – dodawanie graczy
+3. `"settings"` – ustawienia
+4. `"game"` – gra
+5. `"results"` – wyniki
+
+---
+
+# 🧩 3. EKRAN 1 – KOD GRY
+
+```python
+code = st.text_input("Wpisz kod gry (5 cyfr)")
+
+if st.button("Dołącz"):
+    if len(code) == 5 and code.isdigit():
+        # sprawdź czy istnieje na GitHubie
+        # jeśli nie → stwórz nowy JSON
+        st.session_state["code"] = code
+        st.session_state["screen"] = "players"
+```
+
+---
+
+# 👥 4. EKRAN GRACZY
+
+```python
+players = []
+
+for i in range(4):
+    name = st.text_input(f"Gracz {i+1}")
+    players.append(name)
+
+if st.button("Dodaj więcej"):
+    # zwiększ licznik w session_state
+
+if st.button("Start"):
+    # zapis do JSON
+```
+
+👉 zapisujesz:
+
+```python
+{
+  "players": players
+}
+```
+
+---
+
+# ⚙️ 5. USTAWIENIA
+
+```python
+num_impostors = st.slider("Ilu impostorów?", 1, 3)
+hints = st.checkbox("Podpowiedzi")
+```
+
+---
+
+# 🎲 6. LOSOWANIE IMPOSTORÓW
+
+```python
+import random
+
+impostors = random.sample(range(len(players)), num_impostors)
+```
+
+👉 i zapis do JSON (ważne!)
+
+---
+
+# 🎮 7. EKRAN GRY
+
+Dla każdego gracza:
+
+```python
+player_id = st.number_input("Który jesteś? (1-10)", 1, 10)
+
+if player_id-1 in impostors:
+    st.write("Jesteś IMPOSTOREM 😈")
+    st.write(f"Kategoria: {category}")
+else:
+    st.write(f"Hasło: {word}")
+```
+
+---
+
+# 📝 8. NOTATNIK
+
+```python
+notes = st.text_area("Notatki")
+```
+
+---
+
+# 🗳️ 9. GŁOSOWANIE
+
+```python
+vote = st.selectbox("Kto jest impostorem?", players)
+```
+
+---
+
+# 🌐 10. NAJWAŻNIEJSZE – GITHUB
+
+Tu jest jedyna trudniejsza część:
+
+Musisz użyć API GitHuba:
+👉 GitHub
+
+Do zapisu pliku:
+
+```python
+import requests
+import base64
+```
+
+Upload:
+
+```python
+url = "https://api.github.com/repos/USERNAME/REPO/contents/game_state.json"
+
+content = base64.b64encode(json.dumps(data).encode()).decode()
+
+payload = {
+    "message": "update game",
+    "content": content
+}
+```
+
+---
+
+# ⚠️ WAŻNE OGRANICZENIA
+
+To rozwiązanie ma kilka minusów:
+
+* opóźnienia (GitHub ≠ realtime)
+* konflikty zapisu
+* każdy musi mieć neta
+
+ALE:
+👉 na projekt / zabawę — idealne
+
+---
+
+# 💡 CO TERAZ NAJLEPIEJ ZROBIĆ
+
+Nie rób wszystkiego naraz.
+
+### Etap 1:
+
+* ekran kodu
+* zapis JSON lokalnie
+
+### Etap 2:
+
+* gracze + ustawienia
+
+### Etap 3:
+
+* impostor + słowo
+
+### Etap 4:
+
+* dopiero GitHub
+
+---
+
+# 🚀 Mogę Ci pomóc dalej
+
+Jeśli chcesz, mogę:
+
+* napisać Ci **gotowy szkielet całej apki**
+* albo zrobić **sam system GitHub sync**
+* albo pomóc tylko z jednym ekranem
+
+Powiedz tylko:
+👉 „zrób mi bazowy kod” albo „zrób tylko GitHub zapis”
+
+i lecimy dalej 💻
