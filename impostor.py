@@ -33,7 +33,7 @@ def go_to_lobby(game_code, player_name, is_host=False):
     st.session_state.player_name = player_name
     st.session_state.is_host = is_host
     st.session_state.screen = "lobby"
-    
+
 def is_game_over(game_data):
     round_limit = game_data.get("settings", {}).get("round_limit")
     current_round = game_data.get("round", 0)
@@ -138,11 +138,11 @@ def next_round_logic(game_data):
 def get_winners(game_data):
     scores = game_data.get("scores", {})
 
-    if not scores:
+    if not scores or len(scores) == 0:
         return []
 
     max_score = max(scores.values())
-    return [p for p, s in scores.items() if s == max_score]
+    return [player for player, score in scores.items() if score == max_score]
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
@@ -259,6 +259,28 @@ elif st.session_state.screen == "lobby":
     is_host = st.session_state.is_host
 
     success, game_data = get_game_file(game_code)
+
+    if success:
+        changed = False
+
+        if "settings" not in game_data:
+            game_data["settings"] = {
+                "hint_mode": "off",
+                "round_limit": 10,
+                "selected_categories": list(WORDS.keys())
+            }
+            changed = True
+
+        if "scores" not in game_data:
+            game_data["scores"] = {player: 0 for player in game_data.get("players", [])}
+            changed = True
+
+        if "round" not in game_data:
+            game_data["round"] = 0
+            changed = True
+
+        if changed:
+            update_game_file(game_code, game_data)
 
     if not success:
         st.error("Nie udało się wczytać gry.")
@@ -380,14 +402,22 @@ elif st.session_state.screen == "game":
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
 
+        scores = game_data.get("scores", {})
+
+        if not scores:
+            scores = {player: 0 for player in game_data.get("players", [])}
+
         st.write("### Wyniki")
-        for player, score in game_data.get("scores", {}).items():
+        for player, score in scores.items():
             st.write(f"**{player}:** {score} pkt")
 
-        winners = get_winners(game_data)
+        winners = get_winners({"scores": scores})
 
         st.write("### Zwycięzca / zwycięzcy")
-        st.write(", ".join(winners))
+        if winners:
+            st.write(", ".join(winners))
+        else:
+            st.write("Brak danych o zwycięzcy")
 
         st.stop()
 
