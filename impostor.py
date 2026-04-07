@@ -90,6 +90,8 @@ def start_game_logic(game_data):
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
     game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["round_winner"] = None
 
     return True, game_data
 
@@ -138,6 +140,8 @@ def next_round_logic(game_data):
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
     game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["round_winner"] = None
 
     if is_game_over(game_data):
         game_data["status"] = "finished"
@@ -152,6 +156,37 @@ def get_winners(game_data):
 
     max_score = max(scores.values())
     return [player for player, score in scores.items() if score == max_score]
+
+def resolve_voting_result(game_data):
+    votes = game_data.get("votes", {})
+    players = game_data.get("players", [])
+    impostor = game_data.get("impostor")
+
+    if len(votes) < len(players):
+        return False, "Nie wszyscy gracze oddali głos."
+
+    vote_count = {}
+
+    for voted_player in votes.values():
+        if voted_player not in vote_count:
+            vote_count[voted_player] = 0
+        vote_count[voted_player] += 1
+
+    max_votes = max(vote_count.values())
+    top_players = [player for player, count in vote_count.items() if count == max_votes]
+
+    voted_out = random.choice(top_players)
+
+    game_data["voted_out"] = voted_out
+
+    if voted_out == impostor:
+        game_data["round_winner"] = "players"
+    else:
+        game_data["round_winner"] = "impostor"
+
+    game_data["status"] = "round_result"
+
+    return True, game_data
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
@@ -203,7 +238,9 @@ elif st.session_state.screen == "host":
                     },
                     "impostor_guess": "",
                     "guess_status": "none",
-                    "votes": {}                  
+                    "votes": {},
+                     "voted_out": None,
+                    "round_winner": None                 
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -313,6 +350,13 @@ elif st.session_state.screen == "lobby":
         
         if "votes" not in game_data:
             game_data["votes"] = {}
+            changed = True
+        if "voted_out" not in game_data:
+            game_data["voted_out"] = None
+            changed = True
+
+        if "round_winner" not in game_data:
+            game_data["round_winner"] = None
             changed = True
 
         if changed:
@@ -447,12 +491,19 @@ elif st.session_state.screen == "game":
         real_word = game_data.get("word", "")
         guessed_word = game_data.get("impostor_guess", "")
 
+        round_winner = game_data.get("round_winner")
+        voted_out = game_data.get("voted_out")
+
         if guess_status == "exact":
             st.success(f"Impostor ({impostor_name}) wygrał rundę, bo odgadł hasło idealnie.")
         elif guess_status == "approved_by_host":
             st.success(f"Impostor ({impostor_name}) wygrał rundę, bo host uznał zgadywanie.")
         elif guess_status == "rejected_by_host":
             st.info("Gracze wygrali rundę, ponieważ host odrzucił zgadywanie impostora.")
+        elif round_winner == "players":
+            st.success(f"Gracze wygrali rundę. Wyrzucono impostora: {voted_out}")
+        elif round_winner == "impostor":
+            st.error(f"Impostor wygrał rundę. Wyrzucono niewłaściwego gracza: {voted_out}")
         else:
             st.info("Runda została zakończona.")
 
@@ -533,7 +584,18 @@ elif st.session_state.screen == "game":
             with col2:
                 if st.session_state.is_host:
                     if st.button("Zakończ głosowanie", key="finish_voting", use_container_width=True):
-                        st.info("Na razie samo zapisanie głosów działa. Rozliczenie dodamy w następnym kroku.")
+                        success_vote, result_vote = resolve_voting_result(game_data)
+
+                        if not success_vote:
+                            st.error(result_vote)
+                        else:
+                            updated, result = update_game_file(game_code, result_vote)
+
+                            if updated:
+                                st.success("Głosowanie zakończone.")
+                                st.rerun()
+                            else:
+                                st.error(f"Błąd rozliczenia głosowania: {result}")
 
             st.stop()
 
@@ -666,7 +728,6 @@ elif st.session_state.screen == "game":
 
                 if updated:
                     st.success("Rozpoczęto głosowanie.")
-                    st.write("DEBUG: zapisano status =", game_data["status"])
                     st.rerun()
                 else:
                     st.error(f"Błąd przejścia do głosowania: {result}")
