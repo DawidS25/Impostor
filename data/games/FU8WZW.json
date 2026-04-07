@@ -2,7 +2,8 @@
   "code": "FU8WZW",
   "host": "kjkj",
   "players": [
-    "kjkj"
+    "kjkj",
+    "fgg"
   ],
   "status": "waiting",
   "settings": {
@@ -15,10 +16,12 @@
   },
   "round": 0,
   "scores": {
-    "kjkj": 0
+    "kjkj": 0,
+    "fgg": 0
   },
   "submissions": {
-    "kjkj": []
+    "kjkj": [],
+    "fgg": []
   },
   "impostor_guess": "",
   "guess_status": "none",
