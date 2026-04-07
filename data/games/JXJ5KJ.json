@@ -6,7 +6,7 @@
     "Besti",
     "wix"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -27,5 +27,24 @@
     "wix": []
   },
   "impostor_guess": "",
-  "guess_status": "none"
+  "guess_status": "none",
+  "category": "Jedzenie",
+  "word": "Pizza",
+  "impostor": "Besti",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    },
+    "Besti": {
+      "role": "impostor",
+      "category": "Jedzenie"
+    },
+    "wix": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    }
+  }
 }
