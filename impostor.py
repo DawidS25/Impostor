@@ -430,13 +430,13 @@ elif st.session_state.screen == "game":
 
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
-            guess_status = game_data.get("guess_status", "none")
-            impostor_name = game_data.get("impostor", "Nieznany")
+        guess_status = game_data.get("guess_status", "none")
+        impostor_name = game_data.get("impostor", "Nieznany")
 
-            if guess_status in ["exact", "approved_by_host"]:
-                st.success(f"Impostor ({impostor_name}) wygrał, bo poprawnie odgadł hasło.")
-            elif guess_status == "rejected_by_host":
-                st.info("Gracze wygrali, ponieważ host odrzucił zgadywanie impostora.")
+        if guess_status in ["exact", "approved_by_host"]:
+            st.success(f"Impostor ({impostor_name}) wygrał, bo poprawnie odgadł hasło.")
+        elif guess_status == "rejected_by_host":
+            st.info("Gracze wygrali, ponieważ host odrzucił zgadywanie impostora.")
 
         scores = game_data.get("scores", {})
 
