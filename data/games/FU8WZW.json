@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -30,5 +30,24 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "round_winner": null
+  "round_winner": null,
+  "category": "Jedzenie",
+  "word": "Burger",
+  "impostor": "kjkj",
+  "roles": {
+    "kjkj": {
+      "role": "impostor",
+      "category": "Jedzenie"
+    },
+    "fgg": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
+    },
+    "tfgghfgf": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
+    }
+  }
 }
