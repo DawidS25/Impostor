@@ -3,6 +3,7 @@ import string
 import streamlit as st
 
 from github_api import create_game_file, get_game_file, update_game_file, game_exists
+from slowa import WORDS
 
 
 # ------------------- SESSION STATE ------------------- #
@@ -32,6 +33,37 @@ def go_to_lobby(game_code, player_name, is_host=False):
     st.session_state.player_name = player_name
     st.session_state.is_host = is_host
     st.session_state.screen = "lobby"
+
+def start_game_logic(game_data):
+    players = game_data["players"]
+
+    if len(players) < 3:
+        return False, "Do startu potrzeba co najmniej 3 graczy."
+
+    impostor = random.choice(players)
+    category = random.choice(list(WORDS.keys()))
+    word = random.choice(WORDS[category])
+
+    roles = {}
+    for player in players:
+        if player == impostor:
+            roles[player] = {
+                "role": "impostor"
+            }
+        else:
+            roles[player] = {
+                "role": "player",
+                "category": category,
+                "word": word
+            }
+
+    game_data["status"] = "started"
+    game_data["category"] = category
+    game_data["word"] = word
+    game_data["impostor"] = impostor
+    game_data["roles"] = roles
+
+    return True, game_data
 
 
 # ------------------- UI ------------------- #
@@ -136,6 +168,9 @@ elif st.session_state.screen == "lobby":
     if not success:
         st.error("Nie udało się wczytać gry.")
     else:
+        if game_data["status"] == "started":
+            st.session_state.screen = "game"
+            st.rerun()
         st.subheader("Lobby")
         st.write(f"**Kod gry:** {game_code}")
         st.write(f"**Twój nick:** {player_name}")
@@ -155,11 +190,34 @@ elif st.session_state.screen == "lobby":
         with col2:
             if is_host:
                 if st.button("Start gry", use_container_width=True):
-                    game_data["status"] = "started"
-                    updated, result = update_game_file(game_code, game_data)
+                    success_logic, result_logic = start_game_logic(game_data)
 
-                    if updated:
-                        st.success("Gra wystartowała.")
-                        st.rerun()
+                    if not success_logic:
+                        st.error(result_logic)
                     else:
-                        st.error(f"Błąd startu gry: {result}")
+                        updated, result = update_game_file(game_code, result_logic)
+
+                        if updated:
+                            st.success("Gra wystartowała.")
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd startu gry: {result}")
+
+elif st.session_state.screen == "game":
+    game_code = st.session_state.game_code
+    player_name = st.session_state.player_name
+
+    success, game_data = get_game_file(game_code)
+
+    if not success:
+        st.error("Nie udało się wczytać danych gry.")
+    else:
+        st.subheader("Gra trwa")
+
+        if player_name not in game_data["roles"]:
+            st.error("Nie znaleziono Twojej roli.")
+            st.stop()
+
+        my_role = game_data["roles"][player_name]
+
+        st.write(f"**Kod gry:** {game_code}")
