@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -34,7 +34,7 @@
     ]
   },
   "impostor_guess": "burger7",
-  "guess_status": "pending_host_review",
+  "guess_status": "approved_by_host",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
