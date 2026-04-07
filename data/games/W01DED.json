@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -26,8 +26,8 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "Kot",
+  "guess_status": "exact",
   "category": "Zwierzęta",
   "word": "Kot",
   "impostor": "Bestia",
