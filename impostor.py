@@ -89,6 +89,7 @@ def start_game_logic(game_data):
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
+    game_data["votes"] = {}
 
     return True, game_data
 
@@ -136,6 +137,7 @@ def next_round_logic(game_data):
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
+    game_data["votes"] = {}
 
     if is_game_over(game_data):
         game_data["status"] = "finished"
@@ -200,7 +202,8 @@ elif st.session_state.screen == "host":
                        player_name.strip(): []
                     },
                     "impostor_guess": "",
-                    "guess_status": "none"                    
+                    "guess_status": "none",
+                    "votes": {}                  
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -307,6 +310,10 @@ elif st.session_state.screen == "lobby":
         if "guess_status" not in game_data:
             game_data["guess_status"] = "none"
             changed = True        
+        
+        if "votes" not in game_data:
+            game_data["votes"] = {}
+            changed = True
 
         if changed:
             update_game_file(game_code, game_data)
@@ -594,6 +601,18 @@ elif st.session_state.screen == "game":
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
+
+        if st.session_state.is_host:
+            if st.button("Przejdź do głosowania", use_container_width=True):
+                game_data["status"] = "voting"
+
+                updated, result = update_game_file(game_code, game_data)
+
+                if updated:
+                    st.success("Rozpoczęto głosowanie.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd przejścia do głosowania: {result}")
         if st.session_state.is_host:
             if st.button("Następna runda", use_container_width=True):
                 new_data = next_round_logic(game_data)
