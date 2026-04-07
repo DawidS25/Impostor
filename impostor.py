@@ -428,6 +428,41 @@ elif st.session_state.screen == "game":
 
     success, game_data = get_game_file(game_code)
 
+    if game_data.get("status") == "round_result":
+        st.subheader("Koniec rundy")
+
+        guess_status = game_data.get("guess_status", "none")
+        impostor_name = game_data.get("impostor", "Nieznany")
+        real_word = game_data.get("word", "")
+        guessed_word = game_data.get("impostor_guess", "")
+
+        if guess_status == "exact":
+            st.success(f"Impostor ({impostor_name}) wygrał rundę, bo odgadł hasło idealnie.")
+        elif guess_status == "approved_by_host":
+            st.success(f"Impostor ({impostor_name}) wygrał rundę, bo host uznał zgadywanie.")
+        elif guess_status == "rejected_by_host":
+            st.info("Gracze wygrali rundę, ponieważ host odrzucił zgadywanie impostora.")
+        else:
+            st.info("Runda została zakończona.")
+
+        st.write(f"**Prawidłowe hasło:** {real_word}")
+        if guessed_word:
+            st.write(f"**Zgadywanie impostora:** {guessed_word}")
+
+        if st.session_state.is_host:
+            if st.button("Przejdź do następnej rundy", use_container_width=True):
+                new_data = next_round_logic(game_data)
+
+                updated, result = update_game_file(game_code, new_data)
+
+                if updated:
+                    st.success("Rozpoczęto nową rundę.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd przejścia do następnej rundy: {result}")
+
+        st.stop()
+
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
         guess_status = game_data.get("guess_status", "none")
@@ -581,7 +616,7 @@ elif st.session_state.screen == "game":
                 with col1:
                     if st.button("Uznaj zgadywanie", use_container_width=True):
                         game_data["guess_status"] = "approved_by_host"
-                        game_data["status"] = "finished"
+                        game_data["status"] = "round_result"
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -594,7 +629,7 @@ elif st.session_state.screen == "game":
                 with col2:
                     if st.button("Odrzuć zgadywanie", use_container_width=True):
                         game_data["guess_status"] = "rejected_by_host"
-                        game_data["status"] = "finished"
+                        game_data["status"] = "round_result"
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -625,7 +660,7 @@ elif st.session_state.screen == "game":
 
                 if new_guess.lower() == real_word:
                     game_data["guess_status"] = "exact"
-                    game_data["status"] = "finished"
+                    game_data["status"] = "round_result"
                 else:
                     game_data["guess_status"] = "pending_host_review"
 
