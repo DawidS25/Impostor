@@ -7,5 +7,29 @@
     "Wixa",
     "Wixa3"
   ],
-  "status": "waiting"
+  "status": "started",
+  "category": "Zwierzęta",
+  "word": "Delfin",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Delfin"
+    },
+    "Bestia": {
+      "role": "impostor"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Delfin"
+    },
+    "Wixa3": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Delfin"
+    }
+  },
+  "round": 1
 }
