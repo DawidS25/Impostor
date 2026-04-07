@@ -127,18 +127,18 @@ def next_round_logic(game_data):
                 "word": word
             }
 
+    game_data["status"] = "started"
     game_data["category"] = category
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["roles"] = roles
     game_data["round"] = game_data.get("round", 1) + 1
-
-    if is_game_over(game_data):
-        game_data["status"] = "finished"
-
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
+
+    if is_game_over(game_data):
+        game_data["status"] = "finished"
 
     return game_data
 
