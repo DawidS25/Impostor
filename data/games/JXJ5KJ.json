@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -29,22 +29,22 @@
   "impostor_guess": "",
   "guess_status": "none",
   "category": "Jedzenie",
-  "word": "Pizza",
-  "impostor": "wix",
+  "word": "Burger",
+  "impostor": "Besti",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Pizza"
+      "word": "Burger"
     },
     "Besti": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
-    },
-    "wix": {
       "role": "impostor",
       "category": "Jedzenie"
+    },
+    "wix": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
     }
   }
 }
