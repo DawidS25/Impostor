@@ -87,6 +87,8 @@ def start_game_logic(game_data):
     game_data["impostor"] = impostor
     game_data["roles"] = roles
     game_data["submissions"] = {player: [] for player in players}
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
 
     return True, game_data
 
@@ -135,6 +137,8 @@ def next_round_logic(game_data):
         game_data["status"] = "finished"
 
     game_data["submissions"] = {player: [] for player in players}
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
 
     return game_data
 
@@ -194,7 +198,9 @@ elif st.session_state.screen == "host":
                     },
                     "submissions": {
                        player_name.strip(): []
-}
+                    },
+                    "impostor_guess": "",
+                    "guess_status": "none"                    
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -293,6 +299,14 @@ elif st.session_state.screen == "lobby":
         if "submissions" not in game_data:
             game_data["submissions"] = {player: [] for player in game_data.get("players", [])}
             changed = True
+        
+        if "impostor_guess" not in game_data:
+            game_data["impostor_guess"] = ""
+            changed = True
+
+        if "guess_status" not in game_data:
+            game_data["guess_status"] = "none"
+            changed = True        
 
         if changed:
             update_game_file(game_code, game_data)
@@ -416,6 +430,13 @@ elif st.session_state.screen == "game":
 
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
+            guess_status = game_data.get("guess_status", "none")
+            impostor_name = game_data.get("impostor", "Nieznany")
+
+            if guess_status in ["exact", "approved_by_host"]:
+                st.success(f"Impostor ({impostor_name}) wygrał, bo poprawnie odgadł hasło.")
+            elif guess_status == "rejected_by_host":
+                st.info("Gracze wygrali, ponieważ host odrzucił zgadywanie impostora.")
 
         scores = game_data.get("scores", {})
 
@@ -464,6 +485,25 @@ elif st.session_state.screen == "game":
 
             if "hint" in my_role:
                 st.write(f"**Podpowiedź:** {my_role['hint']}")
+
+            st.write("### Zgadnij właściwe hasło")
+            with st.form(key=f"guess_form_{player_name}", clear_on_submit=True):
+                impostor_guess_input = st.text_input(
+                    "Wpisz zgadywane hasło",
+                    key=f"guess_input_{player_name}"
+                )
+                guess_submitted = st.form_submit_button("Zgłoś zgadywanie", use_container_width=True)
+
+            if guess_submitted:
+                new_guess = impostor_guess_input.strip()
+
+                if not new_guess:
+                    st.error("Wpisz hasło do zgadnięcia.")
+                else:
+                    game_data["impostor_guess"] = new_guess
+
+                    real_word = game_data.get("word", "").strip().lower()
+
         else:
             st.success("Jesteś zwykłym graczem")
             st.write(f"**Kategoria:** {my_role['category']}")
@@ -542,4 +582,37 @@ elif st.session_state.screen == "game":
                     st.success("Gra zakończona przez hosta.")
                     st.rerun()
                 else:
-                    st.error(f"Błąd zakończenia gry: {result}")        
+                    st.error(f"Błąd zakończenia gry: {result}") 
+
+            if game_data.get("guess_status") == "pending_host_review":
+                st.write("### Zgadywanie impostora do oceny")
+                st.write(f"**Zgadywane hasło:** {game_data.get('impostor_guess', '')}")
+                st.write(f"**Prawidłowe hasło:** {game_data.get('word', '')}")
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    if st.button("Uznaj zgadywanie", use_container_width=True):
+                        game_data["guess_status"] = "approved_by_host"
+                        game_data["status"] = "finished"
+
+                        updated, result = update_game_file(game_code, game_data)
+
+                        if updated:
+                            st.success("Host uznał zgadywanie impostora.")
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd zapisu decyzji hosta: {result}")
+
+                with col2:
+                    if st.button("Odrzuć zgadywanie", use_container_width=True):
+                        game_data["guess_status"] = "rejected_by_host"
+                        game_data["status"] = "finished"
+
+                        updated, result = update_game_file(game_code, game_data)
+
+                        if updated:
+                            st.success("Host odrzucił zgadywanie impostora.")
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd zapisu decyzji hosta: {result}")       
