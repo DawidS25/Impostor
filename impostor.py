@@ -121,8 +121,28 @@ def next_round_logic(game_data):
     game_data["roles"] = roles
     game_data["round"] = game_data.get("round", 1) + 1
 
+    if is_game_over(game_data):
+        game_data["status"] = "finished"
+
     return game_data
 
+def is_game_over(game_data):
+    round_limit = game_data.get("settings", {}).get("round_limit")
+    current_round = game_data.get("round", 0)
+
+    if round_limit is None:
+        return False
+
+    return current_round >= round_limit
+
+def get_winners(game_data):
+    scores = game_data.get("scores", {})
+
+    if not scores:
+        return []
+
+    max_score = max(scores.values())
+    return [p for p, s in scores.items() if s == max_score]
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
@@ -164,6 +184,10 @@ elif st.session_state.screen == "host":
                         "hint_mode": "off",
                         "round_limit": 10,
                         "selected_categories": list(WORDS.keys())
+                    },
+                    "round": 0,
+                    "scores": {
+                        player_name.strip(): 0
                     }
                 }
 
@@ -213,6 +237,7 @@ elif st.session_state.screen == "join":
                         st.warning("Gracz o tej nazwie już jest w tej grze.")
                     else:
                         game_data["players"].append(player_name.strip())
+                        game_data["scores"][player_name.strip()] = 0
                         updated, result = update_game_file(game_code, game_data)
 
                         if updated:
@@ -351,6 +376,20 @@ elif st.session_state.screen == "game":
     player_name = st.session_state.player_name
 
     success, game_data = get_game_file(game_code)
+
+    if game_data.get("status") == "finished":
+        st.subheader("Koniec gry")
+
+        st.write("### Wyniki")
+        for player, score in game_data.get("scores", {}).items():
+            st.write(f"**{player}:** {score} pkt")
+
+        winners = get_winners(game_data)
+
+        st.write("### Zwycięzca / zwycięzcy")
+        st.write(", ".join(winners))
+
+        st.stop()
 
     st.subheader("Gra trwa")
     st.write(f"**Kod gry:** {game_code}")
