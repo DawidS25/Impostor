@@ -6,7 +6,7 @@
     "Besti",
     "wix"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -26,25 +26,25 @@
     "Besti": [],
     "wix": []
   },
-  "impostor_guess": "dsf",
-  "guess_status": "approved_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Heheszek",
+  "word": "Pies",
+  "impostor": "wix",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
     },
     "Besti": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Kot"
+      "word": "Pies"
     },
     "wix": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor",
+      "category": "Zwierzęta"
     }
   }
 }
