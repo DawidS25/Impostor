@@ -2,7 +2,8 @@
   "code": "Y1BDUR",
   "host": "Heheszek",
   "players": [
-    "Heheszek"
+    "Heheszek",
+    "Bestia"
   ],
   "status": "waiting",
   "settings": {
@@ -15,9 +16,11 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0
+    "Heheszek": 0,
+    "Bestia": 0
   },
   "submissions": {
-    "Heheszek": ""
+    "Heheszek": "",
+    "Bestia": ""
   }
 }
