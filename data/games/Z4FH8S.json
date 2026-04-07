@@ -6,12 +6,31 @@
     "Bestia",
     "Wixa"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": 5,
     "selected_categories": [
       "Zwierzęta"
     ]
+  },
+  "category": "Zwierzęta",
+  "word": "Pies",
+  "impostor": "Wixa",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
+    },
+    "Bestia": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
+    },
+    "Wixa": {
+      "role": "impostor",
+      "category": "Zwierzęta"
+    }
   }
 }
