@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
@@ -28,23 +28,23 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Heheszek",
+  "category": "Jedzenie",
+  "word": "Spaghetti",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Spaghetti"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Spaghetti"
     },
     "Bestia": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor",
+      "category": "Jedzenie"
     }
   }
 }
