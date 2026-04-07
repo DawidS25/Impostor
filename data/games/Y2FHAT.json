@@ -6,5 +6,23 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting"
+  "status": "started",
+  "category": "Jedzenie",
+  "word": "Lody",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Lody"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Lody"
+    },
+    "Bestia": {
+      "role": "impostor"
+    }
+  }
 }
