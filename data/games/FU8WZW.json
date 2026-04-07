@@ -33,8 +33,8 @@
       "ugvyhuvhg"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "burger7",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
