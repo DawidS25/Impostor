@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 2,
+  "round": 3,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
@@ -28,23 +28,23 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "category": "Jedzenie",
-  "word": "Pizza",
-  "impostor": "Bestia",
+  "category": "Zwierzęta",
+  "word": "Kot",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
+      "role": "impostor",
+      "category": "Zwierzęta"
     },
     "Wixa": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Pizza"
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Bestia": {
-      "role": "impostor",
-      "category": "Jedzenie"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     }
   }
 }
