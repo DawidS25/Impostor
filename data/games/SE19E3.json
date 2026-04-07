@@ -15,43 +15,36 @@
       "Zwierzęta"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
     "Bestia": 0
   },
   "submissions": {
-    "Heheszek": [
-      "kot",
-      "dupa",
-      "dupa",
-      "dupa",
-      "halo",
-      "piesek"
-    ],
+    "Heheszek": [],
     "Wixa": [],
-    "Bestia": [
-      "dupa"
-    ]
+    "Bestia": []
   },
-  "category": "Zwierzęta",
-  "word": "Pies",
-  "impostor": "Bestia",
+  "category": "Jedzenie",
+  "word": "Burger",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Pies"
+      "role": "impostor",
+      "category": "Jedzenie"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Pies"
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Bestia": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
     }
-  }
+  },
+  "impostor_guess": "",
+  "guess_status": "none"
 }
