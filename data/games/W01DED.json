@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -27,5 +27,24 @@
     "Bestia": []
   },
   "impostor_guess": "",
-  "guess_status": "none"
+  "guess_status": "none",
+  "category": "Zwierzęta",
+  "word": "Kot",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Zwierzęta"
+    }
+  }
 }
