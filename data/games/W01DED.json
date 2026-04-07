@@ -3,7 +3,8 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "Wixa"
+    "Wixa",
+    "Bestia"
   ],
   "status": "waiting",
   "settings": {
@@ -17,11 +18,13 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "Wixa": 0
+    "Wixa": 0,
+    "Bestia": 0
   },
   "submissions": {
     "Heheszek": [],
-    "Wixa": []
+    "Wixa": [],
+    "Bestia": []
   },
   "impostor_guess": "",
   "guess_status": "none"
