@@ -15,23 +15,23 @@
     ]
   },
   "category": "Jedzenie",
-  "word": "Spaghetti",
-  "impostor": "Wixa",
+  "word": "Burger",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Spaghetti"
+      "role": "impostor",
+      "category": "Jedzenie"
     },
     "Bestia": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Spaghetti"
+      "word": "Burger"
     },
     "Wixa": {
-      "role": "impostor",
-      "category": "Jedzenie"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
     }
   },
-  "round": 8
+  "round": 9
 }
