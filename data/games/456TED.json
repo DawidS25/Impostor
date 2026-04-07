@@ -2,7 +2,8 @@
   "code": "456TED",
   "host": "Heheszek",
   "players": [
-    "Heheszek"
+    "Heheszek",
+    "wixa"
   ],
   "status": "waiting",
   "settings": {
@@ -15,10 +16,12 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0
+    "Heheszek": 0,
+    "wixa": 0
   },
   "submissions": {
-    "Heheszek": []
+    "Heheszek": [],
+    "wixa": []
   },
   "impostor_guess": "",
   "guess_status": "none",
