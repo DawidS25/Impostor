@@ -33,6 +33,15 @@ def go_to_lobby(game_code, player_name, is_host=False):
     st.session_state.player_name = player_name
     st.session_state.is_host = is_host
     st.session_state.screen = "lobby"
+    
+def is_game_over(game_data):
+    round_limit = game_data.get("settings", {}).get("round_limit")
+    current_round = game_data.get("round", 0)
+
+    if round_limit is None:
+        return False
+
+    return current_round >= round_limit
 
 def start_game_logic(game_data):
     players = game_data["players"]
@@ -125,15 +134,6 @@ def next_round_logic(game_data):
         game_data["status"] = "finished"
 
     return game_data
-
-def is_game_over(game_data):
-    round_limit = game_data.get("settings", {}).get("round_limit")
-    current_round = game_data.get("round", 0)
-
-    if round_limit is None:
-        return False
-
-    return current_round >= round_limit
 
 def get_winners(game_data):
     scores = game_data.get("scores", {})
