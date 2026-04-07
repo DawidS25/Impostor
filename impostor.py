@@ -470,16 +470,17 @@ elif st.session_state.screen == "game":
             st.write(f"**Hasło:** {my_role['word']}")
         
 
-        st.write("### Twoje hasło")
+        st.write("### Twoje hasła")
 
-        current_submission = game_data.get("submissions", {}).get(player_name, "")
+        with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
+            submission_text = st.text_input(
+                "Wpisz kolejne hasło / skojarzenie",
+                key=f"submission_input_{player_name}"
+            )
 
-        submission_text = st.text_input(
-            "Wpisz kolejne hasło / skojarzenie",
-            key=f"submission_input_{player_name}"
-        )
+            submitted = st.form_submit_button("Dodaj hasło", use_container_width=True)
 
-        if st.button("Dodaj hasło", use_container_width=True):
+        if submitted:
             new_text = submission_text.strip()
 
             if not new_text:
@@ -491,12 +492,15 @@ elif st.session_state.screen == "game":
                 if player_name not in game_data["submissions"]:
                     game_data["submissions"][player_name] = []
 
+                if isinstance(game_data["submissions"][player_name], str):
+                    old_value = game_data["submissions"][player_name].strip()
+                    game_data["submissions"][player_name] = [old_value] if old_value else []
+
                 game_data["submissions"][player_name].append(new_text)
 
                 updated, result = update_game_file(game_code, game_data)
 
                 if updated:
-                    st.session_state[f"submission_input_{player_name}"] = ""
                     st.success("Hasło dodane.")
                     st.rerun()
                 else:
