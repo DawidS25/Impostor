@@ -475,8 +475,7 @@ elif st.session_state.screen == "game":
         current_submission = game_data.get("submissions", {}).get(player_name, "")
 
         submission_text = st.text_input(
-            "Wpisz swoje hasło / skojarzenie",
-            value=current_submission,
+            "Wpisz kolejne hasło / skojarzenie",
             key=f"submission_input_{player_name}"
         )
 
