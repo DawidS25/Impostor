@@ -216,8 +216,8 @@ elif st.session_state.screen == "game":
     if not success:
         st.error("Nie udało się wczytać danych gry.")
     else:
-        st.write("### DEBUG - całe game_data")
-        st.json(game_data)
+        #st.write("### DEBUG - całe game_data")
+        #st.json(game_data)
 
         if "roles" not in game_data:
             st.error("Brak 'roles' w game_data")
