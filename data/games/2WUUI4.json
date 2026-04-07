@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": 5,
@@ -24,5 +24,24 @@
     "Heheszek": "",
     "Wixa": "",
     "Bestia": ""
+  },
+  "category": "Jedzenie",
+  "word": "Spaghetti",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Spaghetti"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Spaghetti"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Jedzenie"
+    }
   }
 }
