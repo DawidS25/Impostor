@@ -8,28 +8,28 @@
     "Wixa3"
   ],
   "status": "started",
-  "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Wixa",
+  "category": "Jedzenie",
+  "word": "Burger",
+  "impostor": "Wixa3",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Bestia": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Wixa": {
-      "role": "impostor"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Wixa3": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor"
     }
   },
-  "round": 2
+  "round": 3
 }
