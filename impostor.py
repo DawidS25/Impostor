@@ -481,40 +481,40 @@ elif st.session_state.screen == "game":
 
         st.stop()
     
-        if game_data.get("status") == "voting":
-            st.subheader("Głosowanie")
+    if game_data.get("status") == "voting":
+        st.subheader("Głosowanie")
 
-            st.write("Wskaż, kto według Ciebie jest impostorem.")
+        st.write("Wskaż, kto według Ciebie jest impostorem.")
 
-            available_targets = [p for p in game_data.get("players", []) if p != player_name]
+        available_targets = [p for p in game_data.get("players", []) if p != player_name]
 
-            current_vote = game_data.get("votes", {}).get(player_name)
+        current_vote = game_data.get("votes", {}).get(player_name)
 
-            if available_targets:
-                default_index = 0
-                if current_vote in available_targets:
-                    default_index = available_targets.index(current_vote)
+        if available_targets:
+            default_index = 0
+            if current_vote in available_targets:
+                default_index = available_targets.index(current_vote)
 
-                vote_target = st.selectbox(
-                    "Na kogo głosujesz?",
-                    available_targets,
-                    index=default_index,
-                    key=f"vote_target_{player_name}"
-                )
+            vote_target = st.selectbox(
+                "Na kogo głosujesz?",
+                available_targets,
+                index=default_index,
+                key=f"vote_target_{player_name}"
+            )
 
-                if st.button("Oddaj głos", key=f"submit_vote_{player_name}", use_container_width=True):
-                    if "votes" not in game_data:
-                        game_data["votes"] = {}
+            if st.button("Oddaj głos", key=f"submit_vote_{player_name}", use_container_width=True):
+                if "votes" not in game_data:
+                    game_data["votes"] = {}
 
-                    game_data["votes"][player_name] = vote_target
+                game_data["votes"][player_name] = vote_target
 
-                    updated, result = update_game_file(game_code, game_data)
+                updated, result = update_game_file(game_code, game_data)
 
-                    if updated:
-                        st.success("Głos zapisany.")
-                        st.rerun()
-                    else:
-                        st.error(f"Błąd zapisu głosu: {result}")
+                if updated:
+                    st.success("Głos zapisany.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd zapisu głosu: {result}")
 
             st.write("### Status głosowania")
             votes = game_data.get("votes", {})
