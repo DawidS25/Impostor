@@ -209,10 +209,22 @@ elif st.session_state.screen == "game":
 
     success, game_data = get_game_file(game_code)
 
+    st.subheader("Gra trwa")
+    st.write(f"**Kod gry:** {game_code}")
+    st.write(f"**Gracz z session_state:** {player_name}")
+
     if not success:
         st.error("Nie udało się wczytać danych gry.")
     else:
-        st.subheader("Gra trwa")
+        st.write("### DEBUG - całe game_data")
+        st.json(game_data)
+
+        if "roles" not in game_data:
+            st.error("Brak 'roles' w game_data")
+            st.stop()
+
+        st.write("### DEBUG - dostępne role")
+        st.write(list(game_data["roles"].keys()))
 
         if player_name not in game_data["roles"]:
             st.error("Nie znaleziono Twojej roli.")
@@ -220,6 +232,16 @@ elif st.session_state.screen == "game":
 
         my_role = game_data["roles"][player_name]
 
-        st.write(f"**Kod gry:** {game_code}")
+        st.write("### DEBUG - moja rola")
+        st.json(my_role)
+
+        if my_role["role"] == "impostor":
+            st.error("Jesteś IMPOSTOREM")
+            st.write("Spróbuj wtopić się w grupę.")
+        else:
+            st.success("Jesteś zwykłym graczem")
+            st.write(f"**Kategoria:** {my_role['category']}")
+            st.write(f"**Hasło:** {my_role['word']}")
+
         if st.button("Odśwież", use_container_width=True):
-                st.rerun()
+            st.rerun()
