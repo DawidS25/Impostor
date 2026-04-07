@@ -605,7 +605,7 @@ elif st.session_state.screen == "game":
                             st.error(f"Błąd zapisu decyzji hosta: {result}")       
  
         if my_role["role"] == "impostor":
-            st.write("### Zgadnij właściwe hasło")
+            st.warning("### Zgadnij właściwe hasło")
             with st.form(key=f"guess_form_{player_name}", clear_on_submit=True):
                 impostor_guess_input = st.text_input(
                     "Wpisz zgadywane hasło",
