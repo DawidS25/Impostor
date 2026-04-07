@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -27,7 +27,7 @@
     "tfgghfgf": []
   },
   "impostor_guess": "gugui",
-  "guess_status": "pending_host_review",
+  "guess_status": "rejected_by_host",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
