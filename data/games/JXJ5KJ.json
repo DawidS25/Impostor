@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 9,
+  "round": 10,
   "scores": {
     "Heheszek": 0,
     "Besti": 0,
@@ -28,23 +28,23 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "category": "Jedzenie",
-  "word": "Burger",
-  "impostor": "Besti",
+  "category": "Zwierzęta",
+  "word": "Kot",
+  "impostor": "wix",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Besti": {
-      "role": "impostor",
-      "category": "Jedzenie"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "wix": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "role": "impostor",
+      "category": "Zwierzęta"
     }
   }
 }
