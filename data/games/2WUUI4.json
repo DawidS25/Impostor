@@ -8,11 +8,10 @@
   ],
   "status": "waiting",
   "settings": {
-    "hint_mode": "off",
-    "round_limit": 10,
+    "hint_mode": "category",
+    "round_limit": 5,
     "selected_categories": [
-      "Jedzenie",
-      "Zwierzęta"
+      "Jedzenie"
     ]
   },
   "round": 0,
