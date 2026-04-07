@@ -477,6 +477,9 @@ elif st.session_state.screen == "game":
         my_role = game_data["roles"][player_name]
 
         if my_role["role"] == "impostor":
+            st.write("### DEBUG zgadywania")
+            st.write("guess_status:", game_data.get("guess_status", "brak"))
+            st.write("impostor_guess:", game_data.get("impostor_guess", "brak"))
             st.error("Jesteś IMPOSTOREM")
             st.write("Spróbuj wtopić się w grupę.")
 
