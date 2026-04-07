@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "kjkj": 0,
     "fgg": 0,
@@ -26,28 +26,28 @@
     "fgg": [],
     "tfgghfgf": []
   },
-  "impostor_guess": "spaghetti",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
   "category": "Jedzenie",
-  "word": "Spaghetti",
-  "impostor": "kjkj",
+  "word": "Pizza",
+  "impostor": "tfgghfgf",
   "roles": {
     "kjkj": {
-      "role": "impostor",
-      "category": "Jedzenie"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
     },
     "fgg": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Spaghetti"
+      "word": "Pizza"
     },
     "tfgghfgf": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Spaghetti"
+      "role": "impostor",
+      "category": "Jedzenie"
     }
   }
 }
