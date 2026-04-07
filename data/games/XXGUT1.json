@@ -6,12 +6,31 @@
     "Bestia",
     "Wixa"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": 5,
     "selected_categories": [
       "Jedzenie"
     ]
+  },
+  "category": "Jedzenie",
+  "word": "Burger",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Jedzenie"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
+    }
   }
 }
