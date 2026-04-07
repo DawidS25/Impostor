@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "finished",
   "settings": {
     "hint_mode": "category",
     "round_limit": 5,
@@ -14,7 +14,7 @@
       "Jedzenie"
     ]
   },
-  "round": 4,
+  "round": 5,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
