@@ -16,7 +16,7 @@
   },
   "category": "Jedzenie",
   "word": "Pizza",
-  "impostor": "Bestia",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
@@ -24,14 +24,14 @@
       "word": "Pizza"
     },
     "Bestia": {
-      "role": "impostor",
-      "category": "Jedzenie"
-    },
-    "Wixa": {
       "role": "player",
       "category": "Jedzenie",
       "word": "Pizza"
+    },
+    "Wixa": {
+      "role": "impostor",
+      "category": "Jedzenie"
     }
   },
-  "round": 5
+  "round": 6
 }
