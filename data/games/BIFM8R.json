@@ -6,5 +6,23 @@
     "Bestia",
     "Wixa"
   ],
-  "status": "waiting"
+  "status": "started",
+  "category": "Przedmioty",
+  "word": "Telefon",
+  "impostor": "Wixa",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Przedmioty",
+      "word": "Telefon"
+    },
+    "Bestia": {
+      "role": "player",
+      "category": "Przedmioty",
+      "word": "Telefon"
+    },
+    "Wixa": {
+      "role": "impostor"
+    }
+  }
 }
