@@ -15,7 +15,7 @@
       "Zwierzęta"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
@@ -26,16 +26,16 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "spaghetti",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "category": "Jedzenie",
-  "word": "Spaghetti",
+  "word": "Pizza",
   "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Spaghetti"
+      "word": "Pizza"
     },
     "Wixa": {
       "role": "impostor",
@@ -44,7 +44,7 @@
     "Bestia": {
       "role": "player",
       "category": "Jedzenie",
-      "word": "Spaghetti"
+      "word": "Pizza"
     }
   }
 }
