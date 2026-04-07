@@ -62,8 +62,37 @@ def start_game_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["roles"] = roles
+    game_data["round"] = game_data.get("round", 0) + 1
 
     return True, game_data
+
+def next_round_logic(game_data):
+    players = game_data["players"]
+
+    impostor = random.choice(players)
+    category = random.choice(list(WORDS.keys()))
+    word = random.choice(WORDS[category])
+
+    roles = {}
+    for player in players:
+        if player == impostor:
+            roles[player] = {
+                "role": "impostor"
+            }
+        else:
+            roles[player] = {
+                "role": "player",
+                "category": category,
+                "word": word
+            }
+
+    game_data["category"] = category
+    game_data["word"] = word
+    game_data["impostor"] = impostor
+    game_data["roles"] = roles
+    game_data["round"] = game_data.get("round", 1) + 1
+
+    return game_data
 
 
 # ------------------- UI ------------------- #
@@ -212,6 +241,7 @@ elif st.session_state.screen == "game":
     st.subheader("Gra trwa")
     st.write(f"**Kod gry:** {game_code}")
     st.write(f"**Gracz:** {player_name}")
+    st.write(f"**Runda:** {game_data.get('round', 1)}")
 
     if not success:
         st.error("Nie udało się wczytać danych gry.")
@@ -237,3 +267,14 @@ elif st.session_state.screen == "game":
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
+        if st.session_state.is_host:
+            if st.button("Następna runda", use_container_width=True):
+                new_data = next_round_logic(game_data)
+
+                updated, result = update_game_file(game_code, new_data)
+
+                if updated:
+                    st.success("Nowa runda rozpoczęta")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd: {result}")
