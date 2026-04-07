@@ -28,7 +28,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Heheszek": "Bestia"
+  },
   "category": "Zwierzęta",
   "word": "Pies",
   "impostor": "Bestia",
