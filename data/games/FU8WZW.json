@@ -6,7 +6,7 @@
     "fgg",
     "tfgghfgf"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -26,8 +26,8 @@
     "fgg": [],
     "tfgghfgf": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "spaghetti",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
