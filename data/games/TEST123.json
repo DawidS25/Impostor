@@ -2,7 +2,8 @@
   "code": "TEST123",
   "host": "Dawid",
   "players": [
-    "Dawid"
+    "Dawid",
+    "NowyGracz"
   ],
   "status": "waiting"
 }
