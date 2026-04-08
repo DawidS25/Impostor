@@ -189,7 +189,7 @@ def resolve_voting_result(game_data):
     return True, game_data
 
 # ------------------- UI ------------------- #
-st.title("TImpostor")
+st.title("Impostor")
 
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
