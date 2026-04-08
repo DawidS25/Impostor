@@ -735,7 +735,6 @@ elif st.session_state.screen == "game":
                     st.error(f"Błąd przejścia do głosowania: {result}")
                     
         if st.session_state.is_host:
-        if st.session_state.is_host:
             if st.button("Zakończ grę", use_container_width=True):
                 game_data["status"] = "finished"
 
