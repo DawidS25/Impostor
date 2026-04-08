@@ -650,10 +650,6 @@ elif st.session_state.screen == "game":
         my_role = game_data["roles"][player_name]
 
         if my_role["role"] == "impostor":
-            st.write("### DEBUG zgadywania")
-            st.write("guess_status:", game_data.get("guess_status", "brak"))
-            st.write("impostor_guess:", game_data.get("impostor_guess", "brak"))
-           
             st.error("Jesteś IMPOSTOREM")
             st.write("Spróbuj wtopić się w grupę.")
 
@@ -670,7 +666,7 @@ elif st.session_state.screen == "game":
             st.write(f"**Hasło:** {my_role['word']}")
         
 
-        st.write("### Twoje hasła")
+        st.write("### Twoje hasła TEST")
 
         with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
             submission_text = st.text_input(
@@ -733,7 +729,6 @@ elif st.session_state.screen == "game":
                     st.rerun()
                 else:
                     st.error(f"Błąd przejścia do głosowania: {result}")
-                    
         if st.session_state.is_host:
             if st.button("Zakończ grę", use_container_width=True):
                 game_data["status"] = "finished"
