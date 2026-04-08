@@ -735,16 +735,6 @@ elif st.session_state.screen == "game":
                     st.error(f"Błąd przejścia do głosowania: {result}")
                     
         if st.session_state.is_host:
-            if st.button("Następna runda", use_container_width=True):
-                new_data = next_round_logic(game_data)
-
-                updated, result = update_game_file(game_code, new_data)
-
-                if updated:
-                    st.success("Nowa runda rozpoczęta")
-                    st.rerun()
-                else:
-                    st.error(f"Błąd: {result}")
         if st.session_state.is_host:
             if st.button("Zakończ grę", use_container_width=True):
                 game_data["status"] = "finished"
