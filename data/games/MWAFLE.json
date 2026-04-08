@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -19,7 +19,7 @@
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
-    "Bestia": 0
+    "Bestia": 1
   },
   "submissions": {
     "Heheszek": [
@@ -39,8 +39,8 @@
     "Wixa": "Bestia",
     "Bestia": "Heheszek"
   },
-  "voted_out": null,
-  "round_winner": null,
+  "voted_out": "Heheszek",
+  "round_winner": "players",
   "stats": {
     "Heheszek": {
       "times_impostor": 1,
