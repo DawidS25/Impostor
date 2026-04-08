@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -15,35 +15,25 @@
       "Zwierzęta"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 1,
     "Wixa": 0,
     "Bestia": 1
   },
   "submissions": {
-    "Heheszek": [
-      "śmierdzi"
-    ],
-    "Wixa": [
-      "pachnie"
-    ],
-    "Bestia": [
-      "barber"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "Bestia": []
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {
-    "Heheszek": "Wixa",
-    "Bestia": "Heheszek",
-    "Wixa": "Bestia"
-  },
-  "voted_out": "Wixa",
-  "round_winner": "players",
+  "votes": {},
+  "voted_out": null,
+  "round_winner": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -66,16 +56,16 @@
   },
   "category": "Zwierzęta",
   "word": "Pies",
-  "impostor": "Wixa",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
+      "role": "impostor",
+      "category": "Zwierzęta"
+    },
+    "Wixa": {
       "role": "player",
       "category": "Zwierzęta",
       "word": "Pies"
-    },
-    "Wixa": {
-      "role": "impostor",
-      "category": "Zwierzęta"
     },
     "Bestia": {
       "role": "player",
