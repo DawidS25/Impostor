@@ -30,8 +30,8 @@
       "Kotek"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "nie wiem",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
