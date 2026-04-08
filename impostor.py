@@ -61,6 +61,7 @@ def start_game_logic(game_data):
     impostor = random.choice(players)
     category = random.choice(available_categories)
     word = random.choice(WORDS[category])
+    starter = choose_round_starter(players, impostor)
 
     roles = {}
     for player in players:
@@ -85,6 +86,7 @@ def start_game_logic(game_data):
     game_data["category"] = category
     game_data["word"] = word
     game_data["impostor"] = impostor
+    game_data["starter"] = starter
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -110,6 +112,7 @@ def next_round_logic(game_data):
         return game_data
 
     impostor = random.choice(players)
+    starter = choose_round_starter(players, impostor)
     category = random.choice(available_categories)
     word = random.choice(WORDS[category])
 
@@ -136,6 +139,7 @@ def next_round_logic(game_data):
     game_data["category"] = category
     game_data["word"] = word
     game_data["impostor"] = impostor
+    game_data["starter"] = starter
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -222,6 +226,113 @@ def apply_round_points(game_data):
     game_data["scores"] = scores
     return game_data
 
+def apply_round_stats(game_data):
+    stats = game_data.get("stats", {})
+    votes = game_data.get("votes", {})
+    impostor = game_data.get("impostor")
+    guess_status = game_data.get("guess_status")
+    round_winner = game_data.get("round_winner")
+
+    if impostor not in stats:
+        return game_data
+
+    # 1. Wygrana/przegrana impostora
+    if guess_status in ["exact", "approved_by_host"]:
+        stats[impostor]["impostor_wins"] += 1
+
+    elif guess_status == "rejected_by_host":
+        stats[impostor]["impostor_losses"] += 1
+
+    elif round_winner == "impostor":
+        stats[impostor]["impostor_wins"] += 1
+
+    elif round_winner == "players":
+        stats[impostor]["impostor_losses"] += 1
+
+    # 2. Poprawne głosy na impostora
+    for player, voted_player in votes.items():
+        if voted_player == impostor and player in stats:
+            stats[player]["correct_votes"] += 1
+
+    # 3. Liczba głosów otrzymanych przez każdego gracza
+    vote_received_count = {}
+
+    for voted_player in votes.values():
+        if voted_player not in vote_received_count:
+            vote_received_count[voted_player] = 0
+        vote_received_count[voted_player] += 1
+
+    for player, received in vote_received_count.items():
+        if player in stats:
+            stats[player]["total_votes_received"] += received
+
+    game_data["stats"] = stats
+    return game_data
+
+def compute_game_rankings(game_data):
+    stats = game_data.get("stats", {})
+    scores = game_data.get("scores", {})
+
+    if not stats:
+        return {}
+
+    # 🏆 ranking punktowy
+    score_ranking = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+    # 🕵️ najlepszy detektyw
+    best_detective = max(stats.items(), key=lambda x: x[1]["correct_votes"])[0]
+
+    # 😈 najlepszy impostor
+    best_impostor = max(stats.items(), key=lambda x: x[1]["impostor_wins"])[0]
+
+    # 💀 najgorszy impostor
+    worst_impostor = max(stats.items(), key=lambda x: x[1]["impostor_losses"])[0]
+
+    # 🎭 najczęstszy impostor
+    most_impostor = max(stats.items(), key=lambda x: x[1]["times_impostor"])[0]
+
+    # 🎭 najrzadszy impostor
+    least_impostor = min(stats.items(), key=lambda x: x[1]["times_impostor"])[0]
+
+    # 🛡️ najbezpieczniejszy gracz
+    safest_player = min(stats.items(), key=lambda x: x[1]["total_votes_received"])[0]
+
+    # 📊 skuteczność impostora
+    impostor_efficiency = {}
+    for player, s in stats.items():
+        times = s["times_impostor"]
+        wins = s["impostor_wins"]
+
+        if times > 0:
+            impostor_efficiency[player] = round((wins / times) * 100, 1)
+        else:
+            impostor_efficiency[player] = 0
+
+    return {
+        "score_ranking": score_ranking,
+        "best_detective": best_detective,
+        "best_impostor": best_impostor,
+        "worst_impostor": worst_impostor,
+        "most_impostor": most_impostor,
+        "least_impostor": least_impostor,
+        "safest_player": safest_player,
+        "impostor_efficiency": impostor_efficiency
+    }
+
+def choose_round_starter(players, impostor):
+    weighted_players = []
+    weights = []
+
+    for player in players:
+        weighted_players.append(player)
+
+        if player == impostor:
+            weights.append(0.4)
+        else:
+            weights.append(1.0)
+
+    return random.choices(weighted_players, weights=weights, k=1)[0]
+
 # ------------------- UI ------------------- #
 st.title("TESTImpostor")
 
@@ -277,6 +388,7 @@ elif st.session_state.screen == "host":
                     "votes": {},
                      "voted_out": None,
                     "round_winner": None,
+                    "starter": None,
                     "stats": {
                         player_name.strip(): {
                             "times_impostor": 0,
@@ -418,6 +530,10 @@ elif st.session_state.screen == "lobby":
         
         if "stats" not in game_data:
             game_data["stats"] = {}
+            changed = True
+        
+        if "starter" not in game_data:
+            game_data["starter"] = None
             changed = True
 
         for player in game_data.get("players", []):
@@ -669,6 +785,7 @@ elif st.session_state.screen == "game":
                             st.error(result_vote)
                         else:
                             result_vote = apply_round_points(result_vote)
+                            result_vote = apply_round_stats(result_vote)
 
                             updated, result = update_game_file(game_code, result_vote)
 
@@ -682,30 +799,45 @@ elif st.session_state.screen == "game":
 
     if game_data.get("status") == "finished":
         st.subheader("Koniec gry")
-        guess_status = game_data.get("guess_status", "none")
-        impostor_name = game_data.get("impostor", "Nieznany")
 
-        if guess_status in ["exact", "approved_by_host"]:
-            st.success(f"Impostor ({impostor_name}) wygrał, bo poprawnie odgadł hasło.")
-        elif guess_status == "rejected_by_host":
-            st.info("Gracze wygrali, ponieważ host odrzucił zgadywanie impostora.")
+        rankings = compute_game_rankings(game_data)
 
-        scores = game_data.get("scores", {})
+        # 🏆 Ranking punktowy
+        st.write("### 🏆 Ranking punktowy")
+        for i, (player, score) in enumerate(rankings["score_ranking"], start=1):
+            st.write(f"{i}. **{player}** — {score} pkt")
 
-        if not scores:
-            scores = {player: 0 for player in game_data.get("players", [])}
+        st.divider()
 
-        st.write("### Wyniki")
-        for player, score in scores.items():
-            st.write(f"**{player}:** {score} pkt")
+        # 🎖️ Nagrody
+        st.write("### 🎖️ Wyróżnienia")
 
-        winners = get_winners({"scores": scores})
+        st.write(f"🕵️ **Najlepszy detektyw:** {rankings['best_detective']}")
+        st.write(f"😈 **Najlepszy impostor:** {rankings['best_impostor']}")
+        st.write(f"💀 **Najgorszy impostor:** {rankings['worst_impostor']}")
+        st.write(f"🎭 **Najczęstszy impostor:** {rankings['most_impostor']}")
+        st.write(f"🛡️ **Najbezpieczniejszy gracz:** {rankings['safest_player']}")
 
-        st.write("### Zwycięzca / zwycięzcy")
-        if winners:
-            st.write(", ".join(winners))
-        else:
-            st.write("Brak danych o zwycięzcy")
+        st.divider()
+
+        # 📊 Skuteczność impostora
+        st.write("### 📊 Skuteczność impostora")
+
+        for player, efficiency in rankings["impostor_efficiency"].items():
+            st.write(f"**{player}** — {efficiency}%")
+
+        st.divider()
+
+        # 📋 Surowe statystyki (debug + ciekawostka)
+        st.write("### 📋 Statystyki szczegółowe")
+
+        for player, s in game_data.get("stats", {}).items():
+            st.write(f"**{player}**")
+            st.write(f"- impostor: {s['times_impostor']} razy")
+            st.write(f"- wygrane jako impostor: {s['impostor_wins']}")
+            st.write(f"- przegrane jako impostor: {s['impostor_losses']}")
+            st.write(f"- poprawne głosy: {s['correct_votes']}")
+            st.write(f"- otrzymane głosy: {s['total_votes_received']}")
 
         st.stop()
 
@@ -713,6 +845,7 @@ elif st.session_state.screen == "game":
     st.write(f"**Kod gry:** {game_code}")
     st.write(f"**Gracz:** {player_name}")
     st.write(f"**Runda:** {game_data.get('round', 1)}")
+    st.write(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")
 
     if not success:
         st.error("Nie udało się wczytać danych gry.")
@@ -832,6 +965,7 @@ elif st.session_state.screen == "game":
                         game_data["guess_status"] = "approved_by_host"
                         game_data["status"] = "round_result"
                         game_data = apply_round_points(game_data)
+                        game_data = apply_round_stats(game_data)
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -845,6 +979,7 @@ elif st.session_state.screen == "game":
                     if st.button("Odrzuć zgadywanie", use_container_width=True):
                         game_data["guess_status"] = "rejected_by_host"
                         game_data["status"] = "round_result"
+                        game_data = apply_round_stats(game_data)
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -877,6 +1012,7 @@ elif st.session_state.screen == "game":
                     game_data["guess_status"] = "exact"
                     game_data["status"] = "round_result"
                     game_data = apply_round_points(game_data)
+                    game_data = apply_round_stats(game_data)
 
                 else:
                     game_data["guess_status"] = "pending_host_review"
