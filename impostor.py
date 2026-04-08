@@ -188,8 +188,38 @@ def resolve_voting_result(game_data):
 
     return True, game_data
 
+def apply_round_points(game_data):
+    scores = game_data.get("scores", {})
+    impostor = game_data.get("impostor")
+    guess_status = game_data.get("guess_status")
+    round_winner = game_data.get("round_winner")
+    votes = game_data.get("votes", {})
+
+    # 1. Impostor wygrał przez zgadywanie
+    if guess_status in ["exact", "approved_by_host"]:
+        if impostor in scores:
+            scores[impostor] += 3
+
+    # 2. Głosowanie: gracze wygrali, bo impostor został wyrzucony
+    elif round_winner == "players":
+        for player, voted in votes.items():
+            if voted == impostor and player in scores:
+                scores[player] += 1
+
+    # 3. Głosowanie: impostor wygrał, bo nie został wyrzucony
+    elif round_winner == "impostor":
+        if impostor in scores:
+            scores[impostor] += 3
+
+        for player, voted in votes.items():
+            if voted == impostor and player in scores:
+                scores[player] += 1
+
+    game_data["scores"] = scores
+    return game_data
+
 # ------------------- UI ------------------- #
-st.title("XXXImpostor")
+st.title("TESTImpostor")
 
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
@@ -513,6 +543,11 @@ elif st.session_state.screen == "game":
         if guessed_word:
             st.write(f"**Zgadywanie impostora:** {guessed_word}")
 
+        st.write("### Aktualne wyniki")
+
+        for player, score in game_data.get("scores", {}).items():
+            st.write(f"**{player}:** {score} pkt")
+
         col1, col2 = st.columns(2)
 
         with col1:
@@ -588,9 +623,13 @@ elif st.session_state.screen == "game":
                     if st.button("Zakończ głosowanie", key="finish_voting", use_container_width=True):
                         success_vote, result_vote = resolve_voting_result(game_data)
 
+                        success_vote, result_vote = resolve_voting_result(game_data)
+
                         if not success_vote:
                             st.error(result_vote)
                         else:
+                            result_vote = apply_round_points(result_vote)
+
                             updated, result = update_game_file(game_code, result_vote)
 
                             if updated:
@@ -752,6 +791,7 @@ elif st.session_state.screen == "game":
                     if st.button("Uznaj zgadywanie", use_container_width=True):
                         game_data["guess_status"] = "approved_by_host"
                         game_data["status"] = "round_result"
+                        game_data = apply_round_points(game_data)
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -796,6 +836,8 @@ elif st.session_state.screen == "game":
                 if new_guess.lower() == real_word:
                     game_data["guess_status"] = "exact"
                     game_data["status"] = "round_result"
+                    game_data = apply_round_points(game_data)
+
                 else:
                     game_data["guess_status"] = "pending_host_review"
 
