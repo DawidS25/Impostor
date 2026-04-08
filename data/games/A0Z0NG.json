@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -31,7 +31,7 @@
     ]
   },
   "impostor_guess": "nie wiem",
-  "guess_status": "pending_host_review",
+  "guess_status": "rejected_by_host",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
@@ -47,7 +47,7 @@
     "Wixa": {
       "times_impostor": 1,
       "impostor_wins": 0,
-      "impostor_losses": 0,
+      "impostor_losses": 1,
       "correct_votes": 0,
       "total_votes_received": 0
     },
