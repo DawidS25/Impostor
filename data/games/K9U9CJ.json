@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -39,8 +39,8 @@
     "Wixa": "Bestia",
     "Bestia": "Wixa"
   },
-  "voted_out": null,
-  "round_winner": null,
+  "voted_out": "Bestia",
+  "round_winner": "impostor",
   "category": "Zwierzęta",
   "word": "Pies",
   "impostor": "Heheszek",
