@@ -85,6 +85,8 @@ def start_game_logic(game_data):
     game_data["category"] = category
     game_data["word"] = word
     game_data["impostor"] = impostor
+    if "stats" in game_data and impostor in game_data["stats"]:
+        game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
@@ -134,6 +136,8 @@ def next_round_logic(game_data):
     game_data["category"] = category
     game_data["word"] = word
     game_data["impostor"] = impostor
+    if "stats" in game_data and impostor in game_data["stats"]:
+        game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
     game_data["round"] = game_data.get("round", 1) + 1
     game_data["submissions"] = {player: [] for player in players}
@@ -272,7 +276,16 @@ elif st.session_state.screen == "host":
                     "guess_status": "none",
                     "votes": {},
                      "voted_out": None,
-                    "round_winner": None                 
+                    "round_winner": None,
+                    "stats": {
+                        player_name.strip(): {
+                            "times_impostor": 0,
+                            "impostor_wins": 0,
+                            "impostor_losses": 0,
+                            "correct_votes": 0,
+                            "total_votes_received": 0
+                        }
+                    },                 
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -326,6 +339,17 @@ elif st.session_state.screen == "join":
                         if "submissions" not in game_data:
                             game_data["submissions"] = {}
                         game_data["submissions"][player_name.strip()] = []
+
+                        if "stats" not in game_data:
+                            game_data["stats"] = {}
+
+                        game_data["stats"][player_name.strip()] = {
+                            "times_impostor": 0,
+                            "impostor_wins": 0,
+                            "impostor_losses": 0,
+                            "correct_votes": 0,
+                            "total_votes_received": 0
+                        }
                         
                         updated, result = update_game_file(game_code, game_data)
 
@@ -383,6 +407,7 @@ elif st.session_state.screen == "lobby":
         if "votes" not in game_data:
             game_data["votes"] = {}
             changed = True
+
         if "voted_out" not in game_data:
             game_data["voted_out"] = None
             changed = True
@@ -390,6 +415,21 @@ elif st.session_state.screen == "lobby":
         if "round_winner" not in game_data:
             game_data["round_winner"] = None
             changed = True
+        
+        if "stats" not in game_data:
+            game_data["stats"] = {}
+            changed = True
+
+        for player in game_data.get("players", []):
+            if player not in game_data["stats"]:
+                game_data["stats"][player] = {
+                    "times_impostor": 0,
+                    "impostor_wins": 0,
+                    "impostor_losses": 0,
+                    "correct_votes": 0,
+                    "total_votes_received": 0
+                }
+                changed = True
 
         if changed:
             update_game_file(game_code, game_data)
