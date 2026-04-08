@@ -33,7 +33,8 @@
   "impostor_guess": "",
   "guess_status": "none",
   "votes": {
-    "Wixa": "Heheszek"
+    "Wixa": "Heheszek",
+    "Bestia": "Heheszek"
   },
   "voted_out": null,
   "round_winner": null,
