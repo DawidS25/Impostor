@@ -197,12 +197,14 @@ if st.session_state.screen == "start":
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("HOST", use_container_width=True):
+        if st.button("HOST1", use_container_width=True):
             st.session_state.screen = "host"
+            st.rerun()
 
     with col2:
         if st.button("DOŁĄCZ", use_container_width=True):
             st.session_state.screen = "join"
+            st.rerun()
 
 
 elif st.session_state.screen == "host":
