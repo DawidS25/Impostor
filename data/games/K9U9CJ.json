@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -30,5 +30,24 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "round_winner": null
+  "round_winner": null,
+  "category": "Zwierzęta",
+  "word": "Pies",
+  "impostor": "Heheszek",
+  "roles": {
+    "Heheszek": {
+      "role": "impostor",
+      "category": "Zwierzęta"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
+    },
+    "Bestia": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Pies"
+    }
+  }
 }
