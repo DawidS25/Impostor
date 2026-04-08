@@ -32,7 +32,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Wixa": "Heheszek"
+  },
   "voted_out": null,
   "round_winner": null,
   "category": "Zwierzęta",
