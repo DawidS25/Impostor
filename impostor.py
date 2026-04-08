@@ -189,7 +189,7 @@ def resolve_voting_result(game_data):
     return True, game_data
 
 # ------------------- UI ------------------- #
-st.title("Impostor")
+st.title("TImpostor")
 
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
@@ -666,7 +666,7 @@ elif st.session_state.screen == "game":
             st.write(f"**Hasło:** {my_role['word']}")
         
 
-        st.write("### Twoje hasła TEST")
+        st.write("### Twoje hasła")
 
         with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
             submission_text = st.text_input(
