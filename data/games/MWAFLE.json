@@ -28,7 +28,9 @@
     "Wixa": [
       "pachnie"
     ],
-    "Bestia": []
+    "Bestia": [
+      "barber"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
