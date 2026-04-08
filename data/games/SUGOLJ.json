@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -30,5 +30,24 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "round_winner": null
+  "round_winner": null,
+  "category": "Jedzenie",
+  "word": "Pizza",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Jedzenie"
+    }
+  }
 }
