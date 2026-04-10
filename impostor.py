@@ -1172,27 +1172,27 @@ elif st.session_state.screen == "game":
             f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])}"
         )
 
-    if rankings["best_impostors"]:
-        best_players = rankings["best_impostors"]
-        best_imp = best_players[0]
-        best_imp_wins = rankings["impostor_wins"].get(best_imp, 0)
-        best_imp_eff = rankings["impostor_efficiency"].get(best_imp, 0.0)
+        if rankings["best_impostors"]:
+            best_players = rankings["best_impostors"]
+            best_imp = best_players[0]
+            best_imp_wins = rankings["impostor_wins"].get(best_imp, 0)
+            best_imp_eff = rankings["impostor_efficiency"].get(best_imp, 0.0)
 
-        st.write(
-            f"😈 **Najlepszy impostor:** {format_player_list(best_players)} "
-            f"({best_imp_wins} zwycięstwa jako impostor ({best_imp_eff}%))"
-        )
+            st.write(
+                f"😈 **Najlepszy impostor:** {format_player_list(best_players)} "
+                f"({best_imp_wins} zwycięstwa jako impostor ({best_imp_eff}%))"
+            )
 
-    if rankings["worst_impostors"]:
-        worst_players = rankings["worst_impostors"]
-        worst_imp = worst_players[0]
-        worst_imp_wins = rankings["impostor_wins"].get(worst_imp, 0)
-        worst_imp_eff = rankings["impostor_efficiency"].get(worst_imp, 0.0)
+        if rankings["worst_impostors"]:
+            worst_players = rankings["worst_impostors"]
+            worst_imp = worst_players[0]
+            worst_imp_wins = rankings["impostor_wins"].get(worst_imp, 0)
+            worst_imp_eff = rankings["impostor_efficiency"].get(worst_imp, 0.0)
 
-        st.write(
-            f"💀 **Najgorszy impostor:** {format_player_list(worst_players)} "
-            f"({worst_imp_wins} zwycięstw jako impostor ({worst_imp_eff}%))"
-        )
+            st.write(
+                f"💀 **Najgorszy impostor:** {format_player_list(worst_players)} "
+                f"({worst_imp_wins} zwycięstw jako impostor ({worst_imp_eff}%))"
+            )
 
         st.write(
             f"🎭 **Najczęstszy impostor:** {format_player_list(rankings['most_impostors'])} "
