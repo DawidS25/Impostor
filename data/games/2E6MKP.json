@@ -96,5 +96,9 @@
       "word": "Telefon"
     }
   },
-  "reactions": {}
+  "reactions": {
+    "Heheszek": {
+      "Heheszek": "🔥"
+    }
+  }
 }
