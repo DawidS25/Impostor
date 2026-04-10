@@ -893,7 +893,7 @@ elif st.session_state.screen == "game":
                 player_text = [player_text] if player_text.strip() else []
 
             if player_text:
-                line = f"**{player}:** {', '.join(player_text)}"
+                line = f"<b>{player}:</b> {', '.join(player_text)}"
             else:
                 line = f"**{player}:** (brak)"
 
