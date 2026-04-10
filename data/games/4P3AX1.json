@@ -6,7 +6,7 @@
     "a",
     "as"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -27,15 +27,15 @@
   "scores": {
     "Heheszek": 0,
     "a": 0,
-    "as": 0
+    "as": 3
   },
   "submissions": {
     "Heheszek": [],
     "a": [],
     "as": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "lodówka",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "reactions": {
@@ -60,8 +60,8 @@
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
-        "🔥": 0,
-        "👍": 0,
+        "🔥": 1,
+        "👍": 1,
         "😐": 0,
         "👎": 0,
         "💀": 0
@@ -75,22 +75,22 @@
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
-        "👍": 0,
+        "👍": 1,
         "😐": 0,
-        "👎": 0,
+        "👎": 1,
         "💀": 0
       }
     },
     "as": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
-        "👍": 0,
-        "😐": 0,
+        "👍": 1,
+        "😐": 1,
         "👎": 0,
         "💀": 0
       }
