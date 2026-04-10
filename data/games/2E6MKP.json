@@ -3,7 +3,8 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "Bestia"
+    "Bestia",
+    "Harnaś"
   ],
   "status": "lobby",
   "settings": {
@@ -25,11 +26,13 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "Bestia": 0
+    "Bestia": 0,
+    "Harnaś": 0
   },
   "submissions": {
     "Heheszek": [],
-    "Bestia": []
+    "Bestia": [],
+    "Harnaś": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -46,6 +49,13 @@
       "total_votes_received": 0
     },
     "Bestia": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0
+    },
+    "Harnaś": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
