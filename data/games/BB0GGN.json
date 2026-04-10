@@ -3,7 +3,6 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "Bestia",
     "Bestia1"
   ],
   "status": "lobby",
@@ -25,12 +24,10 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "Bestia": 0,
     "Bestia1": 0
   },
   "submissions": {
     "Heheszek": [],
-    "Bestia": [],
     "Bestia1": []
   },
   "impostor_guess": "",
@@ -41,13 +38,6 @@
   "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 0,
-      "impostor_wins": 0,
-      "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0
-    },
-    "Bestia": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
