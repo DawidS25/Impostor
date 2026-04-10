@@ -7,7 +7,7 @@
     "Bestia",
     "Harnaś"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 2,
+  "round": 3,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -37,12 +37,12 @@
     "Bestia": [],
     "Harnaś": []
   },
-  "impostor_guess": "burger",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
-  "starter": "Bestia",
+  "starter": "Wixa",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -66,34 +66,34 @@
       "total_votes_received": 1
     },
     "Harnaś": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 2
     }
   },
-  "category": "Jedzenie",
-  "word": "Burger",
-  "impostor": "Bestia",
+  "category": "Zwierzęta",
+  "word": "Kot",
+  "impostor": "Harnaś",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Wixa": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Bestia": {
-      "role": "impostor"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Harnaś": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Burger"
+      "role": "impostor"
     }
   }
 }
