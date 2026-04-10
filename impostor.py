@@ -311,57 +311,112 @@ def compute_game_rankings(game_data):
     if not stats:
         return {}
 
+    def get_all_max_players(value_map):
+        if not value_map:
+            return []
+        max_value = max(value_map.values())
+        return [player for player, value in value_map.items() if value == max_value]
+
+    def get_all_min_players(value_map):
+        if not value_map:
+            return []
+        min_value = min(value_map.values())
+        return [player for player, value in value_map.items() if value == min_value]
+
     # 🏆 ranking punktowy
     score_ranking = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
-    # 🕵️ najlepszy detektyw
-    best_detective = max(stats.items(), key=lambda x: x[1]["correct_votes"])[0]
-
-    # 😈 najlepszy impostor
-    best_impostor = max(stats.items(), key=lambda x: x[1]["impostor_wins"])[0]
-
-    # 💀 najgorszy impostor
-    worst_impostor = max(stats.items(), key=lambda x: x[1]["impostor_losses"])[0]
-
-    # 🎭 najczęstszy impostor
-    most_impostor = max(stats.items(), key=lambda x: x[1]["times_impostor"])[0]
-
-    # 🎭 najrzadszy impostor
-    least_impostor = min(stats.items(), key=lambda x: x[1]["times_impostor"])[0]
-
-    # 🛡️ najbezpieczniejszy gracz
-    safest_player = min(stats.items(), key=lambda x: x[1]["total_votes_received"])[0]
-
     # 📊 skuteczność impostora
     impostor_efficiency = {}
+    impostor_games = {}
+    impostor_wins = {}
+
     for player, s in stats.items():
-        times = s["times_impostor"]
-        wins = s["impostor_wins"]
+        times = s.get("times_impostor", 0)
+        wins = s.get("impostor_wins", 0)
+
+        impostor_games[player] = times
+        impostor_wins[player] = wins
 
         if times > 0:
             impostor_efficiency[player] = round((wins / times) * 100, 1)
         else:
-            impostor_efficiency[player] = 0
-    
-    emoji_leaders = {}
+            impostor_efficiency[player] = 0.0
 
+    # sortowanie skuteczności:
+    # 1) procent malejąco
+    # 2) liczba gier jako impostor malejąco
+    # 3) nazwa rosnąco dla stabilności
+    impostor_efficiency_ranking = sorted(
+        impostor_efficiency.items(),
+        key=lambda x: (-x[1], -impostor_games[x[0]], x[0])
+    )
+
+    # 🕵️ najlepszy detektyw
+    detective_values = {player: s.get("correct_votes", 0) for player, s in stats.items()}
+    best_detectives = get_all_max_players(detective_values)
+    best_detective_value = max(detective_values.values()) if detective_values else 0
+
+    # 😈 najlepszy impostor = najwyższa skuteczność impostora
+    # przy remisie % wygrywa ten, kto miał więcej gier jako impostor
+    if impostor_efficiency_ranking:
+        best_impostor = impostor_efficiency_ranking[0][0]
+    else:
+        best_impostor = None
+
+    # 💀 najgorszy impostor = najniższa skuteczność impostora
+    # przy remisie % wygrywa ten, kto miał więcej gier jako impostor
+    worst_impostor_ranking = sorted(
+        impostor_efficiency.items(),
+        key=lambda x: (x[1], -impostor_games[x[0]], x[0])
+    )
+    if worst_impostor_ranking:
+        worst_impostor = worst_impostor_ranking[0][0]
+    else:
+        worst_impostor = None
+
+    # 🎭 najczęstszy impostor
+    times_impostor_values = {player: s.get("times_impostor", 0) for player, s in stats.items()}
+    most_impostors = get_all_max_players(times_impostor_values)
+    most_impostor_value = max(times_impostor_values.values()) if times_impostor_values else 0
+
+    # 🛡️ najbezpieczniejszy gracz
+    safest_values = {player: s.get("total_votes_received", 0) for player, s in stats.items()}
+    safest_players = get_all_min_players(safest_values)
+    safest_value = min(safest_values.values()) if safest_values else 0
+
+    # Emoji leaders — przy remisie wypisz wszystkich
+    emoji_leaders = {}
     for emoji in ["🔥", "👍", "😐", "👎", "💀"]:
-        leader = max(
-            stats.items(),
-            key=lambda x: x[1].get("emoji_received", {}).get(emoji, 0)
-        )[0]
-        count = stats[leader].get("emoji_received", {}).get(emoji, 0)
-        emoji_leaders[emoji] = (leader, count)
+        emoji_values = {
+            player: s.get("emoji_received", {}).get(emoji, 0)
+            for player, s in stats.items()
+        }
+        leaders = get_all_max_players(emoji_values)
+        leader_value = max(emoji_values.values()) if emoji_values else 0
+        emoji_leaders[emoji] = (leaders, leader_value)
 
     return {
         "score_ranking": score_ranking,
-        "best_detective": best_detective,
+
+        "best_detectives": best_detectives,
+        "best_detective_value": best_detective_value,
+
         "best_impostor": best_impostor,
         "worst_impostor": worst_impostor,
-        "most_impostor": most_impostor,
-        "least_impostor": least_impostor,
-        "safest_player": safest_player,
+
+        "most_impostors": most_impostors,
+        "most_impostor_value": most_impostor_value,
+
+        "safest_players": safest_players,
+        "safest_value": safest_value,
+
         "impostor_efficiency": impostor_efficiency,
+        "impostor_efficiency_ranking": impostor_efficiency_ranking,
+
+        "impostor_games": impostor_games,
+        "impostor_wins": impostor_wins,
+
         "emoji_leaders": emoji_leaders
     }
 
