@@ -110,6 +110,7 @@ def start_game_logic(game_data):
     game_data["guess_status"] = "none"
     game_data["votes"] = {}
     game_data["voted_out"] = None
+    game_data["reactions"] = {}
     game_data["round_winner"] = None
 
     return True, game_data
@@ -177,6 +178,7 @@ def next_round_logic(game_data):
     game_data["guess_status"] = "none"
     game_data["votes"] = {}
     game_data["voted_out"] = None
+    game_data["reactions"] = {}
     game_data["round_winner"] = None
 
     if is_game_over(game_data):
@@ -335,6 +337,16 @@ def compute_game_rankings(game_data):
             impostor_efficiency[player] = round((wins / times) * 100, 1)
         else:
             impostor_efficiency[player] = 0
+    
+    emoji_leaders = {}
+
+    for emoji in ["🔥", "👍", "😐", "👎", "💀"]:
+        leader = max(
+            stats.items(),
+            key=lambda x: x[1].get("emoji_received", {}).get(emoji, 0)
+        )[0]
+        count = stats[leader].get("emoji_received", {}).get(emoji, 0)
+        emoji_leaders[emoji] = (leader, count)
 
     return {
         "score_ranking": score_ranking,
@@ -344,7 +356,8 @@ def compute_game_rankings(game_data):
         "most_impostor": most_impostor,
         "least_impostor": least_impostor,
         "safest_player": safest_player,
-        "impostor_efficiency": impostor_efficiency
+        "impostor_efficiency": impostor_efficiency,
+        "emoji_leaders": emoji_leaders
     }
 
 def choose_round_starter(players, impostor):
@@ -435,6 +448,38 @@ def kick_if_removed(game_data, player_name):
         st.session_state.is_host = False
         st.stop()
 
+def set_player_reaction(game_data, reactor, target, emoji):
+    if "reactions" not in game_data:
+        game_data["reactions"] = {}
+
+    if reactor not in game_data["reactions"]:
+        game_data["reactions"][reactor] = {}
+
+    game_data["reactions"][reactor][target] = emoji
+    return game_data
+
+def apply_reaction_stats(game_data):
+    stats = game_data.get("stats", {})
+    reactions = game_data.get("reactions", {})
+
+    for reactor, target_map in reactions.items():
+        for target, emoji in target_map.items():
+            if target in stats:
+                if "emoji_received" not in stats[target]:
+                    stats[target]["emoji_received"] = {
+                        "🔥": 0,
+                        "👍": 0,
+                        "😐": 0,
+                        "👎": 0,
+                        "💀": 0
+                    }
+
+                if emoji in stats[target]["emoji_received"]:
+                    stats[target]["emoji_received"][emoji] += 1
+
+    game_data["stats"] = stats
+    return game_data
+
 # ------------------- UI ------------------- #
 st.title("Impostor")
 st_autorefresh(interval=3000, key="game_autorefresh")
@@ -489,7 +534,8 @@ elif st.session_state.screen == "host":
                     "impostor_guess": "",
                     "guess_status": "none",
                     "votes": {},
-                     "voted_out": None,
+                    "voted_out": None,
+                    "reactions": {},
                     "round_winner": None,
                     "starter": None,
                     "stats": {
@@ -498,7 +544,14 @@ elif st.session_state.screen == "host":
                             "impostor_wins": 0,
                             "impostor_losses": 0,
                             "correct_votes": 0,
-                            "total_votes_received": 0
+                            "total_votes_received": 0,
+                            "emoji_received": {
+                                "🔥": 0,
+                                "👍": 0,
+                                "😐": 0,
+                                "👎": 0,
+                                "💀": 0
+                            }
                         }
                     },                 
                 }
@@ -654,6 +707,10 @@ elif st.session_state.screen == "lobby":
                     "total_votes_received": 0
                 }
                 changed = True
+
+        if "reactions" not in game_data:
+            game_data["reactions"] = {}
+            changed = True
         
 
         if changed:
@@ -1013,6 +1070,10 @@ elif st.session_state.screen == "game":
 
         st.divider()
 
+        st.write("### Emoji Awards")
+        for emoji, (player, count) in rankings["emoji_leaders"].items():
+            st.write(f"{emoji} **{player}** — {count}")
+
         # 📋 Surowe statystyki (debug + ciekawostka)
         st.write("### 📋 Statystyki szczegółowe")
 
@@ -1150,6 +1211,56 @@ elif st.session_state.screen == "game":
         )
 
 
+        st.write("### Reakcje")
+
+        emoji_options = ["🔥", "👍", "😐", "👎", "💀"]
+        reactions = game_data.get("reactions", {})
+
+        for target_player in game_data.get("players", []):
+            current_reaction = reactions.get(player_name, {}).get(target_player, "")
+
+            cols = st.columns([2, 1, 1, 1, 1, 1])
+
+            with cols[0]:
+                st.write(f"**{target_player}**")
+
+            for i, emoji in enumerate(emoji_options, start=1):
+                with cols[i]:
+                    button_label = emoji
+                    if st.button(button_label, key=f"react_{player_name}_{target_player}_{emoji}"):
+                        game_data = set_player_reaction(game_data, player_name, target_player, emoji)
+
+                        updated, result = update_game_file(game_code, game_data)
+
+                        if updated:
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd zapisu reakcji: {result}")
+
+            if current_reaction:
+                st.write(f"Twoja reakcja: {current_reaction}")
+
+        st.write("### Otrzymane reakcje")
+
+        reaction_totals = {}
+
+        for reactor, target_map in reactions.items():
+            for target, emoji in target_map.items():
+                if target not in reaction_totals:
+                    reaction_totals[target] = {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0}
+                reaction_totals[target][emoji] += 1
+
+        for target_player in game_data.get("players", []):
+            totals = reaction_totals.get(target_player, {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0})
+            st.write(
+                f"**{target_player}:** "
+                f"🔥 {totals['🔥']} | "
+                f"👍 {totals['👍']} | "
+                f"😐 {totals['😐']} | "
+                f"👎 {totals['👎']} | "
+                f"💀 {totals['💀']}"
+            )
+
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
@@ -1190,6 +1301,7 @@ elif st.session_state.screen == "game":
                         game_data["status"] = "round_result"
                         game_data = apply_round_points(game_data)
                         game_data = apply_round_stats(game_data)
+                        game_data = apply_reaction_stats(game_data)
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -1204,6 +1316,7 @@ elif st.session_state.screen == "game":
                         game_data["guess_status"] = "rejected_by_host"
                         game_data["status"] = "round_result"
                         game_data = apply_round_stats(game_data)
+                        game_data = apply_reaction_stats(game_data)
 
                         updated, result = update_game_file(game_code, game_data)
 
@@ -1237,6 +1350,7 @@ elif st.session_state.screen == "game":
                     game_data["status"] = "round_result"
                     game_data = apply_round_points(game_data)
                     game_data = apply_round_stats(game_data)
+                    game_data = apply_reaction_stats(game_data)
 
                 else:
                     game_data["guess_status"] = "pending_host_review"
