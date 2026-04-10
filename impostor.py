@@ -51,6 +51,10 @@ def start_game_logic(game_data):
 
     settings = game_data.get("settings", {})
     selected_categories = settings.get("selected_categories", list(WORDS.keys()))
+    selected_difficulties = settings.get(
+       "selected_difficulties",
+        ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
+    )
     hint_mode = settings.get("hint_mode", "off")
 
     available_categories = [cat for cat in selected_categories if cat in WORDS]
@@ -60,7 +64,16 @@ def start_game_logic(game_data):
 
     impostor = random.choice(players)
     category = random.choice(available_categories)
-    word = random.choice(WORDS[category])
+    available_words = [
+        entry for entry in WORDS[category]
+        if entry.get("difficulty") in selected_difficulties
+    ]
+    if not available_words:
+        return False, "Brak słów dla wybranych poziomów trudności w tej kategorii."
+
+    chosen_entry = random.choice(available_words)
+    word = chosen_entry["word"]
+
     starter = choose_round_starter(players, impostor)
 
     roles = {}
@@ -104,6 +117,10 @@ def next_round_logic(game_data):
 
     settings = game_data.get("settings", {})
     selected_categories = settings.get("selected_categories", list(WORDS.keys()))
+    selected_difficulties = settings.get(
+        "selected_difficulties",
+        ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
+    )    
     hint_mode = settings.get("hint_mode", "off")
 
     available_categories = [cat for cat in selected_categories if cat in WORDS]
@@ -114,7 +131,15 @@ def next_round_logic(game_data):
     impostor = random.choice(players)
     starter = choose_round_starter(players, impostor)
     category = random.choice(available_categories)
-    word = random.choice(WORDS[category])
+    available_words = [
+        entry for entry in WORDS[category]
+        if entry.get("difficulty") in selected_difficulties
+    ]
+    if not available_words:
+     return game_data
+
+    chosen_entry = random.choice(available_words)
+    word = chosen_entry["word"]
 
     roles = {}
     for player in players:
@@ -374,7 +399,8 @@ elif st.session_state.screen == "host":
                     "settings": {
                         "hint_mode": "off",
                         "round_limit": 10,
-                        "selected_categories": list(WORDS.keys())
+                        "selected_categories": list(WORDS.keys()),
+                        "selected_difficulties": ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
                     },
                     "round": 0,
                     "scores": {
@@ -492,8 +518,13 @@ elif st.session_state.screen == "lobby":
             game_data["settings"] = {
                 "hint_mode": "off",
                 "round_limit": 10,
-                "selected_categories": list(WORDS.keys())
+                "selected_categories": list(WORDS.keys()),
+                "selected_difficulties": ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
             }
+            changed = True
+
+        if "selected_difficulties" not in game_data["settings"]:
+            game_data["settings"]["selected_difficulties"] = ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
             changed = True
 
         if "scores" not in game_data:
@@ -546,6 +577,7 @@ elif st.session_state.screen == "lobby":
                     "total_votes_received": 0
                 }
                 changed = True
+        
 
         if changed:
             update_game_file(game_code, game_data)
@@ -569,6 +601,7 @@ elif st.session_state.screen == "lobby":
         st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
         st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
         st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
+        st.write(f"**Trudności:** {', '.join(game_data['settings'].get('selected_difficulties', []))}")
 
         if is_host:
             st.write("### Ustawienia gry")
@@ -622,14 +655,30 @@ elif st.session_state.screen == "lobby":
                 list(WORDS.keys()),
                 default=current_categories
             )
+            st.write("DEBUG: renderuję trudności")
+            difficulty_options = ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
+            current_difficulties = current_settings.get(
+                "selected_difficulties",
+                difficulty_options
+            )
+
+            selected_difficulties = st.multiselect(
+                "Aktywne poziomy trudności",
+                difficulty_options,
+                default=current_difficulties
+            )
+
 
             if st.button("Zapisz ustawienia", use_container_width=True):
                 if not selected_categories:
                     st.error("Wybierz przynajmniej jedną kategorię.")
+                elif not selected_difficulties:
+                    st.error("Wybierz przynajmniej jeden poziom trudności.")
                 else:
                     game_data["settings"]["hint_mode"] = hint_mode_map[selected_hint_label]
                     game_data["settings"]["round_limit"] = round_limit_map[selected_round_label]
                     game_data["settings"]["selected_categories"] = selected_categories
+                    game_data["settings"]["selected_difficulties"] = selected_difficulties
 
                     updated, result = update_game_file(game_code, game_data)
 
