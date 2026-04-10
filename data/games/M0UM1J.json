@@ -15,6 +15,12 @@
       "Zwierzęta",
       "Miejsca",
       "Przedmioty"
+    ],
+    "selected_difficulties": [
+      "łatwe",
+      "średnie",
+      "trudne",
+      "ekstremalnie trudne"
     ]
   },
   "round": 0,
