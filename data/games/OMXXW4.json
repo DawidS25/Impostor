@@ -2,8 +2,7 @@
   "code": "OMXXW4",
   "host": "Heheszek",
   "players": [
-    "Heheszek",
-    "safasf"
+    "Heheszek"
   ],
   "status": "lobby",
   "settings": {
@@ -23,12 +22,10 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0,
-    "safasf": 0
+    "Heheszek": 0
   },
   "submissions": {
-    "Heheszek": [],
-    "safasf": []
+    "Heheszek": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -39,20 +36,6 @@
   "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 0,
-      "impostor_wins": 0,
-      "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0,
-      "emoji_received": {
-        "🔥": 0,
-        "👍": 0,
-        "😐": 0,
-        "👎": 0,
-        "💀": 0
-      }
-    },
-    "safasf": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
