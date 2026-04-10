@@ -6,7 +6,7 @@
     "a",
     "s"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -39,7 +39,7 @@
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": null,
+  "starter": "a",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -70,7 +70,7 @@
       }
     },
     "s": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -82,6 +82,25 @@
         "👎": 0,
         "💀": 0
       }
+    }
+  },
+  "category": "Miejsca",
+  "word": "Obserwatorium",
+  "impostor": "s",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Miejsca",
+      "word": "Obserwatorium"
+    },
+    "a": {
+      "role": "player",
+      "category": "Miejsca",
+      "word": "Obserwatorium"
+    },
+    "s": {
+      "role": "impostor",
+      "hint": "Obserwacja nieba"
     }
   }
 }
