@@ -420,6 +420,13 @@ def compute_game_rankings(game_data):
         "emoji_leaders": emoji_leaders
     }
 
+def format_player_list(players):
+    if not players:
+        return "Brak"
+    if len(players) == 1:
+        return players[0]
+    return " i ".join(players)
+
 def choose_round_starter(players, impostor):
     weighted_players = []
     weights = []
@@ -1146,25 +1153,55 @@ elif st.session_state.screen == "game":
         # 🎖️ Nagrody
         st.write("### 🎖️ Wyróżnienia")
 
-        st.write(f"🕵️ **Najlepszy detektyw:** {rankings['best_detective']}")
-        st.write(f"😈 **Najlepszy impostor:** {rankings['best_impostor']}")
-        st.write(f"💀 **Najgorszy impostor:** {rankings['worst_impostor']}")
-        st.write(f"🎭 **Najczęstszy impostor:** {rankings['most_impostor']}")
-        st.write(f"🛡️ **Najbezpieczniejszy gracz:** {rankings['safest_player']}")
+        st.write(
+            f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])}"
+        )
 
+        if rankings["best_impostor"] is not None:
+            best_imp = rankings["best_impostor"]
+            best_imp_wins = rankings["impostor_wins"].get(best_imp, 0)
+            best_imp_games = rankings["impostor_games"].get(best_imp, 0)
+            best_imp_eff = rankings["impostor_efficiency"].get(best_imp, 0.0)
+
+            st.write(
+                f"😈 **Najlepszy impostor:** {best_imp} "
+                f"({best_imp_wins} zwycięstwa jako impostor ({best_imp_eff}%))"
+            )
+
+        if rankings["worst_impostor"] is not None:
+            worst_imp = rankings["worst_impostor"]
+            worst_imp_wins = rankings["impostor_wins"].get(worst_imp, 0)
+            worst_imp_eff = rankings["impostor_efficiency"].get(worst_imp, 0.0)
+
+            st.write(
+                f"💀 **Najgorszy impostor:** {worst_imp} "
+                f"({worst_imp_wins} zwycięstw jako impostor ({worst_imp_eff}%))"
+            )
+
+        st.write(
+            f"🎭 **Najczęstszy impostor:** {format_player_list(rankings['most_impostors'])} "
+            f"({rankings['most_impostor_value']} razy jako impostor)"
+        )
+
+        st.write(
+            f"🛡️ **Najbezpieczniejszy gracz:** {format_player_list(rankings['safest_players'])} "
+            f"(najmniejsza liczba głosów - {rankings['safest_value']})"
+        )
         st.divider()
 
         # 📊 Skuteczność impostora
         st.write("### 📊 Skuteczność impostora")
 
-        for player, efficiency in rankings["impostor_efficiency"].items():
-            st.write(f"**{player}** — {efficiency}%")
+        for player, efficiency in rankings["impostor_efficiency_ranking"]:
+            games = rankings["impostor_games"].get(player, 0)
+            wins = rankings["impostor_wins"].get(player, 0)
+            st.write(f"**{player}** — {efficiency}% ({wins}/{games})")
 
         st.divider()
 
         st.write("### Emoji Awards")
-        for emoji, (player, count) in rankings["emoji_leaders"].items():
-            st.write(f"{emoji} **{player}** — {count}")
+        for emoji, (players, count) in rankings["emoji_leaders"].items():
+            st.write(f"{emoji} **{format_player_list(players)}** — {count}")
 
         # 📋 Surowe statystyki (debug + ciekawostka)
         st.write("### 📋 Statystyki szczegółowe")
