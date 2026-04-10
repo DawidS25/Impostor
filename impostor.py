@@ -334,7 +334,7 @@ def choose_round_starter(players, impostor):
     return random.choices(weighted_players, weights=weights, k=1)[0]
 
 # ------------------- UI ------------------- #
-st.title("TESTImpostor")
+st.title("Impostor")
 
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
