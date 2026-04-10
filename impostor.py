@@ -567,7 +567,7 @@ def apply_reaction_stats(game_data):
     return game_data
 
 # ------------------- UI ------------------- #
-st.title("TESTImpostor")
+st.title("Impostor")
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
 
