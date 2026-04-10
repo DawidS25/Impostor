@@ -73,6 +73,7 @@ def start_game_logic(game_data):
 
     chosen_entry = random.choice(available_words)
     word = chosen_entry["word"]
+    hint = chosen_entry.get("hint", "")
 
     starter = choose_round_starter(players, impostor)
 
@@ -140,6 +141,7 @@ def next_round_logic(game_data):
 
     chosen_entry = random.choice(available_words)
     word = chosen_entry["word"]
+    hint = chosen_entry.get("hint", "")
 
     roles = {}
     for player in players:
