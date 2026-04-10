@@ -7,7 +7,7 @@
     "Harnaś",
     "Wixa"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -26,10 +26,10 @@
   },
   "round": 1,
   "scores": {
-    "Heheszek": 1,
+    "Heheszek": 2,
     "Bestia": 0,
-    "Harnaś": 3,
-    "Wixa": 0
+    "Harnaś": 4,
+    "Wixa": 1
   },
   "submissions": {
     "Heheszek": [
@@ -57,36 +57,36 @@
     "Bestia": "Harnaś",
     "Wixa": "Bestia"
   },
-  "voted_out": null,
-  "round_winner": null,
+  "voted_out": "Bestia",
+  "round_winner": "players",
   "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
-      "correct_votes": 1,
+      "correct_votes": 2,
       "total_votes_received": 3
     },
     "Bestia": {
       "times_impostor": 1,
       "impostor_wins": 0,
-      "impostor_losses": 0,
+      "impostor_losses": 1,
       "correct_votes": 0,
-      "total_votes_received": 0
+      "total_votes_received": 3
     },
     "Harnaś": {
       "times_impostor": 1,
       "impostor_wins": 1,
       "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 1
+      "correct_votes": 1,
+      "total_votes_received": 2
     },
     "Wixa": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
-      "correct_votes": 0,
+      "correct_votes": 1,
       "total_votes_received": 0
     }
   },
