@@ -33,7 +33,9 @@
       "a"
     ],
     "a": [],
-    "s": []
+    "s": [
+      "b"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
