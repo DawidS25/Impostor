@@ -1177,32 +1177,70 @@ elif st.session_state.screen == "game":
 
         st.write("### Hasła graczy")
 
-        with st.expander("Hasła i reakcje", expanded=True):
-            submissions = game_data.get("submissions", {})
-            reactions = game_data.get("reactions", {})
+        submissions = game_data.get("submissions", {})
+        reactions = game_data.get("reactions", {})
+        players = game_data.get("players", [])
+        emoji_options = ["🔥", "👍", "😐", "👎", "💀"]
+
+        reaction_totals = {}
+
+        for reactor, target_map in reactions.items():
+            for target, emoji in target_map.items():
+                if target not in reaction_totals:
+                    reaction_totals[target] = {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0}
+                reaction_totals[target][emoji] += 1
+
+        lines = []
+
+        for target_player in players:
+            player_text = submissions.get(target_player, [])
+
+            if isinstance(player_text, str):
+                player_text = [player_text] if player_text.strip() else []
+
+            text_display = ", ".join(player_text) if player_text else "(brak)"
+            totals = reaction_totals.get(target_player, {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0})
+
+            line = (
+                f"<b>{target_player}:</b> {text_display}"
+                f" <span style='color:#888;'>|</span> "
+                f"🔥 {totals['🔥']} "
+                f"👍 {totals['👍']} "
+                f"😐 {totals['😐']} "
+                f"👎 {totals['👎']} "
+                f"💀 {totals['💀']}"
+            )
+            lines.append(line)
+
+        st.markdown(
+            """
+        <div style="
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            background-color: #111;
+            font-size: 14px;
+            line-height: 1.6;
+        ">
+        """ + "<br>".join(lines) + """
+        </div>
+        """,
+            unsafe_allow_html=True
+        )
+
+        with st.expander("Dodaj reakcje", expanded=False):
             emoji_options = ["🔥", "👍", "😐", "👎", "💀"]
-
-            reaction_totals = {}
-
-            for reactor, target_map in reactions.items():
-                for target, emoji in target_map.items():
-                    if target not in reaction_totals:
-                        reaction_totals[target] = {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0}
-                    reaction_totals[target][emoji] += 1
+            reactions = game_data.get("reactions", {})
 
             for target_player in game_data.get("players", []):
-                player_text = submissions.get(target_player, [])
+                current_reaction = reactions.get(player_name, {}).get(target_player, "")
 
-                if isinstance(player_text, str):
-                    player_text = [player_text] if player_text.strip() else []
-
-                text_display = ", ".join(player_text) if player_text else "(brak)"
-                totals = reaction_totals.get(target_player, {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0})
-
-                cols = st.columns([4, 0.8, 0.8, 0.8, 0.8, 0.8, 2.6])
+                cols = st.columns([2, 1, 1, 1, 1, 1])
 
                 with cols[0]:
-                    st.markdown(f"**{target_player}:** {text_display}")
+                    st.write(f"**{target_player}**")
+                    if current_reaction:
+                        st.caption(f"Twoja reakcja: {current_reaction}")
 
                 for i, emoji in enumerate(emoji_options, start=1):
                     with cols[i]:
@@ -1214,12 +1252,7 @@ elif st.session_state.screen == "game":
                             if updated:
                                 st.rerun()
                             else:
-                                st.error(f"Błąd zapisu reakcji: {result}")
-
-                with cols[6]:
-                    st.markdown(
-                        f"🔥 {totals['🔥']} | 👍 {totals['👍']} | 😐 {totals['😐']} | 👎 {totals['👎']} | 💀 {totals['💀']}"
-                    )
+                                st.error(f"Błąd zapisu reakcji: {result}")        
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
