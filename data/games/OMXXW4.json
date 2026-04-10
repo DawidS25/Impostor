@@ -3,7 +3,8 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "s"
+    "s",
+    "sadas"
   ],
   "status": "lobby",
   "settings": {
@@ -24,11 +25,13 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "s": 0
+    "s": 0,
+    "sadas": 0
   },
   "submissions": {
     "Heheszek": [],
-    "s": []
+    "s": [],
+    "sadas": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -65,6 +68,13 @@
         "👎": 0,
         "💀": 0
       }
+    },
+    "sadas": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0
     }
   },
   "category": "Przedmioty",
