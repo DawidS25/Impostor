@@ -1,0 +1,46 @@
+{
+  "code": "D9UNLP",
+  "host": "Heheszek",
+  "players": [
+    "Heheszek"
+  ],
+  "status": "waiting",
+  "settings": {
+    "hint_mode": "off",
+    "round_limit": 10,
+    "selected_categories": [
+      "Jedzenie",
+      "Zwierzęta",
+      "Miejsca",
+      "Przedmioty"
+    ],
+    "selected_difficulties": [
+      "łatwe",
+      "średnie",
+      "trudne",
+      "ekstremalnie trudne"
+    ]
+  },
+  "round": 0,
+  "scores": {
+    "Heheszek": 0
+  },
+  "submissions": {
+    "Heheszek": []
+  },
+  "impostor_guess": "",
+  "guess_status": "none",
+  "votes": {},
+  "voted_out": null,
+  "round_winner": null,
+  "starter": null,
+  "stats": {
+    "Heheszek": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0
+    }
+  }
+}
