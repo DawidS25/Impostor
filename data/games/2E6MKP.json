@@ -53,7 +53,8 @@
   "guess_status": "none",
   "votes": {
     "Heheszek": "Harnaś",
-    "Harnaś": "Heheszek"
+    "Harnaś": "Heheszek",
+    "Bestia": "Heheszek"
   },
   "voted_out": null,
   "round_winner": null,
