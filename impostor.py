@@ -363,7 +363,7 @@ def choose_round_starter(players, impostor):
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
-st_autorefresh(interval=5000, key="game_autorefresh")
+st_autorefresh(interval=3000, key="game_autorefresh")
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
 
