@@ -6,7 +6,7 @@
     "a",
     "s"
   ],
-  "status": "finished",
+  "status": "lobby",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -22,11 +22,11 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 0,
   "scores": {
     "Heheszek": 0,
     "a": 0,
-    "s": 3
+    "s": 0
   },
   "submissions": {
     "Heheszek": [],
@@ -39,16 +39,16 @@
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Heheszek",
+  "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
-        "🔥": 1,
+        "🔥": 0,
         "👍": 0,
         "😐": 0,
         "👎": 0,
@@ -63,22 +63,22 @@
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
-        "👍": 1,
+        "👍": 0,
         "😐": 0,
         "👎": 0,
         "💀": 0
       }
     },
     "s": {
-      "times_impostor": 1,
-      "impostor_wins": 1,
+      "times_impostor": 0,
+      "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
-        "😐": 1,
+        "😐": 0,
         "👎": 0,
         "💀": 0
       }
@@ -86,21 +86,6 @@
   },
   "category": "Przedmioty",
   "word": "Plecak",
-  "impostor": "Heheszek",
-  "roles": {
-    "Heheszek": {
-      "role": "impostor",
-      "hint": "Noszony na plecach"
-    },
-    "a": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    },
-    "s": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    }
-  }
+  "impostor": null,
+  "roles": {}
 }
