@@ -6,7 +6,7 @@
     "a",
     "as"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -23,7 +23,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "a": 0,
@@ -34,24 +34,13 @@
     "a": [],
     "as": []
   },
-  "impostor_guess": "lodówka",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "Heheszek": "🔥",
-      "a": "👍",
-      "as": "😐"
-    },
-    "as": {
-      "Heheszek": "👍",
-      "a": "👎",
-      "as": "👍"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
-  "starter": "a",
+  "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -82,7 +71,7 @@
       }
     },
     "as": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -96,19 +85,19 @@
       }
     }
   },
-  "category": "Przedmioty",
-  "word": "Lodówka",
+  "category": "Miejsca",
+  "word": "Obserwatorium",
   "impostor": "as",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Przedmioty",
-      "word": "Lodówka"
+      "category": "Miejsca",
+      "word": "Obserwatorium"
     },
     "a": {
       "role": "player",
-      "category": "Przedmioty",
-      "word": "Lodówka"
+      "category": "Miejsca",
+      "word": "Obserwatorium"
     },
     "as": {
       "role": "impostor"
