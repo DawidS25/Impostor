@@ -1118,17 +1118,6 @@ elif st.session_state.screen == "game":
 
         submissions = game_data.get("submissions", {})
 
-        for player in game_data.get("players", []):
-            player_text = submissions.get(player, "")
-            if player_text:
-                st.write(f"**{player}:** {', '.join(player_text)}")
-            else:
-                st.write(f"**{player}:** (brak)")
-
-        st.write("### Hasła graczy")
-
-        submissions = game_data.get("submissions", {})
-
         lines = []
 
         for player in game_data.get("players", []):
