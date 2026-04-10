@@ -1154,7 +1154,7 @@ elif st.session_state.screen == "game":
         st.divider()
 
         # 🎖️ Nagrody
-        st.write("### 🎖️ WyróżnieniaDEBUG")
+        st.write("### 🎖️ Wyróżnienia")
 
         st.write(
             f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])}"
