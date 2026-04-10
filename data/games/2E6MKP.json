@@ -7,7 +7,7 @@
     "Bestia",
     "Harnaś"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -32,25 +32,17 @@
     "Harnaś": 3
   },
   "submissions": {
-    "Heheszek": [
-      "skibidi"
-    ],
-    "Wixa": [
-      "czapka"
-    ],
-    "Bestia": [
-      "agent"
-    ],
-    "Harnaś": [
-      "nie mam podpowiedzi!!!"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "Bestia": [],
+    "Harnaś": []
   },
-  "impostor_guess": "dziobak",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
-  "starter": "Wixa",
+  "starter": "Bestia",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -67,7 +59,7 @@
       "total_votes_received": 1
     },
     "Bestia": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 1,
@@ -81,27 +73,27 @@
       "total_votes_received": 2
     }
   },
-  "category": "Zwierzęta",
-  "word": "Dziobak",
-  "impostor": "Harnaś",
+  "category": "Jedzenie",
+  "word": "Burger",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "category": "Jedzenie",
+      "word": "Burger"
     },
     "Bestia": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "role": "impostor"
     },
     "Harnaś": {
-      "role": "impostor"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Burger"
     }
   }
 }
