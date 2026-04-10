@@ -899,21 +899,6 @@ elif st.session_state.screen == "game":
 
             lines.append(line)
 
-        st.markdown(
-            """
-        <div style="
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            background-color: #111;
-            font-size: 14px;
-            line-height: 1.6;
-        ">
-        """ + "<br>".join(lines) + """
-        </div>
-        """,
-            unsafe_allow_html=True
-        )
 
         available_targets = [p for p in game_data.get("players", []) if p != player_name]
 
