@@ -36,7 +36,9 @@
     "Wixa": [
       "czapka"
     ],
-    "Bestia": [],
+    "Bestia": [
+      "agent"
+    ],
     "Harnaś": []
   },
   "impostor_guess": "",
