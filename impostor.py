@@ -357,23 +357,35 @@ def compute_game_rankings(game_data):
     best_detectives = get_all_max_players(detective_values)
     best_detective_value = max(detective_values.values()) if detective_values else 0
 
-    # 😈 najlepszy impostor = najwyższa skuteczność impostora
-    # przy remisie % wygrywa ten, kto miał więcej gier jako impostor
-    if impostor_efficiency_ranking:
-        best_impostor = impostor_efficiency_ranking[0][0]
-    else:
-        best_impostor = None
+    # 😈 najlepszy impostor
+    best_impostors = []
+    if impostor_efficiency:
+        best_eff = max(impostor_efficiency.values())
+        best_eff_players = [
+            player for player, eff in impostor_efficiency.items()
+            if eff == best_eff
+        ]
 
-    # 💀 najgorszy impostor = najniższa skuteczność impostora
-    # przy remisie % wygrywa ten, kto miał więcej gier jako impostor
-    worst_impostor_ranking = sorted(
-        impostor_efficiency.items(),
-        key=lambda x: (x[1], -impostor_games[x[0]], x[0])
-    )
-    if worst_impostor_ranking:
-        worst_impostor = worst_impostor_ranking[0][0]
-    else:
-        worst_impostor = None
+        max_games_among_best = max(impostor_games[player] for player in best_eff_players)
+        best_impostors = [
+            player for player in best_eff_players
+            if impostor_games[player] == max_games_among_best
+        ]
+
+    # 💀 najgorszy impostor
+    worst_impostors = []
+    if impostor_efficiency:
+        worst_eff = min(impostor_efficiency.values())
+        worst_eff_players = [
+            player for player, eff in impostor_efficiency.items()
+            if eff == worst_eff
+        ]
+
+        max_games_among_worst = max(impostor_games[player] for player in worst_eff_players)
+        worst_impostors = [
+            player for player in worst_eff_players
+            if impostor_games[player] == max_games_among_worst
+        ]
 
     # 🎭 najczęstszy impostor
     times_impostor_values = {player: s.get("times_impostor", 0) for player, s in stats.items()}
@@ -402,8 +414,8 @@ def compute_game_rankings(game_data):
         "best_detectives": best_detectives,
         "best_detective_value": best_detective_value,
 
-        "best_impostor": best_impostor,
-        "worst_impostor": worst_impostor,
+        "best_impostors": best_impostors,
+        "worst_impostors": worst_impostors,
 
         "most_impostors": most_impostors,
         "most_impostor_value": most_impostor_value,
@@ -1160,26 +1172,27 @@ elif st.session_state.screen == "game":
             f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])}"
         )
 
-        if rankings["best_impostor"] is not None:
-            best_imp = rankings["best_impostor"]
-            best_imp_wins = rankings["impostor_wins"].get(best_imp, 0)
-            best_imp_games = rankings["impostor_games"].get(best_imp, 0)
-            best_imp_eff = rankings["impostor_efficiency"].get(best_imp, 0.0)
+    if rankings["best_impostors"]:
+        best_players = rankings["best_impostors"]
+        best_imp = best_players[0]
+        best_imp_wins = rankings["impostor_wins"].get(best_imp, 0)
+        best_imp_eff = rankings["impostor_efficiency"].get(best_imp, 0.0)
 
-            st.write(
-                f"😈 **Najlepszy impostor:** {best_imp} "
-                f"({best_imp_wins} zwycięstwa jako impostor ({best_imp_eff}%))"
-            )
+        st.write(
+            f"😈 **Najlepszy impostor:** {format_player_list(best_players)} "
+            f"({best_imp_wins} zwycięstwa jako impostor ({best_imp_eff}%))"
+        )
 
-        if rankings["worst_impostor"] is not None:
-            worst_imp = rankings["worst_impostor"]
-            worst_imp_wins = rankings["impostor_wins"].get(worst_imp, 0)
-            worst_imp_eff = rankings["impostor_efficiency"].get(worst_imp, 0.0)
+    if rankings["worst_impostors"]:
+        worst_players = rankings["worst_impostors"]
+        worst_imp = worst_players[0]
+        worst_imp_wins = rankings["impostor_wins"].get(worst_imp, 0)
+        worst_imp_eff = rankings["impostor_efficiency"].get(worst_imp, 0.0)
 
-            st.write(
-                f"💀 **Najgorszy impostor:** {worst_imp} "
-                f"({worst_imp_wins} zwycięstw jako impostor ({worst_imp_eff}%))"
-            )
+        st.write(
+            f"💀 **Najgorszy impostor:** {format_player_list(worst_players)} "
+            f"({worst_imp_wins} zwycięstw jako impostor ({worst_imp_eff}%))"
+        )
 
         st.write(
             f"🎭 **Najczęstszy impostor:** {format_player_list(rankings['most_impostors'])} "
