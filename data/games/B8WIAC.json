@@ -2,7 +2,8 @@
   "code": "B8WIAC",
   "host": "Heheszek",
   "players": [
-    "Heheszek"
+    "Heheszek",
+    "Wixa"
   ],
   "status": "waiting",
   "settings": {
@@ -23,10 +24,12 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0
+    "Heheszek": 0,
+    "Wixa": 0
   },
   "submissions": {
-    "Heheszek": []
+    "Heheszek": [],
+    "Wixa": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -36,6 +39,13 @@
   "starter": null,
   "stats": {
     "Heheszek": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0
+    },
+    "Wixa": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
