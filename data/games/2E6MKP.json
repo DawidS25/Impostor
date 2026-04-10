@@ -50,7 +50,8 @@
   "votes": {
     "Heheszek": "Bestia",
     "Wixa": "Heheszek",
-    "Harnaś": "Heheszek"
+    "Harnaś": "Heheszek",
+    "Bestia": "Heheszek"
   },
   "voted_out": null,
   "round_winner": null,
