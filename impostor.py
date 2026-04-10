@@ -1114,40 +1114,16 @@ elif st.session_state.screen == "game":
                 else:
                     st.error(f"Błąd zapisu hasła: {result}")
 
-            st.write("### Hasła graczy")
+        st.write("### Hasła graczy")
 
-            submissions = game_data.get("submissions", {})
+        submissions = game_data.get("submissions", {})
 
-            lines = []
-
-            for player in game_data.get("players", []):
-                player_text = submissions.get(player, [])
-
-                if isinstance(player_text, str):
-                    player_text = [player_text] if player_text.strip() else []
-
-                if player_text:
-                    line = f"<b>{player}:</b> {', '.join(player_text)}"
-                else:
-                    line = f"<b>{player}:</b> (brak)"
-
-                lines.append(line)
-
-            st.markdown(
-                """
-            <div style="
-                padding: 10px;
-                border-radius: 10px;
-                border: 1px solid #ccc;
-                background-color: #111;
-                font-size: 14px;
-                line-height: 1.6;
-            ">
-            """ + "<br>".join(lines) + """
-            </div>
-            """,
-                unsafe_allow_html=True
-)
+        for player in game_data.get("players", []):
+            player_text = submissions.get(player, "")
+            if player_text:
+                st.write(f"**{player}:** {', '.join(player_text)}")
+            else:
+                st.write(f"**{player}:** (brak)")
 
 
 
