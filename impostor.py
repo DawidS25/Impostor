@@ -387,7 +387,14 @@ def reset_game_to_lobby(game_data):
             "impostor_wins": 0,
             "impostor_losses": 0,
             "correct_votes": 0,
-            "total_votes_received": 0
+            "total_votes_received": 0,
+            "emoji_received": {
+                "🔥": 0,
+                "👍": 0,
+                "😐": 0,
+                "👎": 0,
+                "💀": 0
+            }
         }
         for player in players
     }
@@ -711,7 +718,18 @@ elif st.session_state.screen == "lobby":
         if "reactions" not in game_data:
             game_data["reactions"] = {}
             changed = True
-        
+
+        for player in game_data.get("players", []):
+            if "emoji_received" not in game_data["stats"].get(player, {}):
+                game_data["stats"][player]["emoji_received"] = {
+                    "🔥": 0,
+                    "👍": 0,
+                    "😐": 0,
+                    "👎": 0,
+                    "💀": 0
+                }
+                changed = True
+                
 
         if changed:
             update_game_file(game_code, game_data)
