@@ -52,7 +52,8 @@
   "impostor_guess": "",
   "guess_status": "none",
   "votes": {
-    "Heheszek": "Bestia"
+    "Heheszek": "Bestia",
+    "Harnaś": "Bestia"
   },
   "voted_out": null,
   "round_winner": null,
