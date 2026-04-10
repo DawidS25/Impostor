@@ -7,7 +7,7 @@
     "Bestia",
     "Harnaś"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -28,7 +28,7 @@
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
-    "Bestia": 1,
+    "Bestia": 4,
     "Harnaś": 3
   },
   "submissions": {
@@ -37,8 +37,8 @@
     "Bestia": [],
     "Harnaś": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "burger",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
@@ -60,7 +60,7 @@
     },
     "Bestia": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 1,
       "total_votes_received": 1
