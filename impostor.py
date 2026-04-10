@@ -1177,48 +1177,49 @@ elif st.session_state.screen == "game":
 
         st.write("### Hasła graczy")
 
-        submissions = game_data.get("submissions", {})
-        reactions = game_data.get("reactions", {})
-        emoji_options = ["🔥", "👍", "😐", "👎", "💀"]
+        with st.expander("Hasła i reakcje", expanded=True):
+            submissions = game_data.get("submissions", {})
+            reactions = game_data.get("reactions", {})
+            emoji_options = ["🔥", "👍", "😐", "👎", "💀"]
 
-        reaction_totals = {}
+            reaction_totals = {}
 
-        for reactor, target_map in reactions.items():
-            for target, emoji in target_map.items():
-                if target not in reaction_totals:
-                    reaction_totals[target] = {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0}
-                reaction_totals[target][emoji] += 1
+            for reactor, target_map in reactions.items():
+                for target, emoji in target_map.items():
+                    if target not in reaction_totals:
+                        reaction_totals[target] = {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0}
+                    reaction_totals[target][emoji] += 1
 
-        for target_player in game_data.get("players", []):
-            player_text = submissions.get(target_player, [])
+            for target_player in game_data.get("players", []):
+                player_text = submissions.get(target_player, [])
 
-            if isinstance(player_text, str):
-                player_text = [player_text] if player_text.strip() else []
+                if isinstance(player_text, str):
+                    player_text = [player_text] if player_text.strip() else []
 
-            text_display = ", ".join(player_text) if player_text else "(brak)"
-            totals = reaction_totals.get(target_player, {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0})
+                text_display = ", ".join(player_text) if player_text else "(brak)"
+                totals = reaction_totals.get(target_player, {"🔥": 0, "👍": 0, "😐": 0, "👎": 0, "💀": 0})
 
-            cols = st.columns([4, 0.8, 0.8, 0.8, 0.8, 0.8, 2.6])
+                cols = st.columns([4, 0.8, 0.8, 0.8, 0.8, 0.8, 2.6])
 
-            with cols[0]:
-                st.markdown(f"**{target_player}:** {text_display}")
+                with cols[0]:
+                    st.markdown(f"**{target_player}:** {text_display}")
 
-            for i, emoji in enumerate(emoji_options, start=1):
-                with cols[i]:
-                    if st.button(emoji, key=f"react_{player_name}_{target_player}_{emoji}"):
-                        game_data = set_player_reaction(game_data, player_name, target_player, emoji)
+                for i, emoji in enumerate(emoji_options, start=1):
+                    with cols[i]:
+                        if st.button(emoji, key=f"react_{player_name}_{target_player}_{emoji}"):
+                            game_data = set_player_reaction(game_data, player_name, target_player, emoji)
 
-                        updated, result = update_game_file(game_code, game_data)
+                            updated, result = update_game_file(game_code, game_data)
 
-                        if updated:
-                            st.rerun()
-                        else:
-                            st.error(f"Błąd zapisu reakcji: {result}")
+                            if updated:
+                                st.rerun()
+                            else:
+                                st.error(f"Błąd zapisu reakcji: {result}")
 
-            with cols[6]:
-                st.markdown(
-                    f"🔥 {totals['🔥']} | 👍 {totals['👍']} | 😐 {totals['😐']} | 👎 {totals['👎']} | 💀 {totals['💀']}"
-                )
+                with cols[6]:
+                    st.markdown(
+                        f"🔥 {totals['🔥']} | 👍 {totals['👍']} | 😐 {totals['😐']} | 👎 {totals['👎']} | 💀 {totals['💀']}"
+                    )
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
