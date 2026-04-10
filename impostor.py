@@ -86,7 +86,7 @@ def start_game_logic(game_data):
             if hint_mode == "category":
                 roles[player]["category"] = category
             elif hint_mode == "hint":
-                roles[player]["hint"] = "Brak podpowiedzi tekstowej na tym etapie"
+                roles[player]["hint"] = hint
 
         else:
             roles[player] = {
@@ -151,7 +151,7 @@ def next_round_logic(game_data):
             if hint_mode == "category":
                 roles[player]["category"] = category
             elif hint_mode == "hint":
-                roles[player]["hint"] = "Brak podpowiedzi tekstowej na tym etapie"
+                roles[player]["hint"] = hint
 
         else:
             roles[player] = {
