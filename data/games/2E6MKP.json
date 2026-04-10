@@ -97,5 +97,9 @@
       "word": "Plecak"
     }
   },
-  "reactions": {}
+  "reactions": {
+    "Heheszek": {
+      "Heheszek": "🔥"
+    }
+  }
 }
