@@ -7,7 +7,7 @@
     "Harnaś",
     "Wixa"
   ],
-  "status": "finished",
+  "status": "lobby",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -42,7 +42,7 @@
   "votes": {},
   "voted_out": null,
   "round_winner": null,
-  "starter": "Bestia",
+  "starter": null,
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -59,7 +59,7 @@
       "total_votes_received": 0
     },
     "Harnaś": {
-      "times_impostor": 1,
+      "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -75,27 +75,8 @@
   },
   "category": "Przedmioty",
   "word": "Telefon",
-  "impostor": "Harnaś",
-  "roles": {
-    "Heheszek": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Telefon"
-    },
-    "Bestia": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Telefon"
-    },
-    "Harnaś": {
-      "role": "impostor"
-    },
-    "Wixa": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Telefon"
-    }
-  },
+  "impostor": null,
+  "roles": {},
   "reactions": {
     "Heheszek": {
       "Heheszek": "🔥",
