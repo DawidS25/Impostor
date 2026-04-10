@@ -9,7 +9,7 @@
   ],
   "status": "lobby",
   "settings": {
-    "hint_mode": "off",
+    "hint_mode": "hint",
     "round_limit": 10,
     "selected_categories": [
       "Jedzenie",
