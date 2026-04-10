@@ -34,7 +34,9 @@
       "klapka"
     ],
     "Wixa": [],
-    "Bestia": []
+    "Bestia": [
+      "szyba"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
