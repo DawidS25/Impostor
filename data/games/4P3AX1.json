@@ -3,7 +3,8 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "a"
+    "a",
+    "as"
   ],
   "status": "waiting",
   "settings": {
@@ -25,11 +26,13 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "a": 0
+    "a": 0,
+    "as": 0
   },
   "submissions": {
     "Heheszek": [],
-    "a": []
+    "a": [],
+    "as": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -54,6 +57,20 @@
       }
     },
     "a": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0,
+      "emoji_received": {
+        "🔥": 0,
+        "👍": 0,
+        "😐": 0,
+        "👎": 0,
+        "💀": 0
+      }
+    },
+    "as": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
