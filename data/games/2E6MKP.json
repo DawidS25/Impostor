@@ -35,7 +35,9 @@
     "Heheszek": [],
     "Bestia": [],
     "Harnaś": [],
-    "Wixa": []
+    "Wixa": [
+      "woda"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
