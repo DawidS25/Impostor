@@ -627,7 +627,14 @@ elif st.session_state.screen == "join":
                             "impostor_wins": 0,
                             "impostor_losses": 0,
                             "correct_votes": 0,
-                            "total_votes_received": 0
+                            "total_votes_received": 0,
+                            "emoji_received": {
+                                "🔥": 0,
+                                "👍": 0,
+                                "😐": 0,
+                                "👎": 0,
+                                "💀": 0
+                            } 
                         }
                         
                         updated, result = update_game_file(game_code, game_data)
@@ -716,7 +723,14 @@ elif st.session_state.screen == "lobby":
                     "impostor_wins": 0,
                     "impostor_losses": 0,
                     "correct_votes": 0,
-                    "total_votes_received": 0
+                    "total_votes_received": 0,
+                    "emoji_received": {
+                        "🔥": 0,
+                        "👍": 0,
+                        "😐": 0,
+                        "👎": 0,
+                        "💀": 0
+                    }
                 }
                 changed = True
 
