@@ -655,7 +655,7 @@ elif st.session_state.screen == "lobby":
                 list(WORDS.keys()),
                 default=current_categories
             )
-            st.write("DEBUG: renderuję trudności")
+
             difficulty_options = ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
             current_difficulties = current_settings.get(
                 "selected_difficulties",
