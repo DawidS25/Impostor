@@ -3,7 +3,6 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "Wixa",
     "Bestia",
     "Harnaś"
   ],
@@ -27,13 +26,11 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "Wixa": 0,
     "Bestia": 0,
     "Harnaś": 0
   },
   "submissions": {
     "Heheszek": [],
-    "Wixa": [],
     "Bestia": [],
     "Harnaś": []
   },
@@ -45,13 +42,6 @@
   "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 0,
-      "impostor_wins": 0,
-      "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0
-    },
-    "Wixa": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
