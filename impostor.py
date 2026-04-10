@@ -424,6 +424,17 @@ def remove_player(game_data, player_to_remove):
 
     return game_data
 
+def kick_if_removed(game_data, player_name):
+    players = game_data.get("players", [])
+
+    if player_name not in players:
+        st.warning("Zostałeś usunięty z gry przez hosta.")
+        st.session_state.screen = "start"
+        st.session_state.game_code = ""
+        st.session_state.player_name = ""
+        st.session_state.is_host = False
+        st.stop()
+
 # ------------------- UI ------------------- #
 st.title("Impostor")
 st_autorefresh(interval=3000, key="game_autorefresh")
@@ -651,6 +662,8 @@ elif st.session_state.screen == "lobby":
     if not success:
         st.error("Nie udało się wczytać gry.")
     else:
+        kick_if_removed(game_data, player_name)
+        
         if game_data["status"] == "started":
             st.session_state.screen = "game"
             st.rerun()
@@ -769,7 +782,7 @@ elif st.session_state.screen == "lobby":
                         st.rerun()
                     else:
                         st.error(f"Błąd zapisu ustawień: {result}")
-
+        
         col1, col2 = st.columns(2)
 
         with col1:
@@ -801,6 +814,7 @@ elif st.session_state.screen == "game":
     if not success:
         st.error("Nie udało się wczytać danych gry.")
         st.stop()
+    kick_if_removed(game_data, player_name)
 
     if game_data.get("status") == "lobby":
         st.session_state.screen = "lobby"
