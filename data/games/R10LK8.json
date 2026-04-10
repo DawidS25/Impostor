@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,7 +23,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 3,
     "Wixa": 0,
@@ -34,13 +34,13 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "krzesło",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Wixa",
+  "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 1,
@@ -57,7 +57,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -86,22 +86,22 @@
     }
   },
   "category": "Przedmioty",
-  "word": "Krzesło",
-  "impostor": "Heheszek",
+  "word": "Telefon",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "hint": "Do siedzenia"
-    },
-    "Wixa": {
       "role": "player",
       "category": "Przedmioty",
-      "word": "Krzesło"
+      "word": "Telefon"
+    },
+    "Wixa": {
+      "role": "impostor",
+      "hint": "Komunikacja"
     },
     "Bestia": {
       "role": "player",
       "category": "Przedmioty",
-      "word": "Krzesło"
+      "word": "Telefon"
     }
   }
 }
