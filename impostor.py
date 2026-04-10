@@ -742,7 +742,6 @@ elif st.session_state.screen == "lobby":
     if not success:
         st.error("Nie udało się wczytać gry.")
     else:
-        kick_if_removed(game_data, player_name)
 
         if game_data["status"] == "started":
             st.session_state.screen = "game"
@@ -764,7 +763,7 @@ elif st.session_state.screen == "lobby":
                 if st.session_state.is_host and player != game_data.get("host"):
                     if st.button("❌", key=f"remove_{player}"):
                         new_data = remove_player(game_data, player)
-
+                        kick_if_removed(game_data, player_name)
                         updated, result = update_game_file(game_code, new_data)
 
                         if updated:
