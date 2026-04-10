@@ -881,20 +881,39 @@ elif st.session_state.screen == "game":
         st.write("Wskaż, kto według Ciebie jest impostorem.")
         
         st.write("### Hasła graczy")
+
         submissions = game_data.get("submissions", {})
 
+        lines = []
+
         for player in game_data.get("players", []):
-            player_texts = submissions.get(player, [])
+            player_text = submissions.get(player, [])
 
-            if isinstance(player_texts, str):
-                player_texts = [player_texts] if player_texts.strip() else []
+            if isinstance(player_text, str):
+                player_text = [player_text] if player_text.strip() else []
 
-            if player_texts:
-                st.write(f"**{player}:**")
-                for idx, text in enumerate(player_texts, start=1):
-                    st.write(f"- {idx}. {text}")
+            if player_text:
+                line = f"**{player}:** {', '.join(player_text)}"
             else:
-                st.write(f"**{player}:** (brak)")
+                line = f"**{player}:** (brak)"
+
+            lines.append(line)
+
+        st.markdown(
+            """
+        <div style="
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            background-color: #111;
+            font-size: 14px;
+            line-height: 1.6;
+        ">
+        """ + "<br>".join(lines) + """
+        </div>
+        """,
+            unsafe_allow_html=True
+        )
 
         available_targets = [p for p in game_data.get("players", []) if p != player_name]
 
