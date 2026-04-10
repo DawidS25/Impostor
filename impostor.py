@@ -1127,6 +1127,7 @@ elif st.session_state.screen == "game":
                         else:
                             result_vote = apply_round_points(result_vote)
                             result_vote = apply_round_stats(result_vote)
+                            result_vote = apply_reaction_stats(result_vote)
 
                             updated, result = update_game_file(game_code, result_vote)
 
@@ -1142,6 +1143,8 @@ elif st.session_state.screen == "game":
         st.subheader("Koniec gry")
 
         rankings = compute_game_rankings(game_data)
+
+        st.write(rankings)
 
         # 🏆 Ranking punktowy
         st.write("### 🏆 Ranking punktowy")
