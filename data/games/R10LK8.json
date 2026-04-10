@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -25,8 +25,8 @@
   },
   "round": 1,
   "scores": {
-    "Heheszek": 3,
-    "Wixa": 0,
+    "Heheszek": 4,
+    "Wixa": 3,
     "Bestia": 0
   },
   "submissions": {
@@ -47,7 +47,7 @@
     "Wixa": "Bestia",
     "Bestia": "Heheszek"
   },
-  "voted_out": null,
+  "voted_out": "Heheszek",
   "reactions": {
     "Heheszek": {
       "Heheszek": "🔥",
@@ -61,15 +61,15 @@
       "Wixa": "👍"
     }
   },
-  "round_winner": null,
+  "round_winner": "impostor",
   "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 1,
       "impostor_wins": 1,
       "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0,
+      "correct_votes": 1,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
@@ -80,10 +80,10 @@
     },
     "Wixa": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
-      "total_votes_received": 0,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
@@ -97,7 +97,7 @@
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
-      "total_votes_received": 0,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
