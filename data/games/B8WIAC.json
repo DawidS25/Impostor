@@ -7,7 +7,7 @@
     "Bestia",
     "BEstia1"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,7 +23,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -31,23 +31,17 @@
     "BEstia1": 0
   },
   "submissions": {
-    "Heheszek": [
-      "skibidi"
-    ],
-    "Wixa": [
-      "tygrys"
-    ],
+    "Heheszek": [],
+    "Wixa": [],
     "Bestia": [],
-    "BEstia1": [
-      "Centy"
-    ]
+    "BEstia1": []
   },
-  "impostor_guess": "tygrys",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
-  "starter": "BEstia1",
+  "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -57,7 +51,7 @@
       "total_votes_received": 0
     },
     "Wixa": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -78,28 +72,28 @@
       "total_votes_received": 0
     }
   },
-  "category": "Zwierzęta",
-  "word": "Tygrys",
+  "category": "Jedzenie",
+  "word": "Carpaccio",
   "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Tygrys"
+      "category": "Jedzenie",
+      "word": "Carpaccio"
     },
     "Wixa": {
       "role": "impostor",
-      "hint": "Duży drapieżnik"
+      "hint": "Cienko krojone"
     },
     "Bestia": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Tygrys"
+      "category": "Jedzenie",
+      "word": "Carpaccio"
     },
     "BEstia1": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Tygrys"
+      "category": "Jedzenie",
+      "word": "Carpaccio"
     }
   }
 }
