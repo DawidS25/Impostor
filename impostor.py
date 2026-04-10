@@ -1,6 +1,7 @@
 import random
 import string
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 
 from github_api import create_game_file, get_game_file, update_game_file, game_exists
 from slowa import WORDS
@@ -362,7 +363,7 @@ def choose_round_starter(players, impostor):
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
-
+st_autorefresh(interval=5000, key="game_autorefresh")
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
 
