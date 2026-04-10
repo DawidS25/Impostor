@@ -663,7 +663,7 @@ elif st.session_state.screen == "lobby":
         st.error("Nie udało się wczytać gry.")
     else:
         kick_if_removed(game_data, player_name)
-        
+
         if game_data["status"] == "started":
             st.session_state.screen = "game"
             st.rerun()
@@ -692,6 +692,7 @@ elif st.session_state.screen == "lobby":
                             st.rerun()
                         else:
                             st.error(f"Błąd usuwania gracza: {result}")
+                            
         st.write("### Aktualne ustawienia")
         st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
         st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
@@ -878,6 +879,22 @@ elif st.session_state.screen == "game":
         st.subheader("Głosowanie")
 
         st.write("Wskaż, kto według Ciebie jest impostorem.")
+        
+        st.write("### Hasła graczy")
+        submissions = game_data.get("submissions", {})
+
+        for player in game_data.get("players", []):
+            player_texts = submissions.get(player, [])
+
+            if isinstance(player_texts, str):
+                player_texts = [player_texts] if player_texts.strip() else []
+
+            if player_texts:
+                st.write(f"**{player}:**")
+                for idx, text in enumerate(player_texts, start=1):
+                    st.write(f"- {idx}. {text}")
+            else:
+                st.write(f"**{player}:** (brak)")
 
         available_targets = [p for p in game_data.get("players", []) if p != player_name]
 
