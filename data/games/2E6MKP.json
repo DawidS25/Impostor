@@ -7,7 +7,7 @@
     "Bestia",
     "Harnaś"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -29,7 +29,7 @@
     "Heheszek": 0,
     "Wixa": 3,
     "Bestia": 1,
-    "Harnaś": 0
+    "Harnaś": 3
   },
   "submissions": {
     "Heheszek": [
@@ -45,8 +45,8 @@
       "nie mam podpowiedzi!!!"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "dziobak",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
@@ -75,7 +75,7 @@
     },
     "Harnaś": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 2
