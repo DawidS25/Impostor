@@ -6,7 +6,7 @@
     "a",
     "s"
   ],
-  "status": "finished",
+  "status": "lobby",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -29,13 +29,9 @@
     "s": 0
   },
   "submissions": {
-    "Heheszek": [
-      "s"
-    ],
+    "Heheszek": [],
     "a": [],
-    "s": [
-      "s"
-    ]
+    "s": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -43,10 +39,10 @@
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "s",
+  "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -90,21 +86,6 @@
   },
   "category": "Przedmioty",
   "word": "Plecak",
-  "impostor": "Heheszek",
-  "roles": {
-    "Heheszek": {
-      "role": "impostor",
-      "hint": "Noszony na plecach"
-    },
-    "a": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    },
-    "s": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    }
-  }
+  "impostor": null,
+  "roles": {}
 }
