@@ -361,6 +361,41 @@ def choose_round_starter(players, impostor):
 
     return random.choices(weighted_players, weights=weights, k=1)[0]
 
+def reset_game_to_lobby(game_data):
+    players = game_data.get("players", [])
+
+    # reset punktów
+    game_data["scores"] = {player: 0 for player in players}
+
+    # reset statystyk
+    game_data["stats"] = {
+        player: {
+            "times_impostor": 0,
+            "impostor_wins": 0,
+            "impostor_losses": 0,
+            "correct_votes": 0,
+            "total_votes_received": 0
+        }
+        for player in players
+    }
+
+    # reset rundy i stanu
+    game_data["round"] = 0
+    game_data["status"] = "lobby"
+
+    # czyszczenie rundy
+    game_data["submissions"] = {player: [] for player in players}
+    game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["round_winner"] = None
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
+    game_data["impostor"] = None
+    game_data["roles"] = {}
+    game_data["starter"] = None
+
+    return game_data
+
 # ------------------- UI ------------------- #
 st.title("Impostor")
 st_autorefresh(interval=3000, key="game_autorefresh")
@@ -599,7 +634,23 @@ elif st.session_state.screen == "lobby":
 
         st.write("### Gracze:")
         for player in game_data["players"]:
-            st.write(f"- {player}")
+            col1, col2 = st.columns([3, 1])
+
+            with col1:
+                st.write(f"- {player}")
+
+            with col2:
+                if st.session_state.is_host and player != game_data.get("host"):
+                    if st.button("❌", key=f"remove_{player}"):
+                        new_data = remove_player(game_data, player)
+
+                        updated, result = update_game_file(game_code, new_data)
+
+                        if updated:
+                            st.success(f"Usunięto gracza: {player}")
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd usuwania gracza: {result}")
         st.write("### Aktualne ustawienia")
         st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
         st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
@@ -890,6 +941,20 @@ elif st.session_state.screen == "game":
             st.write(f"- przegrane jako impostor: {s['impostor_losses']}")
             st.write(f"- poprawne głosy: {s['correct_votes']}")
             st.write(f"- otrzymane głosy: {s['total_votes_received']}")
+        
+        if st.session_state.is_host:
+            st.divider()
+
+            if st.button("🔄 Zagraj ponownie", use_container_width=True):
+                new_data = reset_game_to_lobby(game_data)
+
+                updated, result = update_game_file(game_code, new_data)
+
+                if updated:
+                    st.success("Gra została zresetowana.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd resetu gry: {result}")
 
         st.stop()
 
