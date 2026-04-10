@@ -58,7 +58,14 @@
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
-      "total_votes_received": 0
+      "total_votes_received": 0,
+      "emoji_received": {
+        "🔥": 0,
+        "👍": 0,
+        "😐": 0,
+        "👎": 0,
+        "💀": 0
+      }
     }
   }
 }
