@@ -396,6 +396,34 @@ def reset_game_to_lobby(game_data):
 
     return game_data
 
+def remove_player(game_data, player_to_remove):
+    if player_to_remove == game_data.get("host"):
+        return game_data
+
+    players = game_data.get("players", [])
+    game_data["players"] = [p for p in players if p != player_to_remove]
+
+    if "scores" in game_data and player_to_remove in game_data["scores"]:
+        del game_data["scores"][player_to_remove]
+
+    if "stats" in game_data and player_to_remove in game_data["stats"]:
+        del game_data["stats"][player_to_remove]
+
+    if "submissions" in game_data and player_to_remove in game_data["submissions"]:
+        del game_data["submissions"][player_to_remove]
+
+    if "votes" in game_data:
+        game_data["votes"] = {
+            voter: target
+            for voter, target in game_data["votes"].items()
+            if voter != player_to_remove and target != player_to_remove
+        }
+
+    if "roles" in game_data and player_to_remove in game_data["roles"]:
+        del game_data["roles"][player_to_remove]
+
+    return game_data
+
 # ------------------- UI ------------------- #
 st.title("Impostor")
 st_autorefresh(interval=3000, key="game_autorefresh")
