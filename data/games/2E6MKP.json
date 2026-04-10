@@ -96,5 +96,9 @@
       "role": "impostor"
     }
   },
-  "reactions": {}
+  "reactions": {
+    "Heheszek": {
+      "Heheszek": "🔥"
+    }
+  }
 }
