@@ -7,7 +7,7 @@
     "Bestia",
     "Harnaś"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -35,12 +35,10 @@
     "Heheszek": [],
     "Wixa": [],
     "Bestia": [],
-    "Harnaś": [
-      "kot"
-    ]
+    "Harnaś": []
   },
-  "impostor_guess": "kot",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "round_winner": null,
@@ -68,31 +66,31 @@
       "total_votes_received": 1
     },
     "Harnaś": {
-      "times_impostor": 2,
+      "times_impostor": 3,
       "impostor_wins": 2,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 2
     }
   },
-  "category": "Zwierzęta",
-  "word": "Kot",
+  "category": "Jedzenie",
+  "word": "Sushi",
   "impostor": "Harnaś",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Sushi"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Sushi"
     },
     "Bestia": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Sushi"
     },
     "Harnaś": {
       "role": "impostor"
