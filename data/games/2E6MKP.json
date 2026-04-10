@@ -7,7 +7,7 @@
     "Harnaś",
     "Wixa"
   ],
-  "status": "finished",
+  "status": "lobby",
   "settings": {
     "hint_mode": "off",
     "round_limit": 10,
@@ -24,12 +24,12 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 0,
   "scores": {
     "Heheszek": 0,
     "Bestia": 0,
     "Harnaś": 0,
-    "Wixa": 3
+    "Wixa": 0
   },
   "submissions": {
     "Heheszek": [],
@@ -42,21 +42,21 @@
   "votes": {},
   "voted_out": null,
   "round_winner": null,
-  "starter": "Harnaś",
+  "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
-      "total_votes_received": 3
+      "total_votes_received": 0
     },
     "Bestia": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
-      "total_votes_received": 1
+      "total_votes_received": 0
     },
     "Harnaś": {
       "times_impostor": 0,
@@ -66,8 +66,8 @@
       "total_votes_received": 0
     },
     "Wixa": {
-      "times_impostor": 1,
-      "impostor_wins": 1,
+      "times_impostor": 0,
+      "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0
@@ -75,26 +75,7 @@
   },
   "category": "Przedmioty",
   "word": "Plecak",
-  "impostor": "Heheszek",
-  "roles": {
-    "Heheszek": {
-      "role": "impostor"
-    },
-    "Bestia": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    },
-    "Harnaś": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    },
-    "Wixa": {
-      "role": "player",
-      "category": "Przedmioty",
-      "word": "Plecak"
-    }
-  },
+  "impostor": null,
+  "roles": {},
   "reactions": {}
 }
