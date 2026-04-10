@@ -37,7 +37,11 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {},
+  "reactions": {
+    "Heheszek": {
+      "Heheszek": "🔥"
+    }
+  },
   "round_winner": null,
   "starter": "a",
   "stats": {
