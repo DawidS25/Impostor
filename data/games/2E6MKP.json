@@ -51,7 +51,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Heheszek": "Harnaś"
+  },
   "voted_out": null,
   "round_winner": null,
   "starter": "Wixa",
