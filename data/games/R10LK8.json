@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,39 +23,22 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Wixa": 0,
     "Bestia": 3
   },
   "submissions": {
-    "Heheszek": [
-      "s"
-    ],
-    "Wixa": [
-      "f"
-    ],
-    "Bestia": [
-      "h"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "Bestia": []
   },
-  "impostor_guess": "pies",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "Heheszek": "🔥",
-      "Wixa": "😐",
-      "Bestia": "💀"
-    },
-    "Bestia": {
-      "Heheszek": "🔥",
-      "Wixa": "😐",
-      "Bestia": "💀"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
   "starter": "Bestia",
   "stats": {
@@ -74,7 +57,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -102,23 +85,23 @@
       }
     }
   },
-  "category": "Zwierzęta",
-  "word": "Pies",
-  "impostor": "Bestia",
+  "category": "Miejsca",
+  "word": "Hotel",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Pies"
+      "category": "Miejsca",
+      "word": "Hotel"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Pies"
+      "role": "impostor",
+      "hint": "Nocleg dla podróżnych"
     },
     "Bestia": {
-      "role": "impostor",
-      "hint": "Najlepszy przyjaciel człowieka"
+      "role": "player",
+      "category": "Miejsca",
+      "word": "Hotel"
     }
   }
 }
