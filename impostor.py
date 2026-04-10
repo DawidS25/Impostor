@@ -213,7 +213,12 @@ def resolve_voting_result(game_data):
     max_votes = max(vote_count.values())
     top_players = [player for player, count in vote_count.items() if count == max_votes]
 
-    voted_out = random.choice(top_players)
+    # Jeśli impostor jest w remisie z innymi, impostor przeżywa.
+    if impostor in top_players and len(top_players) > 1:
+        non_impostor_tied = [player for player in top_players if player != impostor]
+        voted_out = random.choice(non_impostor_tied)
+    else:
+        voted_out = random.choice(top_players)
 
     game_data["voted_out"] = voted_out
 
@@ -489,7 +494,6 @@ def apply_reaction_stats(game_data):
 
 # ------------------- UI ------------------- #
 st.title("Impostor")
-st_autorefresh(interval=3000, key="game_autorefresh")
 if st.session_state.screen == "start":
     st.subheader("Wybierz opcję")
 
@@ -642,6 +646,7 @@ elif st.session_state.screen == "join":
 
 
 elif st.session_state.screen == "lobby":
+    st_autorefresh(interval=5000, key="game_autorefresh")
     game_code = st.session_state.game_code
     player_name = st.session_state.player_name
     is_host = st.session_state.is_host
@@ -882,6 +887,7 @@ elif st.session_state.screen == "lobby":
                             st.error(f"Błąd startu gry: {result}")
 
 elif st.session_state.screen == "game":
+    st_autorefresh(interval=3000, key="game_autorefresh")
     game_code = st.session_state.game_code
     player_name = st.session_state.player_name
 
