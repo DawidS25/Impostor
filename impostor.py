@@ -774,6 +774,10 @@ elif st.session_state.screen == "game":
         st.error("Nie udało się wczytać danych gry.")
         st.stop()
 
+    if game_data.get("status") == "lobby":
+        st.session_state.screen = "lobby"
+        st.rerun()
+
     if game_data.get("status") == "round_result":
         st.subheader("Koniec rundy")
 
@@ -951,6 +955,7 @@ elif st.session_state.screen == "game":
                 updated, result = update_game_file(game_code, new_data)
 
                 if updated:
+                    st.session_state.screen = "lobby"
                     st.success("Gra została zresetowana.")
                     st.rerun()
                 else:
