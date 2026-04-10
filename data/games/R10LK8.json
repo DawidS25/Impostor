@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,29 +23,27 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 4,
     "Wixa": 3,
     "Bestia": 0
   },
   "submissions": {
-    "Heheszek": [
-      "Sushi"
-    ],
+    "Heheszek": [],
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "sushi",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Wixa",
+  "starter": "Bestia",
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 1,
@@ -87,23 +85,23 @@
       }
     }
   },
-  "category": "Jedzenie",
-  "word": "Sushi",
+  "category": "Zwierzęta",
+  "word": "Tygrys",
   "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
       "role": "impostor",
-      "hint": "Azjatycka kuchnia"
+      "hint": "Duży drapieżnik"
     },
     "Wixa": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Sushi"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     },
     "Bestia": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Sushi"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     }
   }
 }
