@@ -567,19 +567,19 @@ def apply_reaction_stats(game_data):
     return game_data
 
 # ------------------- UI ------------------- #
-st.title("Impostor")
 if st.session_state.screen == "start":
-    st.subheader("Wybierz opcję")
+    st.title("Impostor")
+    st.subheader("Dołącz do gry")
 
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("HOST", use_container_width=True):
+        if st.button("Stwórz nową grę", use_container_width=True):
             st.session_state.screen = "host"
             st.rerun()
 
     with col2:
-        if st.button("DOŁĄCZ", use_container_width=True):
+        if st.button("Dołącz do gry", use_container_width=True):
             st.session_state.screen = "join"
             st.rerun()
 
