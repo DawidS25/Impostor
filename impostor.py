@@ -1329,6 +1329,7 @@ elif st.session_state.screen == "game":
         st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")        
         st.write(f"**Teraz wpisuje:** {game_data.get('current_turn_player', 'Brak')}")
         
+        current_turn_player = game_data.get("current_turn_player")
         if player_name == current_turn_player:
             with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
                 submission_text = st.text_input(
