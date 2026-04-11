@@ -7,7 +7,7 @@
     "sosna",
     "HUUJ"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -33,7 +33,7 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "Wixa": 0,
+    "Wixa": 3,
     "sosna": 0,
     "HUUJ": 0
   },
@@ -49,8 +49,8 @@
     ],
     "HUUJ": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "pilot",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "reactions": {},
@@ -73,7 +73,7 @@
     },
     "Wixa": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
