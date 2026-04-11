@@ -43,7 +43,11 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {},
+  "reactions": {
+    "Heheszek": {
+      "PTOSZEK": "🔥"
+    }
+  },
   "round_winner": null,
   "starter": "PTOSZEK",
   "current_turn_player": null,
