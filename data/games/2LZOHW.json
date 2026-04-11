@@ -38,7 +38,9 @@
     "Wixa": [
       "skośne"
     ],
-    "PTOSZEK": [],
+    "PTOSZEK": [
+      "OREO"
+    ],
     "kupa": [
       "bieda"
     ]
@@ -47,11 +49,7 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "PTOSZEK": "💀"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
   "starter": "kupa",
   "current_turn_player": null,
