@@ -8,7 +8,7 @@
   ],
   "status": "waiting",
   "settings": {
-    "hint_mode": "hint",
+    "hint_mode": "off",
     "round_limit": null,
     "selected_categories": [
       "Jedzenie",
