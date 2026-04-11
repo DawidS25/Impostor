@@ -835,11 +835,10 @@ elif st.session_state.screen == "lobby":
         if game_data["status"] == "started":
             st.session_state.screen = "game"
             st.rerun()
+        st.title("Impostor")
         st.subheader("Lobby")
         st.write(f"**Kod gry:** {game_code}")
         st.write(f"**Twój nick:** {player_name}")
-        st.write(f"**Host:** {game_data['host']}")
-        st.write(f"**Status:** {game_data['status']}")
 
         st.write("### Gracze:")
         for player in game_data["players"]:
@@ -861,11 +860,12 @@ elif st.session_state.screen == "lobby":
                         else:
                             st.error(f"Błąd usuwania gracza: {result}")
                             
-        st.write("### Aktualne ustawienia")
-        st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
-        st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
-        st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
-        st.write(f"**Trudności:** {', '.join(game_data['settings'].get('selected_difficulties', []))}")
+        #st.write("### Aktualne ustawienia")
+        with st.expander("Aktualne ustawienia", expanded=False):
+            st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
+            st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
+            st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
+            st.write(f"**Trudności:** {', '.join(game_data['settings'].get('selected_difficulties', []))}")
 
         if is_host:
             st.write("### Ustawienia gry")
