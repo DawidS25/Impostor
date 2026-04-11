@@ -7,7 +7,7 @@
     "sosna",
     "HUUJ"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -30,7 +30,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -38,26 +38,18 @@
     "HUUJ": 0
   },
   "submissions": {
-    "Heheszek": [
-      "kask"
-    ],
-    "Wixa": [
-      "dupa"
-    ],
-    "sosna": [
-      "k"
-    ],
-    "HUUJ": [
-      "NARTY"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "sosna": [],
+    "HUUJ": []
   },
-  "impostor_guess": "snowboard",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "HUUJ",
+  "starter": "sosna",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -102,7 +94,7 @@
       }
     },
     "HUUJ": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -116,28 +108,28 @@
       }
     }
   },
-  "category": "Sport",
-  "word": "Snowboard",
-  "impostor": "sosna",
+  "category": "Miasta",
+  "word": "Dubaj",
+  "impostor": "HUUJ",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Sport",
-      "word": "Snowboard"
+      "category": "Miasta",
+      "word": "Dubaj"
     },
     "Wixa": {
       "role": "player",
-      "category": "Sport",
-      "word": "Snowboard"
+      "category": "Miasta",
+      "word": "Dubaj"
     },
     "sosna": {
-      "role": "impostor",
-      "hint": "jedna deska"
+      "role": "player",
+      "category": "Miasta",
+      "word": "Dubaj"
     },
     "HUUJ": {
-      "role": "player",
-      "category": "Sport",
-      "word": "Snowboard"
+      "role": "impostor",
+      "hint": "wysoko piasek"
     }
   }
 }
