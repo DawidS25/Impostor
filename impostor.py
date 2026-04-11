@@ -881,6 +881,8 @@ elif st.session_state.screen == "lobby":
                 "Podpowiedź": "hint"
             }
 
+            hint_mode_reverse = {v: k for k, v in hint_mode_map.items()}
+
             round_limit_map = {
                 "5": 5,
                 "10": 10,
