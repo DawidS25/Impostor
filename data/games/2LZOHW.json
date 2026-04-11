@@ -7,7 +7,7 @@
     "PTOSZEK",
     "kupa"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -27,9 +27,9 @@
   "round": 3,
   "scores": {
     "Heheszek": 2,
-    "Wixa": 1,
+    "Wixa": 4,
     "PTOSZEK": 2,
-    "kupa": 1
+    "kupa": 2
   },
   "submissions": {
     "Heheszek": [
@@ -53,9 +53,9 @@
     "Wixa": "PTOSZEK",
     "PTOSZEK": "Heheszek"
   },
-  "voted_out": null,
+  "voted_out": "PTOSZEK",
   "reactions": {},
-  "round_winner": null,
+  "round_winner": "impostor",
   "starter": "kupa",
   "current_turn_player": null,
   "turn_order_remaining": [],
@@ -66,7 +66,7 @@
       "impostor_wins": 0,
       "impostor_losses": 1,
       "correct_votes": 2,
-      "total_votes_received": 0,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
@@ -77,10 +77,10 @@
     },
     "Wixa": {
       "times_impostor": 2,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 1,
       "correct_votes": 1,
-      "total_votes_received": 4,
+      "total_votes_received": 5,
       "emoji_received": {
         "🔥": 2,
         "👍": 0,
@@ -94,7 +94,7 @@
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 2,
-      "total_votes_received": 1,
+      "total_votes_received": 3,
       "emoji_received": {
         "🔥": 3,
         "👍": 0,
@@ -107,7 +107,7 @@
       "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 1,
-      "correct_votes": 1,
+      "correct_votes": 2,
       "total_votes_received": 3,
       "emoji_received": {
         "🔥": 2,
