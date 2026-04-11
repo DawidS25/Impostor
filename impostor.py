@@ -1040,7 +1040,16 @@ elif st.session_state.screen == "game":
                         st.rerun()
                     else:
                         st.error(f"Błąd przejścia do następnej rundy: {result}")
+        if st.button("Zakończ grę", use_container_width=True):
+            game_data["status"] = "finished"
 
+            updated, result = update_game_file(game_code, game_data)
+
+            if updated:
+                st.success("Gra zakończona przez hosta.")
+                st.rerun()
+            else:
+                st.error(f"Błąd zakończenia gry: {result}")
         st.stop()
     
     if game_data.get("status") == "voting":
@@ -1414,17 +1423,6 @@ elif st.session_state.screen == "game":
                 else:
                     st.error(f"Błąd przejścia do głosowania: {result}")
         if st.session_state.is_host:
-            if st.button("Zakończ grę", use_container_width=True):
-                game_data["status"] = "finished"
-
-                updated, result = update_game_file(game_code, game_data)
-
-                if updated:
-                    st.success("Gra zakończona przez hosta.")
-                    st.rerun()
-                else:
-                    st.error(f"Błąd zakończenia gry: {result}") 
-
             if game_data.get("guess_status") == "pending_host_review":
                 st.write("### Zgadywanie impostora do oceny")
                 st.write(f"**Zgadywane hasło:** {game_data.get('impostor_guess', '')}")
