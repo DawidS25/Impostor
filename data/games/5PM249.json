@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,7 +23,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 3,
     "Wixa": 0,
@@ -34,27 +34,16 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "krzesło",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "Heheszek": "🔥",
-      "Wixa": "👍",
-      "Bestia": "😐"
-    },
-    "Bestia": {
-      "Heheszek": "😐",
-      "Wixa": "😐",
-      "Bestia": "👍"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
-  "starter": "Wixa",
+  "starter": "Bestia",
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -96,23 +85,23 @@
       }
     }
   },
-  "category": "Przedmioty",
-  "word": "Krzesło",
+  "category": "Zwierzęta",
+  "word": "Delfin",
   "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
       "role": "impostor",
-      "hint": "Do siedzenia"
+      "hint": "Inteligentne zwierzę wodne"
     },
     "Wixa": {
       "role": "player",
-      "category": "Przedmioty",
-      "word": "Krzesło"
+      "category": "Zwierzęta",
+      "word": "Delfin"
     },
     "Bestia": {
       "role": "player",
-      "category": "Przedmioty",
-      "word": "Krzesło"
+      "category": "Zwierzęta",
+      "word": "Delfin"
     }
   }
 }
