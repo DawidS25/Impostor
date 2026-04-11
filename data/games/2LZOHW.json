@@ -41,7 +41,9 @@
     "PTOSZEK": [
       "KIJ"
     ],
-    "kupa": []
+    "kupa": [
+      "natura"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
