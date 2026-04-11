@@ -7,7 +7,7 @@
     "PTOSZEK",
     "kupa"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 5,
+  "round": 6,
   "scores": {
     "Heheszek": 5,
     "Wixa": 5,
@@ -33,14 +33,12 @@
   },
   "submissions": {
     "Heheszek": [],
-    "Wixa": [
-      "byo"
-    ],
+    "Wixa": [],
     "PTOSZEK": [],
     "kupa": []
   },
-  "impostor_guess": "parasite",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
@@ -51,7 +49,7 @@
   "turn_number": 1,
   "stats": {
     "Heheszek": {
-      "times_impostor": 2,
+      "times_impostor": 3,
       "impostor_wins": 1,
       "impostor_losses": 1,
       "correct_votes": 2,
@@ -107,28 +105,28 @@
       }
     }
   },
-  "category": "Filmy",
-  "word": "Parasite",
-  "impostor": "kupa",
+  "category": "Miasta",
+  "word": "Seul",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Filmy",
-      "word": "Parasite"
+      "role": "impostor",
+      "hint": "tech tradycja"
     },
     "Wixa": {
       "role": "player",
-      "category": "Filmy",
-      "word": "Parasite"
+      "category": "Miasta",
+      "word": "Seul"
     },
     "PTOSZEK": {
       "role": "player",
-      "category": "Filmy",
-      "word": "Parasite"
+      "category": "Miasta",
+      "word": "Seul"
     },
     "kupa": {
-      "role": "impostor",
-      "hint": "dwa światy"
+      "role": "player",
+      "category": "Miasta",
+      "word": "Seul"
     }
   }
 }
