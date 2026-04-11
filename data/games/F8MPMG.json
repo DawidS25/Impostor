@@ -9,7 +9,7 @@
   "status": "waiting",
   "settings": {
     "hint_mode": "off",
-    "round_limit": 10,
+    "round_limit": null,
     "selected_categories": [
       "Jedzenie",
       "Zwierzęta",
