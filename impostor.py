@@ -881,12 +881,6 @@ elif st.session_state.screen == "lobby":
 
             current_settings = game_data.get("settings", {})
 
-            hint_mode_map = {
-                "Wyłączone": "off",
-                "Kategoria": "category",
-                "Podpowiedź": "hint"
-            }
-
             round_limit_map = {
                 "5": 5,
                 "10": 10,
