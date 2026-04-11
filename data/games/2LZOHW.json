@@ -48,6 +48,9 @@
   "reactions": {
     "Heheszek": {
       "PTOSZEK": "🔥"
+    },
+    "PTOSZEK": {
+      "Wixa": "🔥"
     }
   },
   "round_winner": null,
