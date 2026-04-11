@@ -569,7 +569,6 @@ def apply_reaction_stats(game_data):
 # ------------------- UI ------------------- #
 if st.session_state.screen == "start":
     st.title("Impostor")
-    st.subheader("Dołącz do gry")
 
     col1, col2 = st.columns(2)
 
