@@ -5,7 +5,8 @@
     "Heheszek",
     "Wixa",
     "PTOSZEK",
-    "kupa"
+    "kupa",
+    "elo"
   ],
   "status": "started",
   "settings": {
@@ -29,13 +30,15 @@
     "Heheszek": 5,
     "Wixa": 5,
     "PTOSZEK": 2,
-    "kupa": 5
+    "kupa": 5,
+    "elo": 0
   },
   "submissions": {
     "Heheszek": [],
     "Wixa": [],
     "PTOSZEK": [],
-    "kupa": []
+    "kupa": [],
+    "elo": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -102,6 +105,20 @@
         "😐": 0,
         "👎": 0,
         "💀": 3
+      }
+    },
+    "elo": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0,
+      "emoji_received": {
+        "🔥": 0,
+        "👍": 0,
+        "😐": 0,
+        "👎": 0,
+        "💀": 0
       }
     }
   },
