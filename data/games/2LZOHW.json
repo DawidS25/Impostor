@@ -49,7 +49,8 @@
   "guess_status": "none",
   "votes": {
     "Heheszek": "PTOSZEK",
-    "kupa": "Wixa"
+    "kupa": "Wixa",
+    "Wixa": "PTOSZEK"
   },
   "voted_out": null,
   "reactions": {},
