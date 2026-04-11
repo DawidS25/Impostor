@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "finished",
+  "status": "lobby",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -23,9 +23,9 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 0,
   "scores": {
-    "Heheszek": 3,
+    "Heheszek": 0,
     "Wixa": 0,
     "Bestia": 0
   },
@@ -40,18 +40,18 @@
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Bestia",
+  "starter": null,
   "stats": {
     "Heheszek": {
-      "times_impostor": 2,
-      "impostor_wins": 1,
+      "times_impostor": 0,
+      "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
-        "🔥": 1,
+        "🔥": 0,
         "👍": 0,
-        "😐": 1,
+        "😐": 0,
         "👎": 0,
         "💀": 0
       }
@@ -64,8 +64,8 @@
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
-        "👍": 1,
-        "😐": 1,
+        "👍": 0,
+        "😐": 0,
         "👎": 0,
         "💀": 0
       }
@@ -78,8 +78,8 @@
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
-        "👍": 1,
-        "😐": 1,
+        "👍": 0,
+        "😐": 0,
         "👎": 0,
         "💀": 0
       }
@@ -87,21 +87,6 @@
   },
   "category": "Zwierzęta",
   "word": "Delfin",
-  "impostor": "Heheszek",
-  "roles": {
-    "Heheszek": {
-      "role": "impostor",
-      "hint": "Inteligentne zwierzę wodne"
-    },
-    "Wixa": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Delfin"
-    },
-    "Bestia": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Delfin"
-    }
-  }
+  "impostor": null,
+  "roles": {}
 }
