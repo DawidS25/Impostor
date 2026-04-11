@@ -587,7 +587,7 @@ elif st.session_state.screen == "host":
     st.title("Impostor")
     st.subheader("Tworzenie nowej gry")
 
-    player_name = st.text_input("Podaj swoją nazwę", key="host_name")
+    player_name = st.text_input("Podaj swój nick", key="host_name")
 
     col1, col2 = st.columns(2)
 
