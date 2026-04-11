@@ -1030,26 +1030,29 @@ elif st.session_state.screen == "game":
 
         with col2:
             if st.session_state.is_host:
-                if st.button("Przejdź do następnej rundy", key="next_round_result", use_container_width=True):
-                    new_data = next_round_logic(game_data)
+                if st.button("Zakończ grę", use_container_width=True):
+                    game_data["status"] = "finished"
 
-                    updated, result = update_game_file(game_code, new_data)
+                    updated, result = update_game_file(game_code, game_data)
 
                     if updated:
-                        st.success("Rozpoczęto nową rundę.")
+                        st.success("Gra zakończona przez hosta.")
                         st.rerun()
                     else:
-                        st.error(f"Błąd przejścia do następnej rundy: {result}")
-        if st.button("Zakończ grę", use_container_width=True):
-            game_data["status"] = "finished"
+                        st.error(f"Błąd zakończenia gry: {result}")                
 
-            updated, result = update_game_file(game_code, game_data)
+        if st.session_state.is_host:
+            if st.button("Przejdź do następnej rundy", key="next_round_result", use_container_width=True):
+                new_data = next_round_logic(game_data)
 
-            if updated:
-                st.success("Gra zakończona przez hosta.")
-                st.rerun()
-            else:
-                st.error(f"Błąd zakończenia gry: {result}")
+                updated, result = update_game_file(game_code, new_data)
+
+                if updated:
+                    st.success("Rozpoczęto nową rundę.")
+                    st.rerun()
+                else:
+                    st.error(f"Błąd przejścia do następnej rundy: {result}")
+
         st.stop()
     
     if game_data.get("status") == "voting":
