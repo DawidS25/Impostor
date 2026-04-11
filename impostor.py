@@ -1334,7 +1334,7 @@ elif st.session_state.screen == "game":
                 submission_text = st.text_input(
                     "Wpisz swoje hasło / skojarzenie",
                     key=f"submission_input_{player_name}"
-
+                )
             submitted = st.form_submit_button("Dodaj hasło", use_container_width=True)
 
         if submitted:
