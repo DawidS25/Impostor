@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -25,7 +25,7 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0,
+    "Heheszek": 3,
     "Wixa": 0,
     "Bestia": 0
   },
@@ -34,8 +34,8 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "plecak",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "reactions": {},
@@ -44,7 +44,7 @@
   "stats": {
     "Heheszek": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
