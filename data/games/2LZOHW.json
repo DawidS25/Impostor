@@ -7,7 +7,7 @@
     "PTOSZEK",
     "kupa"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -46,7 +46,7 @@
     ]
   },
   "impostor_guess": "Elon Musk",
-  "guess_status": "pending_host_review",
+  "guess_status": "rejected_by_host",
   "votes": {},
   "voted_out": null,
   "reactions": {
@@ -69,13 +69,13 @@
     "Heheszek": {
       "times_impostor": 1,
       "impostor_wins": 0,
-      "impostor_losses": 0,
+      "impostor_losses": 1,
       "correct_votes": 1,
       "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
-        "😐": 0,
+        "😐": 1,
         "👎": 0,
         "💀": 0
       }
@@ -89,7 +89,7 @@
       "emoji_received": {
         "🔥": 1,
         "👍": 0,
-        "😐": 0,
+        "😐": 1,
         "👎": 0,
         "💀": 0
       }
@@ -115,7 +115,7 @@
       "correct_votes": 0,
       "total_votes_received": 3,
       "emoji_received": {
-        "🔥": 0,
+        "🔥": 1,
         "👍": 0,
         "😐": 0,
         "👎": 0,
