@@ -1334,8 +1334,6 @@ elif st.session_state.screen == "game":
                 else:
                     st.error(f"Błąd zapisu hasła: {result}")
 
-        st.write("### Hasła graczy")
-
         submissions = game_data.get("submissions", {})
         reactions = game_data.get("reactions", {})
         players = game_data.get("players", [])
@@ -1381,6 +1379,14 @@ elif st.session_state.screen == "game":
             font-size: 14px;
             line-height: 1.6;
         ">
+            <div style="
+                font-weight: 700;
+                font-size: 16px;
+                margin-bottom: 8px;
+                color: #fff;
+            ">
+                Hasła graczy
+            </div>
         """ + "<br>".join(lines) + """
         </div>
         """,
