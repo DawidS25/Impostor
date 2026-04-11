@@ -7,7 +7,7 @@
     "PTOSZEK",
     "kupa"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 1,
     "Wixa": 1,
@@ -32,36 +32,18 @@
     "kupa": 0
   },
   "submissions": {
-    "Heheszek": [
-      "kosmos"
-    ],
-    "Wixa": [
-      "niebo"
-    ],
-    "PTOSZEK": [
-      "X"
-    ],
-    "kupa": [
-      "artemis 2"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "PTOSZEK": [],
+    "kupa": []
   },
-  "impostor_guess": "Elon Musk",
-  "guess_status": "rejected_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "PTOSZEK": {
-      "kupa": "🔥"
-    },
-    "Wixa": {
-      "Heheszek": "😐"
-    },
-    "kupa": {
-      "Wixa": "😐"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
-  "starter": "Wixa",
+  "starter": "Heheszek",
   "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
@@ -81,7 +63,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 1,
@@ -123,28 +105,28 @@
       }
     }
   },
-  "category": "Zawody",
-  "word": "Kosmonauta",
-  "impostor": "Heheszek",
+  "category": "Filmy",
+  "word": "Oppenheimer",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "hint": "kosmos daleko"
+      "role": "player",
+      "category": "Filmy",
+      "word": "Oppenheimer"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Zawody",
-      "word": "Kosmonauta"
+      "role": "impostor",
+      "hint": "niszcząca siła"
     },
     "PTOSZEK": {
       "role": "player",
-      "category": "Zawody",
-      "word": "Kosmonauta"
+      "category": "Filmy",
+      "word": "Oppenheimer"
     },
     "kupa": {
       "role": "player",
-      "category": "Zawody",
-      "word": "Kosmonauta"
+      "category": "Filmy",
+      "word": "Oppenheimer"
     }
   }
 }
