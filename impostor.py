@@ -841,10 +841,7 @@ elif st.session_state.screen == "lobby":
         st.write(f"**Twój nick:** {player_name}")
 
         with st.expander("Aktualne ustawienia", expanded=False):
-            hint_value = game_data['settings'].get('hint_mode', 'off')
-            hint_label = hint_mode_reverse.get(hint_value, hint_value)
-
-            st.write(f"**Podpowiedzi:** {hint_label}")
+            st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
             st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
             st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
             st.write(f"**Trudności:** {', '.join(game_data['settings'].get('selected_difficulties', []))}")
@@ -880,8 +877,6 @@ elif st.session_state.screen == "lobby":
                 "Kategoria": "category",
                 "Podpowiedź": "hint"
             }
-
-            hint_mode_reverse = {v: k for k, v in hint_mode_map.items()}
 
             round_limit_map = {
                 "5": 5,
