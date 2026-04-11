@@ -47,7 +47,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Wixa": "PTOSZEK"
+  },
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
