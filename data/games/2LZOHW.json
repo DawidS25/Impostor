@@ -45,8 +45,8 @@
       "artemis 2"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "Elon Musk",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "reactions": {
