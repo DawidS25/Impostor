@@ -45,7 +45,11 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {},
+  "reactions": {
+    "PTOSZEK": {
+      "kupa": "🔥"
+    }
+  },
   "round_winner": null,
   "starter": "Wixa",
   "current_turn_player": null,
