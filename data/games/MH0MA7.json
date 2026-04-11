@@ -7,7 +7,7 @@
     "sosna",
     "HUUJ"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -30,7 +30,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 0,
     "Wixa": 3,
@@ -38,24 +38,18 @@
     "HUUJ": 0
   },
   "submissions": {
-    "Heheszek": [
-      "telewizor"
-    ],
-    "Wixa": [
-      "chmury"
-    ],
-    "sosna": [
-      "natsu"
-    ],
+    "Heheszek": [],
+    "Wixa": [],
+    "sosna": [],
     "HUUJ": []
   },
-  "impostor_guess": "pilot",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "sosna",
+  "starter": "HUUJ",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -86,7 +80,7 @@
       }
     },
     "sosna": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -114,28 +108,28 @@
       }
     }
   },
-  "category": "Zawody",
-  "word": "Pilot",
-  "impostor": "Wixa",
+  "category": "Sport",
+  "word": "Snowboard",
+  "impostor": "sosna",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zawody",
-      "word": "Pilot"
+      "category": "Sport",
+      "word": "Snowboard"
     },
     "Wixa": {
-      "role": "impostor",
-      "hint": "nad chmurami"
+      "role": "player",
+      "category": "Sport",
+      "word": "Snowboard"
     },
     "sosna": {
-      "role": "player",
-      "category": "Zawody",
-      "word": "Pilot"
+      "role": "impostor",
+      "hint": "jedna deska"
     },
     "HUUJ": {
       "role": "player",
-      "category": "Zawody",
-      "word": "Pilot"
+      "category": "Sport",
+      "word": "Snowboard"
     }
   }
 }
