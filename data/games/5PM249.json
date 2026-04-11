@@ -34,8 +34,8 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "Lodowka",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "reactions": {},
