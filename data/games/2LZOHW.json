@@ -47,7 +47,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Wixa": "kupa"
+  },
   "voted_out": null,
   "reactions": {
     "Heheszek": {
