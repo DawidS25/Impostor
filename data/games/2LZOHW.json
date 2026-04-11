@@ -7,7 +7,7 @@
     "PTOSZEK",
     "kupa"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -24,7 +24,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 2,
+  "round": 3,
   "scores": {
     "Heheszek": 2,
     "Wixa": 1,
@@ -32,47 +32,18 @@
     "kupa": 1
   },
   "submissions": {
-    "Heheszek": [
-      "Barbie",
-      "Peaky Blinders"
-    ],
-    "Wixa": [
-      "zniszczenie",
-      "huragan"
-    ],
-    "PTOSZEK": [
-      "WYBUCH",
-      "Murphy"
-    ],
-    "kupa": [
-      "smierc",
-      "fallout"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "PTOSZEK": [],
+    "kupa": []
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {
-    "kupa": "Wixa",
-    "Heheszek": "Wixa",
-    "PTOSZEK": "Wixa",
-    "Wixa": "PTOSZEK"
-  },
-  "voted_out": "Wixa",
-  "reactions": {
-    "PTOSZEK": {
-      "PTOSZEK": "🔥"
-    },
-    "Wixa": {
-      "Wixa": "🔥"
-    },
-    "Heheszek": {
-      "Wixa": "💀",
-      "kupa": "🔥",
-      "PTOSZEK": "😐"
-    }
-  },
-  "round_winner": "players",
-  "starter": "Heheszek",
+  "votes": {},
+  "voted_out": null,
+  "reactions": {},
+  "round_winner": null,
+  "starter": "kupa",
   "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
@@ -92,7 +63,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 0,
       "impostor_losses": 1,
       "correct_votes": 1,
@@ -135,27 +106,27 @@
     }
   },
   "category": "Filmy",
-  "word": "Oppenheimer",
+  "word": "Parasite",
   "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
       "category": "Filmy",
-      "word": "Oppenheimer"
+      "word": "Parasite"
     },
     "Wixa": {
       "role": "impostor",
-      "hint": "niszcząca siła"
+      "hint": "dwa światy"
     },
     "PTOSZEK": {
       "role": "player",
       "category": "Filmy",
-      "word": "Oppenheimer"
+      "word": "Parasite"
     },
     "kupa": {
       "role": "player",
       "category": "Filmy",
-      "word": "Oppenheimer"
+      "word": "Parasite"
     }
   }
 }
