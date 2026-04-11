@@ -1266,11 +1266,8 @@ elif st.session_state.screen == "game":
 
         st.stop()
 
-    st.subheader("Gra trwa")
-    st.write(f"**Kod gry:** {game_code}")
-    st.write(f"**Gracz:** {player_name}")
-    st.write(f"**Runda:** {game_data.get('round', 1)}")
-    st.write(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")
+    st.subheader(f"**Runda:** {game_data.get('round', 1)}")
+    st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")
 
     if not success:
         st.error("Nie udało się wczytać danych gry.")
