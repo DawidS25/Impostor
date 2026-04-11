@@ -1,0 +1,59 @@
+{
+  "code": "2LZOHW",
+  "host": "Heheszek",
+  "players": [
+    "Heheszek"
+  ],
+  "status": "waiting",
+  "settings": {
+    "hint_mode": "off",
+    "round_limit": 10,
+    "selected_categories": [
+      "Miasta",
+      "Sport",
+      "Filmy",
+      "Zawody",
+      "Natura",
+      "Technologia"
+    ],
+    "selected_difficulties": [
+      "łatwe",
+      "średnie",
+      "trudne",
+      "ekstremalnie trudne"
+    ]
+  },
+  "round": 0,
+  "scores": {
+    "Heheszek": 0
+  },
+  "submissions": {
+    "Heheszek": []
+  },
+  "impostor_guess": "",
+  "guess_status": "none",
+  "votes": {},
+  "voted_out": null,
+  "reactions": {},
+  "round_winner": null,
+  "starter": null,
+  "current_turn_player": null,
+  "turn_order_remaining": [],
+  "turn_number": 1,
+  "stats": {
+    "Heheszek": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0,
+      "emoji_received": {
+        "🔥": 0,
+        "👍": 0,
+        "😐": 0,
+        "👎": 0,
+        "💀": 0
+      }
+    }
+  }
+}
