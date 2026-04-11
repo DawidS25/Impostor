@@ -1300,8 +1300,6 @@ elif st.session_state.screen == "game":
 
         st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")        
 
-        st.write("### Twoje hasła")
-
         with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
             submission_text = st.text_input(
                 "Wpisz kolejne hasło / skojarzenie",
