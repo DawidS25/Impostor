@@ -1267,8 +1267,7 @@ elif st.session_state.screen == "game":
         st.stop()
 
     st.subheader(f"**Runda:** {game_data.get('round', 1) + 1}")
-    st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")
-
+    
     if not success:
         st.error("Nie udało się wczytać danych gry.")
     else:
@@ -1298,7 +1297,8 @@ elif st.session_state.screen == "game":
             st.success("Jesteś zwykłym graczem")
             st.write(f"**Kategoria:** {my_role['category']}")
             st.write(f"**Hasło:** {my_role['word']}")
-        
+
+        st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")        
 
         st.write("### Twoje hasła")
 
