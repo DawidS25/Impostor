@@ -77,7 +77,6 @@ def start_game_logic(game_data):
     hint = chosen_entry.get("hint", "")
 
     starter = choose_round_starter(players, impostor)
-    remaining_players = [player for player in players if player != starter]
 
     roles = {}
     for player in players:
@@ -103,9 +102,6 @@ def start_game_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["starter"] = starter
-    game_data["current_turn_player"] = starter
-    game_data["turn_order_remaining"] = remaining_players
-    game_data["turn_number"] = 1
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -137,7 +133,6 @@ def next_round_logic(game_data):
 
     impostor = random.choice(players)
     starter = choose_round_starter(players, impostor)
-    remaining_players = [player for player in players if player != starter]
     category = random.choice(available_categories)
     available_words = [
         entry for entry in WORDS[category]
@@ -174,9 +169,6 @@ def next_round_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["starter"] = starter
-    game_data["current_turn_player"] = starter
-    game_data["turn_order_remaining"] = remaining_players
-    game_data["turn_number"] = 1
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -574,11 +566,6 @@ def apply_reaction_stats(game_data):
     game_data["stats"] = stats
     return game_data
 
-def pick_next_turn_player(remaining_players):
-    if not remaining_players:
-        return None
-    return random.choice(remaining_players)
-
 # ------------------- UI ------------------- #
 if st.session_state.screen == "start":
     st.title("Impostor")
@@ -636,9 +623,6 @@ elif st.session_state.screen == "host":
                     "reactions": {},
                     "round_winner": None,
                     "starter": None,
-                    "current_turn_player": None,
-                    "turn_order_remaining": [],
-                    "turn_number": 1,
                     "stats": {
                         player_name.strip(): {
                             "times_impostor": 0,
@@ -839,18 +823,6 @@ elif st.session_state.screen == "lobby":
                     "💀": 0
                 }
                 changed = True
-        
-        if "current_turn_player" not in game_data:
-            game_data["current_turn_player"] = None
-            changed = True
-
-        if "turn_order_remaining" not in game_data:
-            game_data["turn_order_remaining"] = []
-            changed = True
-
-        if "turn_number" not in game_data:
-            game_data["turn_number"] = 1
-            changed = True
                 
 
         if changed:
@@ -1327,8 +1299,7 @@ elif st.session_state.screen == "game":
             st.write(f"**Hasło:** {my_role['word']}")
 
         st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")        
-        st.write(f"**Teraz wpisuje:** {game_data.get('current_turn_player', 'Brak')}")
-        
+
         with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
             submission_text = st.text_input(
                 "Wpisz kolejne hasło / skojarzenie",
