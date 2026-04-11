@@ -1181,7 +1181,8 @@ elif st.session_state.screen == "game":
         st.write("### 🎖️ Wyróżnienia")
 
         st.write(
-            f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])}"
+            f"🕵️ **Najlepszy detektyw:** {format_player_list(rankings['best_detectives'])} "
+            f"({rankings['best_detective_value']} trafionych głosów)"
         )
 
         if rankings["best_impostors"]:
