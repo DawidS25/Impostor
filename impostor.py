@@ -1338,31 +1338,31 @@ elif st.session_state.screen == "game":
                 )
             submitted = st.form_submit_button("Dodaj hasło", use_container_width=True)
 
-        if submitted:
-            new_text = submission_text.strip()
+            if submitted:
+                new_text = submission_text.strip()
 
-            if not new_text:
-                st.error("Wpisz hasło.")
-            else:
-                if "submissions" not in game_data:
-                    game_data["submissions"] = {}
-
-                if player_name not in game_data["submissions"]:
-                    game_data["submissions"][player_name] = []
-
-                if isinstance(game_data["submissions"][player_name], str):
-                    old_value = game_data["submissions"][player_name].strip()
-                    game_data["submissions"][player_name] = [old_value] if old_value else []
-
-                game_data["submissions"][player_name].append(new_text)
-
-                updated, result = update_game_file(game_code, game_data)
-
-                if updated:
-                    st.success("Hasło dodane.")
-                    st.rerun()
+                if not new_text:
+                    st.error("Wpisz hasło.")
                 else:
-                    st.error(f"Błąd zapisu hasła: {result}")
+                    if "submissions" not in game_data:
+                        game_data["submissions"] = {}
+
+                    if player_name not in game_data["submissions"]:
+                        game_data["submissions"][player_name] = []
+
+                    if isinstance(game_data["submissions"][player_name], str):
+                        old_value = game_data["submissions"][player_name].strip()
+                        game_data["submissions"][player_name] = [old_value] if old_value else []
+
+                    game_data["submissions"][player_name].append(new_text)
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.success("Hasło dodane.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd zapisu hasła: {result}")
 
         submissions = game_data.get("submissions", {})
         reactions = game_data.get("reactions", {})
