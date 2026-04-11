@@ -585,6 +585,7 @@ if st.session_state.screen == "start":
 
 
 elif st.session_state.screen == "host":
+    st.title("Impostor")
     st.subheader("Tworzenie nowej gry")
 
     player_name = st.text_input("Podaj swoją nazwę", key="host_name")
@@ -657,6 +658,7 @@ elif st.session_state.screen == "host":
 
 
 elif st.session_state.screen == "join":
+    st.title("Impostor")
     st.subheader("Dołącz do gry")
 
     player_name = st.text_input("Podaj swoją nazwę", key="join_name")
