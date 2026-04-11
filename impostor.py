@@ -573,12 +573,12 @@ if st.session_state.screen == "start":
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("Stwórz nową grę", use_container_width=True):
+        if st.button("STWÓRZ GRĘ", use_container_width=True):
             st.session_state.screen = "host"
             st.rerun()
 
     with col2:
-        if st.button("Dołącz do gry", use_container_width=True):
+        if st.button("DOŁĄCZ DO GRY", use_container_width=True):
             st.session_state.screen = "join"
             st.rerun()
 
