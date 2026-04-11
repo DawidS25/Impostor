@@ -841,7 +841,7 @@ elif st.session_state.screen == "lobby":
         st.write(f"**Twój nick:** {player_name}")
 
         with st.expander("Aktualne ustawienia", expanded=False):
-            st.write(f"**Podpowiedzi:** {game_data['settings'].get('hint_mode', 'off')}")
+            st.write(f"**Podpowiedzi:** {hint_mode_reverse.get(game_data['settings'].get('hint_mode', 'off'), 'Wyłączone')}")
             st.write(f"**Limit rund:** {game_data['settings'].get('round_limit', 10)}")
             st.write(f"**Kategorie:** {', '.join(game_data['settings'].get('selected_categories', []))}")
             st.write(f"**Trudności:** {', '.join(game_data['settings'].get('selected_difficulties', []))}")
