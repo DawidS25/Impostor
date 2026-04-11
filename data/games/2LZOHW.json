@@ -50,7 +50,8 @@
   "votes": {
     "PTOSZEK": "kupa",
     "Wixa": "Heheszek",
-    "kupa": "Wixa"
+    "kupa": "Wixa",
+    "Heheszek": "kupa"
   },
   "voted_out": null,
   "reactions": {
