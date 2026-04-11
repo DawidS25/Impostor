@@ -1266,7 +1266,7 @@ elif st.session_state.screen == "game":
 
         st.stop()
 
-    st.subheader(f"**Runda:** {game_data.get('round', 1)}")
+    st.subheader(f"**Runda:** {game_data.get('round', 1) + 1}")
     st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")
 
     if not success:
