@@ -1202,8 +1202,6 @@ elif st.session_state.screen == "game":
 
         rankings = compute_game_rankings(game_data)
 
-        st.write(rankings)
-
         # 🏆 Ranking punktowy
         st.write("### 🏆 Ranking punktowy")
         for i, (player, score) in enumerate(rankings["score_ranking"], start=1):
