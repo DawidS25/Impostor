@@ -200,8 +200,8 @@ def resolve_voting_result(game_data):
     players = game_data.get("players", [])
     impostor = game_data.get("impostor")
 
-    if len(votes) < len(players):
-        return False, "Nie wszyscy gracze oddali głos."
+    #if len(votes) < len(players):
+    #    return False, "Nie wszyscy gracze oddali głos."
 
     vote_count = {}
 
