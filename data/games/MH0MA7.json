@@ -7,7 +7,7 @@
     "sosna",
     "HUUJ"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -30,7 +30,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 2,
     "Wixa": 3,
@@ -38,35 +38,18 @@
     "HUUJ": 1
   },
   "submissions": {
-    "Heheszek": [
-      "zryw",
-      "woda"
-    ],
-    "Wixa": [
-      "spadek",
-      "nagly"
-    ],
-    "sosna": [
-      "mia",
-      "waterbucket clutch"
-    ],
-    "HUUJ": [
-      "skok",
-      "morze"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "sosna": [],
+    "HUUJ": []
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {
-    "Heheszek": "Wixa",
-    "Wixa": "HUUJ",
-    "HUUJ": "Wixa",
-    "sosna": "Wixa"
-  },
-  "voted_out": "Wixa",
+  "votes": {},
+  "voted_out": null,
   "reactions": {},
-  "round_winner": "players",
-  "starter": "HUUJ",
+  "round_winner": null,
+  "starter": "Heheszek",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -97,7 +80,7 @@
       }
     },
     "sosna": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 2,
@@ -125,28 +108,28 @@
       }
     }
   },
-  "category": "Natura",
-  "word": "Klif",
-  "impostor": "Wixa",
+  "category": "Technologia",
+  "word": "Chmura",
+  "impostor": "sosna",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Natura",
-      "word": "Klif"
+      "category": "Technologia",
+      "word": "Chmura"
     },
     "Wixa": {
-      "role": "impostor",
-      "hint": "nagły spadek"
+      "role": "player",
+      "category": "Technologia",
+      "word": "Chmura"
     },
     "sosna": {
-      "role": "player",
-      "category": "Natura",
-      "word": "Klif"
+      "role": "impostor",
+      "hint": "dane niebo"
     },
     "HUUJ": {
       "role": "player",
-      "category": "Natura",
-      "word": "Klif"
+      "category": "Technologia",
+      "word": "Chmura"
     }
   }
 }
