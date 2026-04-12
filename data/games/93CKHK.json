@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_decision",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -35,7 +35,8 @@
       "g"
     ],
     "Wixa": [
-      "h"
+      "h",
+      "fasfsa"
     ],
     "Bestia": [
       "g",
@@ -51,7 +52,7 @@
   "resume_round": null,
   "return_to_lobby_mode": false,
   "starter": "Bestia",
-  "current_turn_player": "Wixa",
+  "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
   "subround": 2,
