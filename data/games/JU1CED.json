@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -47,7 +47,7 @@
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": null,
+  "starter": "Wixa",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
@@ -78,7 +78,7 @@
       }
     },
     "Bestia": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -90,6 +90,25 @@
         "👎": 0,
         "💀": 0
       }
+    }
+  },
+  "category": "Filmy",
+  "word": "Batman",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Filmy",
+      "word": "Batman"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Filmy",
+      "word": "Batman"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "hint": "noc symbol"
     }
   }
 }
