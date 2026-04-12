@@ -47,8 +47,8 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "g",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "reactions": {},
