@@ -94,25 +94,26 @@
   },
   "used_words": [
     "Reykjavik",
-    "Quinoa"
+    "Quinoa",
+    "Dziobak"
   ],
-  "category": "Jedzenie",
-  "word": "Quinoa",
-  "impostor": "Heheszek",
+  "category": "Zwierzęta",
+  "word": "Dziobak",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Jedzenie"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Dziobak"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Jedzenie",
-      "word": "Quinoa"
+      "role": "impostor",
+      "category": "Zwierzęta"
     },
     "Bestia": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Quinoa"
+      "category": "Zwierzęta",
+      "word": "Dziobak"
     }
   }
 }
