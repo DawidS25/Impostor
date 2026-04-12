@@ -51,7 +51,11 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {},
+  "reactions": {
+    "Heheszek": {
+      "Wixa": "🔥"
+    }
+  },
   "round_winner": null,
   "starter": "Bestia",
   "current_turn_player": null,
