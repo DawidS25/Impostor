@@ -39,7 +39,9 @@
   "submissions": {
     "Heheszek": [],
     "Wixa": [],
-    "Bestia": []
+    "Bestia": [
+      "Szyba"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -48,9 +50,8 @@
   "reactions": {},
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": "Bestia",
+  "current_turn_player": "Heheszek",
   "turn_order_remaining": [
-    "Heheszek",
     "Wixa"
   ],
   "turn_number": 1,
