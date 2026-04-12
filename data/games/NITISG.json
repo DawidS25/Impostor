@@ -42,11 +42,11 @@
   "round_winner": null,
   "resume_round": null,
   "return_to_lobby_mode": false,
-  "starter": "Bestia",
-  "current_turn_player": "Bestia",
+  "starter": "Heheszek",
+  "current_turn_player": "Heheszek",
   "turn_order_remaining": [
-    "Heheszek",
-    "Wixa"
+    "Wixa",
+    "Bestia"
   ],
   "turn_number": 1,
   "subround": 1,
@@ -98,25 +98,26 @@
   "used_words": [
     "Curling",
     "Kraków",
-    "Madryt"
+    "Madryt",
+    "Kendrick Lamar"
   ],
-  "category": "Miasta",
-  "word": "Madryt",
+  "category": "Muzyka",
+  "word": "Kendrick Lamar",
   "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
       "role": "impostor",
-      "category": "Miasta"
+      "category": "Muzyka"
     },
     "Wixa": {
       "role": "player",
-      "category": "Miasta",
-      "word": "Madryt"
+      "category": "Muzyka",
+      "word": "Kendrick Lamar"
     },
     "Bestia": {
       "role": "player",
-      "category": "Miasta",
-      "word": "Madryt"
+      "category": "Muzyka",
+      "word": "Kendrick Lamar"
     }
   }
 }
