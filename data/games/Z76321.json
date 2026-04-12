@@ -46,7 +46,9 @@
     "Heheszek": [
       "v"
     ],
-    "Wixa": [],
+    "Wixa": [
+      "b"
+    ],
     "Bestia": [
       "a"
     ]
@@ -58,7 +60,7 @@
   "reactions": {},
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": "Wixa",
+  "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
   "stats": {
