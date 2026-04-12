@@ -39,11 +39,11 @@
   "round_winner": null,
   "resume_round": null,
   "return_to_lobby_mode": false,
-  "starter": "Heheszek",
-  "current_turn_player": "Heheszek",
+  "starter": "Bestia",
+  "current_turn_player": "Bestia",
   "turn_order_remaining": [
-    "Wixa",
-    "Bestia"
+    "Heheszek",
+    "Wixa"
   ],
   "turn_number": 1,
   "subround": 1,
@@ -93,25 +93,26 @@
     }
   },
   "used_words": [
-    "Dziobak"
+    "Dziobak",
+    "Quinoa"
   ],
-  "category": "Zwierzęta",
-  "word": "Dziobak",
-  "impostor": "Bestia",
+  "category": "Jedzenie",
+  "word": "Quinoa",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "role": "impostor",
+      "category": "Jedzenie"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "category": "Jedzenie",
+      "word": "Quinoa"
     },
     "Bestia": {
-      "role": "impostor",
-      "category": "Zwierzęta"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Quinoa"
     }
   }
 }
