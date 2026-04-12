@@ -49,7 +49,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "Heheszek": "Wixa"
+  },
   "voted_out": null,
   "reactions": {
     "Heheszek": {
