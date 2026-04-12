@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -36,36 +36,29 @@
       "Podstawowe ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 1,
     "Wixa": 4,
     "Bestia": 1
   },
   "submissions": {
-    "Heheszek": [
-      "v"
-    ],
-    "Wixa": [
-      "d"
-    ],
-    "Bestia": [
-      "a"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "Bestia": []
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {
-    "Heheszek": "Wixa",
-    "Wixa": "Heheszek",
-    "Bestia": "Heheszek"
-  },
-  "voted_out": "Heheszek",
+  "votes": {},
+  "voted_out": null,
   "reactions": {},
-  "round_winner": "players",
-  "starter": "Bestia",
-  "current_turn_player": null,
-  "turn_order_remaining": [],
+  "round_winner": null,
+  "starter": "Heheszek",
+  "current_turn_player": "Heheszek",
+  "turn_order_remaining": [
+    "Wixa",
+    "Bestia"
+  ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
@@ -83,7 +76,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 1,
@@ -111,27 +104,28 @@
       }
     }
   },
-  "category": "Miasta",
-  "word": "Paryż",
-  "impostor": "Heheszek",
+  "category": "Zwierzęta",
+  "word": "Kot",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "hint": "wieczorne światła"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Kot"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Miasta",
-      "word": "Paryż"
+      "role": "impostor",
+      "hint": "mruczy"
     },
     "Bestia": {
       "role": "player",
-      "category": "Miasta",
-      "word": "Paryż"
+      "category": "Zwierzęta",
+      "word": "Kot"
     }
   },
   "used_words": [
     "Dziobak",
-    "Paryż"
+    "Paryż",
+    "Kot"
   ]
 }
