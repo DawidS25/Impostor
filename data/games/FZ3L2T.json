@@ -30,7 +30,9 @@
     "Bestia": 0
   },
   "submissions": {
-    "Heheszek": [],
+    "Heheszek": [
+      "b"
+    ],
     "Wixa": [
       "b"
     ],
@@ -47,7 +49,7 @@
   "resume_round": null,
   "return_to_lobby_mode": false,
   "starter": "Bestia",
-  "current_turn_player": "Heheszek",
+  "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
   "stats": {
