@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "lobby",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -51,15 +51,14 @@
   "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "Bestia": "🔥"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
-  "starter": null,
-  "current_turn_player": null,
-  "turn_order_remaining": [],
+  "starter": "Bestia",
+  "current_turn_player": "Bestia",
+  "turn_order_remaining": [
+    "Heheszek",
+    "Wixa"
+  ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
@@ -77,7 +76,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -105,9 +104,26 @@
       }
     }
   },
-  "category": "Natura",
-  "word": "Gejzer",
-  "impostor": null,
-  "roles": {},
-  "used_words": []
+  "category": "Zwierzęta",
+  "word": "Dziobak",
+  "impostor": "Wixa",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Dziobak"
+    },
+    "Wixa": {
+      "role": "impostor",
+      "hint": "dziwne zwierzę"
+    },
+    "Bestia": {
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Dziobak"
+    }
+  },
+  "used_words": [
+    "Dziobak"
+  ]
 }
