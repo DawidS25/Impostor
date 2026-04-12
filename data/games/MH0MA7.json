@@ -57,7 +57,9 @@
   },
   "impostor_guess": "",
   "guess_status": "none",
-  "votes": {},
+  "votes": {
+    "sosna": "HUUJ"
+  },
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
