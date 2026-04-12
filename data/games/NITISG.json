@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -42,9 +42,12 @@
   "round_winner": null,
   "resume_round": null,
   "return_to_lobby_mode": false,
-  "starter": null,
-  "current_turn_player": null,
-  "turn_order_remaining": [],
+  "starter": "Heheszek",
+  "current_turn_player": "Heheszek",
+  "turn_order_remaining": [
+    "Wixa",
+    "Bestia"
+  ],
   "turn_number": 1,
   "subround": 1,
   "round_decisions": {},
@@ -78,7 +81,7 @@
       }
     },
     "Bestia": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -92,5 +95,26 @@
       }
     }
   },
-  "used_words": []
+  "used_words": [
+    "Curling"
+  ],
+  "category": "Sporty",
+  "word": "Curling",
+  "impostor": "Bestia",
+  "roles": {
+    "Heheszek": {
+      "role": "player",
+      "category": "Sporty",
+      "word": "Curling"
+    },
+    "Wixa": {
+      "role": "player",
+      "category": "Sporty",
+      "word": "Curling"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Sporty"
+    }
+  }
 }
