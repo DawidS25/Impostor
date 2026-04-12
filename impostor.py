@@ -77,6 +77,7 @@ def start_game_logic(game_data):
     hint = chosen_entry.get("hint", "")
 
     starter = choose_round_starter(players, impostor)
+    remaining_players = [player for player in players if player != starter]
 
     roles = {}
     for player in players:
@@ -102,6 +103,9 @@ def start_game_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["starter"] = starter
+    game_data["current_turn_player"] = starter
+    game_data["turn_order_remaining"] = remaining_players
+    game_data["turn_number"] = 1
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -133,6 +137,7 @@ def next_round_logic(game_data):
 
     impostor = random.choice(players)
     starter = choose_round_starter(players, impostor)
+    remaining_players = [player for player in players if player != starter]
     category = random.choice(available_categories)
     available_words = [
         entry for entry in WORDS[category]
@@ -169,6 +174,9 @@ def next_round_logic(game_data):
     game_data["word"] = word
     game_data["impostor"] = impostor
     game_data["starter"] = starter
+    game_data["current_turn_player"] = starter
+    game_data["turn_order_remaining"] = remaining_players
+    game_data["turn_number"] = 1
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
     game_data["roles"] = roles
@@ -200,8 +208,8 @@ def resolve_voting_result(game_data):
     players = game_data.get("players", [])
     impostor = game_data.get("impostor")
 
-    #if len(votes) < len(players):
-    #    return False, "Nie wszyscy gracze oddali głos."
+    if len(votes) < len(players):
+        return False, "Nie wszyscy gracze oddali głos."
 
     vote_count = {}
 
@@ -566,6 +574,11 @@ def apply_reaction_stats(game_data):
     game_data["stats"] = stats
     return game_data
 
+def pick_next_turn_player(remaining_players):
+    if not remaining_players:
+        return None
+    return random.choice(remaining_players)
+
 # ------------------- UI ------------------- #
 if st.session_state.screen == "start":
     st.title("Impostor")
@@ -623,6 +636,9 @@ elif st.session_state.screen == "host":
                     "reactions": {},
                     "round_winner": None,
                     "starter": None,
+                    "current_turn_player": None,
+                    "turn_order_remaining": [],
+                    "turn_number": 1,
                     "stats": {
                         player_name.strip(): {
                             "times_impostor": 0,
@@ -823,6 +839,18 @@ elif st.session_state.screen == "lobby":
                     "💀": 0
                 }
                 changed = True
+        
+        if "current_turn_player" not in game_data:
+            game_data["current_turn_player"] = None
+            changed = True
+
+        if "turn_order_remaining" not in game_data:
+            game_data["turn_order_remaining"] = []
+            changed = True
+
+        if "turn_number" not in game_data:
+            game_data["turn_number"] = 1
+            changed = True
                 
 
         if changed:
@@ -1290,7 +1318,6 @@ elif st.session_state.screen == "game":
                 st.write(f"**Podpowiedź - kategoria:** {my_role['category']}")
 
             if "hint" in my_role:
-                #st.write(f"**Podpowiedź - kategoria:** {my_role['category']}")
                 st.write(f"**Podpowiedź:** {my_role['hint']}")
 
 
@@ -1300,40 +1327,57 @@ elif st.session_state.screen == "game":
             st.write(f"**Hasło:** {my_role['word']}")
 
         st.warning(f"**Tę rundę zaczyna:** {game_data.get('starter', 'Brak')}")        
+        st.write(f"**Teraz wpisuje:** {game_data.get('current_turn_player', 'Brak')}")
+        
+        current_turn_player = game_data.get("current_turn_player")
 
-        with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
-            submission_text = st.text_input(
-                "Wpisz kolejne hasło / skojarzenie",
-                key=f"submission_input_{player_name}"
-            )
+        if player_name == current_turn_player:
+            with st.form(key=f"submission_form_{player_name}", clear_on_submit=True):
+                submission_text = st.text_input(
+                    "Wpisz swoje hasło / skojarzenie",
+                    key=f"submission_input_{player_name}"
+                )
 
-            submitted = st.form_submit_button("Dodaj hasło", use_container_width=True)
+                submitted = st.form_submit_button("Dodaj hasło", use_container_width=True)
 
-        if submitted:
-            new_text = submission_text.strip()
+            if submitted:
+                new_text = submission_text.strip()
 
-            if not new_text:
-                st.error("Wpisz hasło.")
-            else:
-                if "submissions" not in game_data:
-                    game_data["submissions"] = {}
-
-                if player_name not in game_data["submissions"]:
-                    game_data["submissions"][player_name] = []
-
-                if isinstance(game_data["submissions"][player_name], str):
-                    old_value = game_data["submissions"][player_name].strip()
-                    game_data["submissions"][player_name] = [old_value] if old_value else []
-
-                game_data["submissions"][player_name].append(new_text)
-
-                updated, result = update_game_file(game_code, game_data)
-
-                if updated:
-                    st.success("Hasło dodane.")
-                    st.rerun()
+                if not new_text:
+                    st.error("Wpisz hasło.")
                 else:
-                    st.error(f"Błąd zapisu hasła: {result}")
+                    if "submissions" not in game_data:
+                        game_data["submissions"] = {}
+
+                    if player_name not in game_data["submissions"]:
+                        game_data["submissions"][player_name] = []
+
+                    if isinstance(game_data["submissions"][player_name], str):
+                        old_value = game_data["submissions"][player_name].strip()
+                        game_data["submissions"][player_name] = [old_value] if old_value else []
+
+                    game_data["submissions"][player_name].append(new_text)
+
+                    remaining = game_data.get("turn_order_remaining", [])
+
+                    next_player = pick_next_turn_player(remaining)
+
+                    if next_player is not None:
+                        game_data["current_turn_player"] = next_player
+                        game_data["turn_order_remaining"] = [p for p in remaining if p != next_player]
+                    else:
+                        game_data["current_turn_player"] = None
+                        game_data["turn_order_remaining"] = []
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.success("Hasło dodane.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd zapisu hasła: {result}")
+        else:
+            st.info(f"Czekaj na swoją kolej. Teraz wpisuje: {current_turn_player}")
 
         submissions = game_data.get("submissions", {})
         reactions = game_data.get("reactions", {})

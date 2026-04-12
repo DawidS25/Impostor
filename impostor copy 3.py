@@ -1290,6 +1290,7 @@ elif st.session_state.screen == "game":
                 st.write(f"**Podpowiedź - kategoria:** {my_role['category']}")
 
             if "hint" in my_role:
+                #st.write(f"**Podpowiedź - kategoria:** {my_role['category']}")
                 st.write(f"**Podpowiedź:** {my_role['hint']}")
 
 
