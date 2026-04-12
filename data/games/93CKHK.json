@@ -31,7 +31,8 @@
   },
   "submissions": {
     "Heheszek": [
-      "s"
+      "s",
+      "g"
     ],
     "Wixa": [
       "h"
@@ -50,10 +51,8 @@
   "resume_round": null,
   "return_to_lobby_mode": false,
   "starter": "Bestia",
-  "current_turn_player": "Heheszek",
-  "turn_order_remaining": [
-    "Wixa"
-  ],
+  "current_turn_player": "Wixa",
+  "turn_order_remaining": [],
   "turn_number": 1,
   "subround": 2,
   "round_decisions": {},
