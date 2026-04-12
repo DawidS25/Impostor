@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -36,7 +36,7 @@
       "Podstawowe ekstremalnie trudne"
     ]
   },
-  "round": 3,
+  "round": 4,
   "scores": {
     "Heheszek": 1,
     "Wixa": 7,
@@ -47,22 +47,22 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "g",
-  "guess_status": "approved_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Heheszek",
-  "current_turn_player": "Heheszek",
+  "starter": "Bestia",
+  "current_turn_player": "Bestia",
   "turn_order_remaining": [
-    "Wixa",
-    "Bestia"
+    "Heheszek",
+    "Wixa"
   ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 0,
       "impostor_losses": 1,
       "correct_votes": 1,
@@ -104,29 +104,30 @@
       }
     }
   },
-  "category": "Miasta",
-  "word": "Helsinki",
-  "impostor": "Bestia",
+  "category": "Jedzenie",
+  "word": "Sushi",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Miasta",
-      "word": "Helsinki"
+      "role": "impostor",
+      "hint": "ryż i ryba"
     },
     "Wixa": {
       "role": "player",
-      "category": "Miasta",
-      "word": "Helsinki"
+      "category": "Jedzenie",
+      "word": "Sushi"
     },
     "Bestia": {
-      "role": "impostor",
-      "hint": "zimna stolica"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Sushi"
     }
   },
   "used_words": [
     "Dziobak",
     "Paryż",
     "Kot",
-    "Helsinki"
+    "Helsinki",
+    "Sushi"
   ]
 }
