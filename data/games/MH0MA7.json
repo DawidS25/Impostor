@@ -59,7 +59,8 @@
   "guess_status": "none",
   "votes": {
     "Heheszek": "Wixa",
-    "Wixa": "HUUJ"
+    "Wixa": "HUUJ",
+    "HUUJ": "Wixa"
   },
   "voted_out": null,
   "reactions": {},
