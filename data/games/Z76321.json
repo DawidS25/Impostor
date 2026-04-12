@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -36,7 +36,7 @@
       "Podstawowe ekstremalnie trudne"
     ]
   },
-  "round": 5,
+  "round": 6,
   "scores": {
     "Heheszek": 1,
     "Wixa": 7,
@@ -47,22 +47,22 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "t",
-  "guess_status": "rejected_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Wixa",
-  "current_turn_player": "Wixa",
+  "starter": "Heheszek",
+  "current_turn_player": "Heheszek",
   "turn_order_remaining": [
-    "Heheszek",
+    "Wixa",
     "Bestia"
   ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
-      "times_impostor": 3,
+      "times_impostor": 4,
       "impostor_wins": 0,
       "impostor_losses": 3,
       "correct_votes": 1,
@@ -105,22 +105,22 @@
     }
   },
   "category": "Zwierzęta",
-  "word": "Tygrys",
+  "word": "Delfin",
   "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
       "role": "impostor",
-      "hint": "pasiasty drapieżnik"
+      "hint": "inteligentny ssak"
     },
     "Wixa": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Tygrys"
+      "word": "Delfin"
     },
     "Bestia": {
       "role": "player",
       "category": "Zwierzęta",
-      "word": "Tygrys"
+      "word": "Delfin"
     }
   },
   "used_words": [
@@ -129,6 +129,7 @@
     "Kot",
     "Helsinki",
     "Sushi",
-    "Tygrys"
+    "Tygrys",
+    "Delfin"
   ]
 }
