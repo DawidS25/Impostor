@@ -51,44 +51,37 @@ def start_game_logic(game_data):
         return False, "Do startu potrzeba co najmniej 3 graczy."
 
     settings = game_data.get("settings", {})
-    selected_categories = settings.get("selected_categories", list(WORDS.keys()))
-    selected_difficulties = settings.get(
-       "selected_difficulties",
-        ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
-    )
+    selected_packs = settings.get("selected_packs", list(WORDS.keys()))
     hint_mode = settings.get("hint_mode", "off")
 
-    available_categories = [cat for cat in selected_categories if cat in WORDS]
-
-
     impostor = random.choice(players)
-    selected_packs = game_data["settings"].get("selected_packs", list(WORDS.keys()))
 
     # zbieramy wszystkie słowa z wybranych paczek
     all_words = []
     for pack in selected_packs:
         all_words.extend(WORDS.get(pack, []))
 
-    # losujemy jedno słowo
+    if not all_words:
+        return False, "Brak słów w wybranych paczkach."
+
+    if "used_words" not in game_data:
+        game_data["used_words"] = []
+
     used_words = game_data.get("used_words", [])
 
+    # filtrujemy już użyte słowa
     available_words = [w for w in all_words if w["word"] not in used_words]
 
+    # jeśli skończyły się słowa, resetujemy listę użytych
     if not available_words:
-        # reset jeśli skończyły się słowa
         game_data["used_words"] = []
         available_words = all_words
 
-    chosen = random.choice(available_words)
-
-    word = chosen["word"]
-    category = chosen["category"]
-    hint = chosen.get("hint", "")
-
     chosen_entry = random.choice(available_words)
+
     word = chosen_entry["word"]
+    category = chosen_entry["category"]
     hint = chosen_entry.get("hint", "")
-    
 
     starter = choose_round_starter(players, impostor)
     remaining_players = [player for player in players if player != starter]
@@ -111,6 +104,7 @@ def start_game_logic(game_data):
                 "category": category,
                 "word": word
             }
+
     game_data["used_words"].append(word)
     game_data["status"] = "started"
     game_data["category"] = category
@@ -120,8 +114,10 @@ def start_game_logic(game_data):
     game_data["current_turn_player"] = starter
     game_data["turn_order_remaining"] = remaining_players
     game_data["turn_number"] = 1
+
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
+
     game_data["roles"] = roles
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
@@ -137,32 +133,40 @@ def next_round_logic(game_data):
     players = game_data["players"]
 
     settings = game_data.get("settings", {})
-    selected_categories = settings.get("selected_categories", list(WORDS.keys()))
-    selected_difficulties = settings.get(
-        "selected_difficulties",
-        ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
-    )    
+    selected_packs = settings.get("selected_packs", list(WORDS.keys()))
     hint_mode = settings.get("hint_mode", "off")
 
-    available_categories = [cat for cat in selected_categories if cat in WORDS]
+    impostor = random.choice(players)
 
-    if not available_categories:
+    # zbieramy wszystkie słowa z wybranych paczek
+    all_words = []
+    for pack in selected_packs:
+        all_words.extend(WORDS.get(pack, []))
+
+    if not all_words:
         return game_data
 
-    impostor = random.choice(players)
-    starter = choose_round_starter(players, impostor)
-    remaining_players = [player for player in players if player != starter]
-    category = random.choice(available_categories)
-    available_words = [
-        entry for entry in WORDS[category]
-        if entry.get("difficulty") in selected_difficulties
-    ]
+    if "used_words" not in game_data:
+        game_data["used_words"] = []
+
+    used_words = game_data.get("used_words", [])
+
+    # filtrujemy już użyte słowa
+    available_words = [w for w in all_words if w["word"] not in used_words]
+
+    # jeśli skończyły się słowa, resetujemy listę użytych
     if not available_words:
-     return game_data
+        game_data["used_words"] = []
+        available_words = all_words
 
     chosen_entry = random.choice(available_words)
+
     word = chosen_entry["word"]
+    category = chosen_entry["category"]
     hint = chosen_entry.get("hint", "")
+
+    starter = choose_round_starter(players, impostor)
+    remaining_players = [player for player in players if player != starter]
 
     roles = {}
     for player in players:
@@ -183,6 +187,7 @@ def next_round_logic(game_data):
                 "word": word
             }
 
+    game_data["used_words"].append(word)
     game_data["status"] = "started"
     game_data["category"] = category
     game_data["word"] = word
@@ -191,10 +196,12 @@ def next_round_logic(game_data):
     game_data["current_turn_player"] = starter
     game_data["turn_order_remaining"] = remaining_players
     game_data["turn_number"] = 1
+
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
+
     game_data["roles"] = roles
-    game_data["round"] = game_data.get("round", 1) + 1
+    game_data["round"] = game_data.get("round", 0) + 1
     game_data["submissions"] = {player: [] for player in players}
     game_data["impostor_guess"] = ""
     game_data["guess_status"] = "none"
@@ -870,6 +877,9 @@ elif st.session_state.screen == "lobby":
             game_data["used_words"] = []
             changed = True
                 
+        if "selected_packs" not in game_data["settings"]:
+            game_data["settings"]["selected_packs"] = list(WORDS.keys())
+            changed = True
 
         if changed:
             update_game_file(game_code, game_data)
