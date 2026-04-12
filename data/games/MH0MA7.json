@@ -45,7 +45,9 @@
       "4,99"
     ],
     "sosna": [],
-    "HUUJ": []
+    "HUUJ": [
+      "dane"
+    ]
   },
   "impostor_guess": "",
   "guess_status": "none",
