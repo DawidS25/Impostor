@@ -7,7 +7,7 @@
     "sosna",
     "HUUJ"
   ],
-  "status": "voting",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -32,9 +32,9 @@
   },
   "round": 2,
   "scores": {
-    "Heheszek": 0,
+    "Heheszek": 1,
     "Wixa": 3,
-    "sosna": 3,
+    "sosna": 4,
     "HUUJ": 0
   },
   "submissions": {
@@ -63,17 +63,17 @@
     "Heheszek": "HUUJ",
     "Wixa": "sosna"
   },
-  "voted_out": null,
+  "voted_out": "HUUJ",
   "reactions": {},
-  "round_winner": null,
+  "round_winner": "players",
   "starter": "sosna",
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0,
+      "correct_votes": 1,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
@@ -100,8 +100,8 @@
       "times_impostor": 1,
       "impostor_wins": 1,
       "impostor_losses": 0,
-      "correct_votes": 0,
-      "total_votes_received": 0,
+      "correct_votes": 1,
+      "total_votes_received": 1,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
@@ -113,9 +113,9 @@
     "HUUJ": {
       "times_impostor": 1,
       "impostor_wins": 0,
-      "impostor_losses": 0,
+      "impostor_losses": 1,
       "correct_votes": 0,
-      "total_votes_received": 0,
+      "total_votes_received": 2,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
