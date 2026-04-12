@@ -47,8 +47,8 @@
       "pedał"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "gejzrer",
+  "guess_status": "pending_host_review",
   "votes": {},
   "voted_out": null,
   "reactions": {
