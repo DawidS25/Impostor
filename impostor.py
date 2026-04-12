@@ -215,6 +215,86 @@ def next_round_logic(game_data):
 
     return game_data
 
+def reroll_current_round(game_data):
+    players = game_data["players"]
+
+    settings = game_data.get("settings", {})
+    selected_packs = settings.get("selected_packs", list(WORDS.keys()))
+    hint_mode = settings.get("hint_mode", "off")
+
+    impostor = random.choice(players)
+
+    # zbieramy wszystkie słowa z wybranych paczek
+    all_words = []
+    for pack in selected_packs:
+        all_words.extend(WORDS.get(pack, []))
+
+    if not all_words:
+        return False, "Brak słów w wybranych paczkach."
+
+    if "used_words" not in game_data:
+        game_data["used_words"] = []
+
+    used_words = game_data.get("used_words", [])
+
+    # filtrujemy już użyte słowa
+    available_words = [w for w in all_words if w["word"] not in used_words]
+
+    # jeśli skończyły się słowa, resetujemy listę użytych
+    if not available_words:
+        game_data["used_words"] = []
+        available_words = all_words
+
+    chosen_entry = random.choice(available_words)
+
+    word = chosen_entry["word"]
+    category = chosen_entry["category"]
+    hint = chosen_entry.get("hint", "")
+
+    starter = choose_round_starter(players, impostor)
+    remaining_players = [player for player in players if player != starter]
+
+    roles = {}
+    for player in players:
+        if player == impostor:
+            roles[player] = {
+                "role": "impostor"
+            }
+
+            if hint_mode == "category":
+                roles[player]["category"] = category
+            elif hint_mode == "hint":
+                roles[player]["hint"] = hint
+        else:
+            roles[player] = {
+                "role": "player",
+                "category": category,
+                "word": word
+            }
+
+    # ważne: zapisujemy nowe słowo jako użyte, żeby też się nie powtarzało
+    game_data["used_words"].append(word)
+
+    # reset tylko bieżącej rundy
+    game_data["status"] = "started"
+    game_data["category"] = category
+    game_data["word"] = word
+    game_data["impostor"] = impostor
+    game_data["starter"] = starter
+    game_data["current_turn_player"] = starter
+    game_data["turn_order_remaining"] = remaining_players
+    game_data["turn_number"] = 1
+    game_data["roles"] = roles
+    game_data["submissions"] = {player: [] for player in players}
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
+    game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["reactions"] = {}
+    game_data["round_winner"] = None
+
+    return True, game_data
+
 def get_winners(game_data):
     scores = game_data.get("scores", {})
 
@@ -524,6 +604,34 @@ def reset_game_to_lobby(game_data):
 
     return game_data
 
+def go_back_to_lobby_without_full_reset(game_data):
+    current_round = game_data.get("round", 1)
+
+    # jeśli gra była już w trakcie rundy, zapamiętaj numer rundy do wznowienia
+    game_data["resume_round"] = current_round
+    game_data["return_to_lobby_mode"] = True
+    game_data["status"] = "lobby"
+
+    # czyścimy tylko bieżący przebieg rundy
+    players = game_data.get("players", [])
+    game_data["submissions"] = {player: [] for player in players}
+    game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["round_winner"] = None
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
+    game_data["reactions"] = {}
+    game_data["roles"] = {}
+    game_data["starter"] = None
+    game_data["current_turn_player"] = None
+    game_data["turn_order_remaining"] = []
+    game_data["turn_number"] = 1
+    game_data["impostor"] = None
+    game_data["category"] = None
+    game_data["word"] = None
+
+    return game_data
+
 def remove_player(game_data, player_to_remove):
     if player_to_remove == game_data.get("host"):
         return game_data
@@ -600,6 +708,8 @@ def pick_next_turn_player(remaining_players):
         return None
     return random.choice(remaining_players)
 
+
+
 # ------------------- UI ------------------- #
 if st.session_state.screen == "start":
     st.title("Impostor")
@@ -655,6 +765,8 @@ elif st.session_state.screen == "host":
                     "voted_out": None,
                     "reactions": {},
                     "round_winner": None,
+                    "resume_round": None,
+                    "return_to_lobby_mode": False,
                     "starter": None,
                     "current_turn_player": None,
                     "turn_order_remaining": [],
@@ -879,6 +991,14 @@ elif st.session_state.screen == "lobby":
                 
         if "selected_packs" not in game_data["settings"]:
             game_data["settings"]["selected_packs"] = list(WORDS.keys())
+            changed = True
+
+        if "resume_round" not in game_data:
+            game_data["resume_round"] = None
+            changed = True
+
+        if "return_to_lobby_mode" not in game_data:
+            game_data["return_to_lobby_mode"] = False
             changed = True
 
         if changed:
@@ -1479,6 +1599,37 @@ elif st.session_state.screen == "game":
 
         if st.button("Odśwież", use_container_width=True):
             st.rerun()
+
+        col1, col2 = st.columns(2)
+
+        with col1:
+            if st.session_state.is_host:
+                if st.button("Pomiń rundę", use_container_width=True):
+                    success_reroll, result_reroll = reroll_current_round(game_data)
+
+                    if not success_reroll:
+                        st.error(result_reroll)
+                    else:
+                        updated, result = update_game_file(game_code, result_reroll)
+
+                        if updated:
+                            st.success("Runda została pominięta i wylosowano nową.")
+                            st.rerun()
+                        else:
+                            st.error(f"Błąd pomijania rundy: {result}")
+        with col2:
+            if st.session_state.is_host:
+                if st.button("Wróć do ustawień", use_container_width=True):
+                    new_data = go_back_to_lobby_without_full_reset(game_data)
+
+                    updated, result = update_game_file(game_code, new_data)
+
+                    if updated:
+                        st.session_state.screen = "lobby"
+                        st.success("Powrót do lobby.")
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd powrotu do lobby: {result}")
 
         if st.session_state.is_host:
             if st.button("Przejdź do głosowania", use_container_width=True):
