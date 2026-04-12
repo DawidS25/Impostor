@@ -632,6 +632,95 @@ def go_back_to_lobby_without_full_reset(game_data):
 
     return game_data
 
+def restart_same_round_logic(game_data):
+    players = game_data["players"]
+
+    settings = game_data.get("settings", {})
+    selected_packs = settings.get("selected_packs", list(WORDS.keys()))
+    hint_mode = settings.get("hint_mode", "off")
+
+    if len(players) < 3:
+        return False, "Do startu potrzeba co najmniej 3 graczy."
+
+    # cofamy poprzednie słowo, bo ta runda ma się zacząć od nowa
+    previous_word = game_data.get("word")
+    if previous_word and "used_words" in game_data and previous_word in game_data["used_words"]:
+        try:
+            game_data["used_words"].remove(previous_word)
+        except ValueError:
+            pass
+
+    impostor = random.choice(players)
+
+    all_words = []
+    for pack in selected_packs:
+        all_words.extend(WORDS.get(pack, []))
+
+    if not all_words:
+        return False, "Brak słów w wybranych paczkach."
+
+    if "used_words" not in game_data:
+        game_data["used_words"] = []
+
+    used_words = game_data.get("used_words", [])
+    available_words = [w for w in all_words if w["word"] not in used_words]
+
+    if not available_words:
+        game_data["used_words"] = []
+        available_words = all_words
+
+    chosen_entry = random.choice(available_words)
+
+    word = chosen_entry["word"]
+    category = chosen_entry["category"]
+    hint = chosen_entry.get("hint", "")
+
+    starter = choose_round_starter(players, impostor)
+    remaining_players = [player for player in players if player != starter]
+
+    roles = {}
+    for player in players:
+        if player == impostor:
+            roles[player] = {"role": "impostor"}
+
+            if hint_mode == "category":
+                roles[player]["category"] = category
+            elif hint_mode == "hint":
+                roles[player]["hint"] = hint
+        else:
+            roles[player] = {
+                "role": "player",
+                "category": category,
+                "word": word
+            }
+
+    game_data["used_words"].append(word)
+    game_data["status"] = "started"
+    game_data["category"] = category
+    game_data["word"] = word
+    game_data["impostor"] = impostor
+    game_data["starter"] = starter
+    game_data["current_turn_player"] = starter
+    game_data["turn_order_remaining"] = remaining_players
+    game_data["turn_number"] = 1
+    game_data["roles"] = roles
+    game_data["submissions"] = {player: [] for player in players}
+    game_data["impostor_guess"] = ""
+    game_data["guess_status"] = "none"
+    game_data["votes"] = {}
+    game_data["voted_out"] = None
+    game_data["reactions"] = {}
+    game_data["round_winner"] = None
+
+    # ważne: wracamy do tej samej rundy
+    if game_data.get("resume_round") is not None:
+        game_data["round"] = game_data["resume_round"]
+
+    game_data["return_to_lobby_mode"] = False
+    game_data["resume_round"] = None
+
+    return True, game_data
+
 def remove_player(game_data, player_to_remove):
     if player_to_remove == game_data.get("host"):
         return game_data
@@ -1016,6 +1105,11 @@ elif st.session_state.screen == "lobby":
         st.write(f"**Kod gry:** {game_code}")
         st.write(f"**Twój nick:** {player_name}")
 
+        if game_data.get("return_to_lobby_mode"):
+            resume_round = game_data.get("resume_round")
+            if resume_round is not None:
+                st.info(f"Gra wróci do rundy {resume_round} po ponownym starcie.")  
+
         hint_mode_map = {
             "Wyłączone": "off",
             "Kategoria": "category",
@@ -1128,8 +1222,12 @@ elif st.session_state.screen == "lobby":
 
         with col2:
             if is_host:
-                if st.button("Start gry", use_container_width=True):
-                    success_logic, result_logic = start_game_logic(game_data)
+                button_label = "Wznów grę" if game_data.get("return_to_lobby_mode") else "Start gry"
+                if st.button(button_label, use_container_width=True):
+                    if game_data.get("return_to_lobby_mode"):
+                        success_logic, result_logic = restart_same_round_logic(game_data)
+                    else:
+                        success_logic, result_logic = start_game_logic(game_data)
 
                     if not success_logic:
                         st.error(result_logic)
