@@ -64,17 +64,33 @@ def start_game_logic(game_data):
         return False, "Brak dostępnych kategorii do losowania."
 
     impostor = random.choice(players)
-    category = random.choice(available_categories)
-    available_words = [
-        entry for entry in WORDS[category]
-        if entry.get("difficulty") in selected_difficulties
-    ]
+    selected_packs = game_data["settings"].get("selected_packs", list(WORDS.keys()))
+
+    # zbieramy wszystkie słowa z wybranych paczek
+    all_words = []
+    for pack in selected_packs:
+        all_words.extend(WORDS.get(pack, []))
+
+    # losujemy jedno słowo
+    used_words = game_data.get("used_words", [])
+
+    available_words = [w for w in all_words if w["word"] not in used_words]
+
     if not available_words:
-        return False, "Brak słów dla wybranych poziomów trudności w tej kategorii."
+        # reset jeśli skończyły się słowa
+        game_data["used_words"] = []
+        available_words = all_words
+
+    chosen = random.choice(available_words)
+
+    word = chosen["word"]
+    category = chosen["category"]
+    hint = chosen.get("hint", "")
 
     chosen_entry = random.choice(available_words)
     word = chosen_entry["word"]
     hint = chosen_entry.get("hint", "")
+    
 
     starter = choose_round_starter(players, impostor)
     remaining_players = [player for player in players if player != starter]
@@ -97,7 +113,7 @@ def start_game_logic(game_data):
                 "category": category,
                 "word": word
             }
-
+    game_data["used_words"].append(word)
     game_data["status"] = "started"
     game_data["category"] = category
     game_data["word"] = word
@@ -617,10 +633,9 @@ elif st.session_state.screen == "host":
                     "players": [player_name.strip()],
                     "status": "waiting",
                     "settings": {
-                        "hint_mode": "off",
-                        "round_limit": 10,
-                        "selected_categories": list(WORDS.keys()),
-                        "selected_difficulties": ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
+                        "hint_mode": "category",
+                        "round_limit": None,
+                        "selected_packs": list(WORDS.keys())
                     },
                     "round": 0,
                     "scores": {
@@ -654,7 +669,8 @@ elif st.session_state.screen == "host":
                                 "💀": 0
                             }
                         }
-                    },                 
+                    },
+                    "used_words": []                 
                 }
 
                 success, result = create_game_file(game_code, game_data)
@@ -851,6 +867,10 @@ elif st.session_state.screen == "lobby":
         if "turn_number" not in game_data:
             game_data["turn_number"] = 1
             changed = True
+        
+        if "used_words" not in game_data:
+            game_data["used_words"] = []
+            changed = True
                 
 
         if changed:
@@ -947,16 +967,10 @@ elif st.session_state.screen == "lobby":
                 index=round_labels.index(current_round_label)
             )
 
-            selected_categories = st.multiselect(
-                "Aktywne kategorie",
+            selected_packs = st.multiselect(
+                "Aktywne paczki",
                 list(WORDS.keys()),
-                default=current_categories
-            )
-
-            difficulty_options = ["łatwe", "średnie", "trudne", "ekstremalnie trudne"]
-            current_difficulties = current_settings.get(
-                "selected_difficulties",
-                difficulty_options
+                default=current_settings.get("selected_packs", list(WORDS.keys()))
             )
 
             selected_difficulties = st.multiselect(
@@ -974,8 +988,7 @@ elif st.session_state.screen == "lobby":
                 else:
                     game_data["settings"]["hint_mode"] = hint_mode_map[selected_hint_label]
                     game_data["settings"]["round_limit"] = round_limit_map[selected_round_label]
-                    game_data["settings"]["selected_categories"] = selected_categories
-                    game_data["settings"]["selected_difficulties"] = selected_difficulties
+                    game_data["settings"]["selected_packs"] = selected_packs
 
                     updated, result = update_game_file(game_code, game_data)
 
