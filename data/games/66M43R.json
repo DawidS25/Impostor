@@ -97,25 +97,26 @@
     "Helsinki",
     "Carpaccio",
     "Delfin",
-    "Kot"
+    "Kot",
+    "Pizza"
   ],
-  "category": "Zwierzęta",
-  "word": "Kot",
-  "impostor": "Wixa",
+  "category": "Jedzenie",
+  "word": "Pizza",
+  "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
-      "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "role": "impostor",
+      "hint": "włoskie danie"
     },
     "Wixa": {
-      "role": "impostor",
-      "hint": "mruczy"
+      "role": "player",
+      "category": "Jedzenie",
+      "word": "Pizza"
     },
     "Bestia": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Kot"
+      "category": "Jedzenie",
+      "word": "Pizza"
     }
   }
 }
