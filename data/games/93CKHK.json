@@ -93,13 +93,11 @@
     }
   },
   "used_words": [
-    "Reykjavik",
-    "Quinoa",
     "Dziobak"
   ],
   "category": "Zwierzęta",
   "word": "Dziobak",
-  "impostor": "Wixa",
+  "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
@@ -107,13 +105,13 @@
       "word": "Dziobak"
     },
     "Wixa": {
-      "role": "impostor",
-      "category": "Zwierzęta"
-    },
-    "Bestia": {
       "role": "player",
       "category": "Zwierzęta",
       "word": "Dziobak"
+    },
+    "Bestia": {
+      "role": "impostor",
+      "category": "Zwierzęta"
     }
   }
 }
