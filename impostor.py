@@ -60,8 +60,6 @@ def start_game_logic(game_data):
 
     available_categories = [cat for cat in selected_categories if cat in WORDS]
 
-    if not available_categories:
-        return False, "Brak dostępnych kategorii do losowania."
 
     impostor = random.choice(players)
     selected_packs = game_data["settings"].get("selected_packs", list(WORDS.keys()))
