@@ -28,6 +28,12 @@
       "średnie",
       "trudne",
       "ekstremalnie trudne"
+    ],
+    "selected_packs": [
+      "Podstawowe łatwe",
+      "Podstawowe średnie",
+      "Podstawowe trudne",
+      "Podstawowe ekstremalnie trudne"
     ]
   },
   "round": 0,
