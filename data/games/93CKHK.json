@@ -95,25 +95,26 @@
   "used_words": [
     "Praga",
     "Tygrys",
-    "Dziobak"
+    "Dziobak",
+    "Reykjavik"
   ],
-  "category": "Zwierzęta",
-  "word": "Dziobak",
+  "category": "Miasta",
+  "word": "Reykjavik",
   "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "category": "Miasta",
+      "word": "Reykjavik"
     },
     "Wixa": {
       "role": "player",
-      "category": "Zwierzęta",
-      "word": "Dziobak"
+      "category": "Miasta",
+      "word": "Reykjavik"
     },
     "Bestia": {
       "role": "impostor",
-      "category": "Zwierzęta"
+      "category": "Miasta"
     }
   }
 }
