@@ -58,7 +58,8 @@
   "subround": 2,
   "round_decisions": {
     "Wixa": "vote",
-    "Heheszek": "vote"
+    "Heheszek": "vote",
+    "Bestia": "vote"
   },
   "stats": {
     "Heheszek": {
