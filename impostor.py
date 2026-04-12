@@ -1048,7 +1048,7 @@ elif st.session_state.screen == "game":
             st.info("Runda została zakończona.")
 
         st.write(f"**Prawidłowe hasło:** {real_word}")
-        if guessed_word:
+        if guessed_word and guess_status == "approved_by_host":
             st.write(f"**Zgadywanie impostora:** {guessed_word}")
 
         st.write("### Aktualne wyniki")
