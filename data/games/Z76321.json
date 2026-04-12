@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -40,7 +40,7 @@
   "scores": {
     "Heheszek": 1,
     "Wixa": 7,
-    "Bestia": 1
+    "Bestia": 4
   },
   "submissions": {
     "Heheszek": [],
@@ -48,7 +48,7 @@
     "Bestia": []
   },
   "impostor_guess": "g",
-  "guess_status": "pending_host_review",
+  "guess_status": "approved_by_host",
   "votes": {},
   "voted_out": null,
   "reactions": {},
@@ -91,7 +91,7 @@
     },
     "Bestia": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 1,
       "total_votes_received": 0,
