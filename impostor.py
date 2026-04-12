@@ -114,6 +114,8 @@ def start_game_logic(game_data):
     game_data["current_turn_player"] = starter
     game_data["turn_order_remaining"] = remaining_players
     game_data["turn_number"] = 1
+    game_data["subround"] = 1
+    game_data["round_decisions"] = {}
 
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
@@ -196,6 +198,8 @@ def next_round_logic(game_data):
     game_data["current_turn_player"] = starter
     game_data["turn_order_remaining"] = remaining_players
     game_data["turn_number"] = 1
+    game_data["subround"] = 1
+    game_data["round_decisions"] = {}
 
     if "stats" in game_data and impostor in game_data["stats"]:
         game_data["stats"][impostor]["times_impostor"] += 1
@@ -860,6 +864,8 @@ elif st.session_state.screen == "host":
                     "current_turn_player": None,
                     "turn_order_remaining": [],
                     "turn_number": 1,
+                    "subround": 1,
+                    "round_decisions": {},
                     "stats": {
                         player_name.strip(): {
                             "times_impostor": 0,
@@ -1088,6 +1094,14 @@ elif st.session_state.screen == "lobby":
 
         if "return_to_lobby_mode" not in game_data:
             game_data["return_to_lobby_mode"] = False
+            changed = True
+
+        if "subround" not in game_data:
+            game_data["subround"] = 1
+            changed = True
+
+        if "round_decisions" not in game_data:
+            game_data["round_decisions"] = {}
             changed = True
 
         if changed:
@@ -1322,6 +1336,105 @@ elif st.session_state.screen == "game":
 
         st.stop()
     
+    if game_data.get("status") == "round_decision":
+        st.subheader("Decyzja po kolejce haseł")
+        st.write(f"**Runda:** {game_data.get('round', 1)}")
+        st.write(f"**Kolejka haseł:** {game_data.get('subround', 1)}")
+
+        st.write("### Głosy graczy")
+        st.write("Czy przechodzimy do głosowania, czy gramy jeszcze jedną kolejkę haseł?")
+
+        current_decision = game_data.get("round_decisions", {}).get(player_name, "")
+
+        decision_map = {
+            "Głosowanie": "vote",
+            "Jeszcze jedna kolejka": "continue"
+        }
+
+        reverse_decision_map = {v: k for k, v in decision_map.items()}
+
+        default_label = reverse_decision_map.get(current_decision, "Głosowanie")
+
+        selected_label = st.radio(
+            "Twój wybór",
+            list(decision_map.keys()),
+            index=list(decision_map.keys()).index(default_label),
+            key=f"round_decision_{player_name}"
+        )
+
+        if st.button("Zapisz decyzję", key=f"save_round_decision_{player_name}", use_container_width=True):
+            if "round_decisions" not in game_data:
+                game_data["round_decisions"] = {}
+
+            game_data["round_decisions"][player_name] = decision_map[selected_label]
+
+            updated, result = update_game_file(game_code, game_data)
+
+            if updated:
+                st.success("Decyzja zapisana.")
+                st.rerun()
+            else:
+                st.error(f"Błąd zapisu decyzji: {result}")
+
+        st.write("### Aktualne decyzje")
+        decisions = game_data.get("round_decisions", {})
+        for p in game_data.get("players", []):
+            value = decisions.get(p)
+            if value == "vote":
+                st.write(f"**{p}:** chce głosować")
+            elif value == "continue":
+                st.write(f"**{p}:** chce kolejną kolejkę")
+            else:
+                st.write(f"**{p}:** brak decyzji")
+
+        if st.session_state.is_host:
+            vote_count = sum(1 for v in decisions.values() if v == "vote")
+            continue_count = sum(1 for v in decisions.values() if v == "continue")
+
+            st.write("### Podsumowanie")
+            st.write(f"**Głosowanie:** {vote_count}")
+            st.write(f"**Jeszcze jedna kolejka:** {continue_count}")
+
+            col1, col2 = st.columns(2)
+
+            with col1:
+                if st.button("Przejdź do głosowania", key="host_go_to_voting", use_container_width=True):
+                    game_data["status"] = "voting"
+                    game_data["votes"] = {}
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd przejścia do głosowania: {result}")
+
+            with col2:
+                if st.button("Jeszcze jedna kolejka haseł", key="host_next_subround", use_container_width=True):
+                    players = game_data.get("players", [])
+                    starter = choose_round_starter(players, game_data.get("impostor"))
+                    remaining_players = [p for p in players if p != starter]
+
+                    game_data["status"] = "started"
+                    game_data["starter"] = starter
+                    game_data["current_turn_player"] = starter
+                    game_data["turn_order_remaining"] = remaining_players
+                    game_data["turn_number"] = 1
+                    game_data["subround"] = game_data.get("subround", 1) + 1
+                    game_data["round_decisions"] = {}
+
+                    updated, result = update_game_file(game_code, game_data)
+
+                    if updated:
+                        st.rerun()
+                    else:
+                        st.error(f"Błąd rozpoczęcia kolejnej kolejki: {result}")
+
+        if st.button("Odśwież", key="refresh_round_decision", use_container_width=True):
+            st.rerun()
+
+        st.stop()    
+    
     if game_data.get("status") == "voting":
         st.subheader("Głosowanie")
 
@@ -1526,6 +1639,7 @@ elif st.session_state.screen == "game":
         st.stop()
 
     st.subheader(f"**Runda:** {game_data.get('round', 1) + 1}")
+    st.write(f"**Kolejka haseł:** {game_data.get('subround', 1)}")
     
     if not success:
         st.error("Nie udało się wczytać danych gry.")
@@ -1599,6 +1713,9 @@ elif st.session_state.screen == "game":
                     else:
                         game_data["current_turn_player"] = None
                         game_data["turn_order_remaining"] = []
+                        game_data["status"] = "round_decision"
+                        game_data["round_decisions"] = {}
+                        
 
                     updated, result = update_game_file(game_code, game_data)
 
