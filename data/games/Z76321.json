@@ -38,7 +38,9 @@
   },
   "submissions": {
     "Heheszek": [],
-    "Wixa": [],
+    "Wixa": [
+      "gorąca woda"
+    ],
     "Bestia": [
       "pedał"
     ]
@@ -54,10 +56,8 @@
   },
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": "Wixa",
-  "turn_order_remaining": [
-    "Heheszek"
-  ],
+  "current_turn_player": "Heheszek",
+  "turn_order_remaining": [],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
