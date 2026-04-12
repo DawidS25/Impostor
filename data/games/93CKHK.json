@@ -55,7 +55,8 @@
   "subround": 1,
   "round_decisions": {
     "Heheszek": "continue",
-    "Wixa": "continue"
+    "Wixa": "continue",
+    "Bestia": "continue"
   },
   "stats": {
     "Heheszek": {
