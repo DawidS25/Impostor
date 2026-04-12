@@ -973,11 +973,6 @@ elif st.session_state.screen == "lobby":
                 default=current_settings.get("selected_packs", list(WORDS.keys()))
             )
 
-            selected_difficulties = st.multiselect(
-                "Aktywne poziomy trudności",
-                difficulty_options,
-                default=current_difficulties
-            )
 
 
             if st.button("Zapisz ustawienia", use_container_width=True):
