@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -30,37 +30,29 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 1,
+  "round": 2,
   "scores": {
     "Heheszek": 1,
     "Wixa": 3,
     "Bestia": 3
   },
   "submissions": {
-    "Heheszek": [
-      "pole"
-    ],
-    "Wixa": [
-      "życie"
-    ],
-    "Bestia": [
-      "Szyba"
-    ]
+    "Heheszek": [],
+    "Wixa": [],
+    "Bestia": []
   },
-  "impostor_guess": "okno",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
-  "reactions": {
-    "Heheszek": {
-      "Wixa": "🔥",
-      "Heheszek": "😐"
-    }
-  },
+  "reactions": {},
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": null,
-  "turn_order_remaining": [],
+  "current_turn_player": "Bestia",
+  "turn_order_remaining": [
+    "Heheszek",
+    "Wixa"
+  ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
@@ -78,7 +70,7 @@
       }
     },
     "Wixa": {
-      "times_impostor": 1,
+      "times_impostor": 2,
       "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -106,23 +98,23 @@
       }
     }
   },
-  "category": "Codzienne",
-  "word": "Okno",
-  "impostor": "Bestia",
+  "category": "Natura",
+  "word": "Gejzer",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Codzienne",
-      "word": "Okno"
+      "category": "Natura",
+      "word": "Gejzer"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Codzienne",
-      "word": "Okno"
+      "role": "impostor",
+      "hint": "gorąca woda"
     },
     "Bestia": {
-      "role": "impostor",
-      "hint": "świat za szybą"
+      "role": "player",
+      "category": "Natura",
+      "word": "Gejzer"
     }
   }
 }
