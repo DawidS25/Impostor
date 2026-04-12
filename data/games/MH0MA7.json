@@ -58,7 +58,8 @@
   "impostor_guess": "",
   "guess_status": "none",
   "votes": {
-    "sosna": "HUUJ"
+    "sosna": "HUUJ",
+    "HUUJ": "Heheszek"
   },
   "voted_out": null,
   "reactions": {},
