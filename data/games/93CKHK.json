@@ -37,7 +37,8 @@
       "h"
     ],
     "Bestia": [
-      "g"
+      "g",
+      "s"
     ]
   },
   "impostor_guess": "",
@@ -49,9 +50,8 @@
   "resume_round": null,
   "return_to_lobby_mode": false,
   "starter": "Bestia",
-  "current_turn_player": "Bestia",
+  "current_turn_player": "Heheszek",
   "turn_order_remaining": [
-    "Heheszek",
     "Wixa"
   ],
   "turn_number": 1,
