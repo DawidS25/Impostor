@@ -57,7 +57,8 @@
   "turn_number": 1,
   "subround": 2,
   "round_decisions": {
-    "Wixa": "vote"
+    "Wixa": "vote",
+    "Heheszek": "vote"
   },
   "stats": {
     "Heheszek": {
