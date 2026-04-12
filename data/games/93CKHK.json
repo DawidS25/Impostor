@@ -13,6 +13,12 @@
       "Podstawowe średnie",
       "Podstawowe trudne",
       "Podstawowe ekstremalnie trudne"
+    ],
+    "selected_difficulties": [
+      "łatwe",
+      "średnie",
+      "trudne",
+      "ekstremalnie trudne"
     ]
   },
   "round": 0,
