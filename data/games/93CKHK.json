@@ -54,7 +54,8 @@
   "turn_number": 1,
   "subround": 1,
   "round_decisions": {
-    "Heheszek": "continue"
+    "Heheszek": "continue",
+    "Wixa": "continue"
   },
   "stats": {
     "Heheszek": {
