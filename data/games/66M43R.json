@@ -3,8 +3,7 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "Wixa",
-    "Bestia"
+    "Wixa"
   ],
   "status": "lobby",
   "settings": {
@@ -26,13 +25,11 @@
   "round": 1,
   "scores": {
     "Heheszek": 0,
-    "Wixa": 1,
-    "Bestia": 1
+    "Wixa": 1
   },
   "submissions": {
     "Heheszek": [],
-    "Wixa": [],
-    "Bestia": []
+    "Wixa": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -67,20 +64,6 @@
       "impostor_losses": 0,
       "correct_votes": 1,
       "total_votes_received": 1,
-      "emoji_received": {
-        "🔥": 0,
-        "👍": 0,
-        "😐": 0,
-        "👎": 0,
-        "💀": 0
-      }
-    },
-    "Bestia": {
-      "times_impostor": 1,
-      "impostor_wins": 0,
-      "impostor_losses": 0,
-      "correct_votes": 1,
-      "total_votes_received": 0,
       "emoji_received": {
         "🔥": 0,
         "👍": 0,
