@@ -96,25 +96,26 @@
     }
   },
   "used_words": [
-    "Curling"
+    "Curling",
+    "Kraków"
   ],
-  "category": "Sporty",
-  "word": "Curling",
-  "impostor": "Bestia",
+  "category": "Miasta",
+  "word": "Kraków",
+  "impostor": "Wixa",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Sporty",
-      "word": "Curling"
+      "category": "Miasta",
+      "word": "Kraków"
     },
     "Wixa": {
-      "role": "player",
-      "category": "Sporty",
-      "word": "Curling"
+      "role": "impostor",
+      "category": "Miasta"
     },
     "Bestia": {
-      "role": "impostor",
-      "category": "Sporty"
+      "role": "player",
+      "category": "Miasta",
+      "word": "Kraków"
     }
   }
 }
