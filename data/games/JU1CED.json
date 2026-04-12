@@ -8,8 +8,8 @@
   ],
   "status": "waiting",
   "settings": {
-    "hint_mode": "off",
-    "round_limit": 10,
+    "hint_mode": "hint",
+    "round_limit": null,
     "selected_categories": [
       "Miasta",
       "Sport",
