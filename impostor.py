@@ -1043,7 +1043,7 @@ elif st.session_state.screen == "game":
         elif round_winner == "players":
             st.success(f"Gracze wygrali rundę. Wyrzucono impostora: {voted_out}")
         elif round_winner == "impostor":
-            st.error(f"Impostor wygrał rundę. Wyrzucono niewłaściwego gracza: {voted_out}")
+            st.error(f"Impostor ({impostor_name}) wygrał rundę. Wyrzucono niewłaściwego gracza: {voted_out}")
         else:
             st.info("Runda została zakończona.")
 
