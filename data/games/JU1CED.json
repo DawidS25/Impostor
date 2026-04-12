@@ -92,23 +92,23 @@
       }
     }
   },
-  "category": "Filmy",
-  "word": "Batman",
+  "category": "Zawody",
+  "word": "Aktor",
   "impostor": "Bestia",
   "roles": {
     "Heheszek": {
       "role": "player",
-      "category": "Filmy",
-      "word": "Batman"
+      "category": "Zawody",
+      "word": "Aktor"
     },
     "Wixa": {
       "role": "player",
-      "category": "Filmy",
-      "word": "Batman"
+      "category": "Zawody",
+      "word": "Aktor"
     },
     "Bestia": {
       "role": "impostor",
-      "hint": "noc symbol"
+      "hint": "gra role"
     }
   }
 }
