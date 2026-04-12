@@ -976,10 +976,9 @@ elif st.session_state.screen == "lobby":
 
 
             if st.button("Zapisz ustawienia", use_container_width=True):
-                if not selected_categories:
-                    st.error("Wybierz przynajmniej jedną kategorię.")
-                elif not selected_difficulties:
-                    st.error("Wybierz przynajmniej jeden poziom trudności.")
+                if not selected_packs:
+                    st.error("Wybierz przynajmniej jedną paczkę.")
+
                 else:
                     game_data["settings"]["hint_mode"] = hint_mode_map[selected_hint_label]
                     game_data["settings"]["round_limit"] = round_limit_map[selected_round_label]
