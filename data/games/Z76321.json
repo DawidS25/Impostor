@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -33,7 +33,7 @@
   "round": 2,
   "scores": {
     "Heheszek": 1,
-    "Wixa": 3,
+    "Wixa": 6,
     "Bestia": 3
   },
   "submissions": {
@@ -48,7 +48,7 @@
     ]
   },
   "impostor_guess": "gejzrer",
-  "guess_status": "pending_host_review",
+  "guess_status": "approved_by_host",
   "votes": {},
   "voted_out": null,
   "reactions": {
@@ -78,7 +78,7 @@
     },
     "Wixa": {
       "times_impostor": 2,
-      "impostor_wins": 1,
+      "impostor_wins": 2,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 1,
@@ -97,7 +97,7 @@
       "correct_votes": 0,
       "total_votes_received": 0,
       "emoji_received": {
-        "🔥": 0,
+        "🔥": 1,
         "👍": 0,
         "😐": 1,
         "👎": 0,
