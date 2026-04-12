@@ -6,7 +6,7 @@
     "Wixa",
     "Bestia"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "hint",
     "round_limit": null,
@@ -36,7 +36,7 @@
       "Podstawowe ekstremalnie trudne"
     ]
   },
-  "round": 4,
+  "round": 5,
   "scores": {
     "Heheszek": 1,
     "Wixa": 7,
@@ -47,22 +47,22 @@
     "Wixa": [],
     "Bestia": []
   },
-  "impostor_guess": "s",
-  "guess_status": "rejected_by_host",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
-  "starter": "Bestia",
-  "current_turn_player": "Bestia",
+  "starter": "Wixa",
+  "current_turn_player": "Wixa",
   "turn_order_remaining": [
     "Heheszek",
-    "Wixa"
+    "Bestia"
   ],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
-      "times_impostor": 2,
+      "times_impostor": 3,
       "impostor_wins": 0,
       "impostor_losses": 2,
       "correct_votes": 1,
@@ -104,23 +104,23 @@
       }
     }
   },
-  "category": "Jedzenie",
-  "word": "Sushi",
+  "category": "Zwierzęta",
+  "word": "Tygrys",
   "impostor": "Heheszek",
   "roles": {
     "Heheszek": {
       "role": "impostor",
-      "hint": "ryż i ryba"
+      "hint": "pasiasty drapieżnik"
     },
     "Wixa": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Sushi"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     },
     "Bestia": {
       "role": "player",
-      "category": "Jedzenie",
-      "word": "Sushi"
+      "category": "Zwierzęta",
+      "word": "Tygrys"
     }
   },
   "used_words": [
@@ -128,6 +128,7 @@
     "Paryż",
     "Kot",
     "Helsinki",
-    "Sushi"
+    "Sushi",
+    "Tygrys"
   ]
 }
