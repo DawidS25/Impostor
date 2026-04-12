@@ -56,7 +56,9 @@
   "turn_order_remaining": [],
   "turn_number": 1,
   "subround": 2,
-  "round_decisions": {},
+  "round_decisions": {
+    "Wixa": "vote"
+  },
   "stats": {
     "Heheszek": {
       "times_impostor": 0,
