@@ -37,7 +37,9 @@
     "Bestia": 0
   },
   "submissions": {
-    "Heheszek": [],
+    "Heheszek": [
+      "pole"
+    ],
     "Wixa": [],
     "Bestia": [
       "Szyba"
@@ -50,10 +52,8 @@
   "reactions": {},
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": "Heheszek",
-  "turn_order_remaining": [
-    "Wixa"
-  ],
+  "current_turn_player": "Wixa",
+  "turn_order_remaining": [],
   "turn_number": 1,
   "stats": {
     "Heheszek": {
