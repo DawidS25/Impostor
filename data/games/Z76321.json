@@ -37,7 +37,9 @@
     "Bestia": 3
   },
   "submissions": {
-    "Heheszek": [],
+    "Heheszek": [
+      "tryskać"
+    ],
     "Wixa": [
       "gorąca woda"
     ],
@@ -56,7 +58,7 @@
   },
   "round_winner": null,
   "starter": "Bestia",
-  "current_turn_player": "Heheszek",
+  "current_turn_player": null,
   "turn_order_remaining": [],
   "turn_number": 1,
   "stats": {
