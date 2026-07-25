@@ -28,7 +28,9 @@
   },
   "submissions": {
     "Heheszek": [],
-    "YoungKesos": [],
+    "YoungKesos": [
+      "Minecraft"
+    ],
     "Kutasiaż": [
       "Komputer"
     ]
@@ -42,10 +44,8 @@
   "resume_round": null,
   "return_to_lobby_mode": false,
   "starter": "Kutasiaż",
-  "current_turn_player": "YoungKesos",
-  "turn_order_remaining": [
-    "Heheszek"
-  ],
+  "current_turn_player": "Heheszek",
+  "turn_order_remaining": [],
   "turn_number": 1,
   "subround": 1,
   "round_decisions": {},
