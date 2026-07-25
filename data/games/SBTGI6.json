@@ -6,7 +6,7 @@
     "YoungKesos",
     "Kutasiaż"
   ],
-  "status": "waiting",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -39,15 +39,18 @@
   "round_winner": null,
   "resume_round": null,
   "return_to_lobby_mode": false,
-  "starter": null,
-  "current_turn_player": null,
-  "turn_order_remaining": [],
+  "starter": "Kutasiaż",
+  "current_turn_player": "Kutasiaż",
+  "turn_order_remaining": [
+    "Heheszek",
+    "YoungKesos"
+  ],
   "turn_number": 1,
   "subround": 1,
   "round_decisions": {},
   "stats": {
     "Heheszek": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -89,5 +92,26 @@
       }
     }
   },
-  "used_words": []
+  "used_words": [
+    "Serwerownia"
+  ],
+  "category": "Miejsca",
+  "word": "Serwerownia",
+  "impostor": "Heheszek",
+  "roles": {
+    "Heheszek": {
+      "role": "impostor",
+      "category": "Miejsca"
+    },
+    "YoungKesos": {
+      "role": "player",
+      "category": "Miejsca",
+      "word": "Serwerownia"
+    },
+    "Kutasiaż": {
+      "role": "player",
+      "category": "Miejsca",
+      "word": "Serwerownia"
+    }
+  }
 }
