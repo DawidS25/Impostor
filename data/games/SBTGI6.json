@@ -3,7 +3,8 @@
   "host": "Heheszek",
   "players": [
     "Heheszek",
-    "YoungKesos"
+    "YoungKesos",
+    "Kutasiaż"
   ],
   "status": "waiting",
   "settings": {
@@ -25,11 +26,13 @@
   "round": 0,
   "scores": {
     "Heheszek": 0,
-    "YoungKesos": 0
+    "YoungKesos": 0,
+    "Kutasiaż": 0
   },
   "submissions": {
     "Heheszek": [],
-    "YoungKesos": []
+    "YoungKesos": [],
+    "Kutasiaż": []
   },
   "impostor_guess": "",
   "guess_status": "none",
@@ -61,6 +64,20 @@
       }
     },
     "YoungKesos": {
+      "times_impostor": 0,
+      "impostor_wins": 0,
+      "impostor_losses": 0,
+      "correct_votes": 0,
+      "total_votes_received": 0,
+      "emoji_received": {
+        "🔥": 0,
+        "👍": 0,
+        "😐": 0,
+        "👎": 0,
+        "💀": 0
+      }
+    },
+    "Kutasiaż": {
       "times_impostor": 0,
       "impostor_wins": 0,
       "impostor_losses": 0,
