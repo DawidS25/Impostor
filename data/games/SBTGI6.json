@@ -6,7 +6,7 @@
     "YoungKesos",
     "Kutasiaż"
   ],
-  "status": "round_result",
+  "status": "started",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -20,7 +20,7 @@
       "ekstremalnie trudne"
     ]
   },
-  "round": 0,
+  "round": 1,
   "scores": {
     "Heheszek": 3,
     "YoungKesos": 0,
@@ -28,24 +28,23 @@
   },
   "submissions": {
     "Heheszek": [],
-    "YoungKesos": [
-      "Minecraft"
-    ],
-    "Kutasiaż": [
-      "Komputer"
-    ]
+    "YoungKesos": [],
+    "Kutasiaż": []
   },
-  "impostor_guess": "serwerownia",
-  "guess_status": "exact",
+  "impostor_guess": "",
+  "guess_status": "none",
   "votes": {},
   "voted_out": null,
   "reactions": {},
   "round_winner": null,
   "resume_round": null,
   "return_to_lobby_mode": false,
-  "starter": "Kutasiaż",
+  "starter": "Heheszek",
   "current_turn_player": "Heheszek",
-  "turn_order_remaining": [],
+  "turn_order_remaining": [
+    "YoungKesos",
+    "Kutasiaż"
+  ],
   "turn_number": 1,
   "subround": 1,
   "round_decisions": {},
@@ -79,7 +78,7 @@
       }
     },
     "Kutasiaż": {
-      "times_impostor": 0,
+      "times_impostor": 1,
       "impostor_wins": 0,
       "impostor_losses": 0,
       "correct_votes": 0,
@@ -94,25 +93,26 @@
     }
   },
   "used_words": [
-    "Serwerownia"
+    "Serwerownia",
+    "Narwal"
   ],
-  "category": "Miejsca",
-  "word": "Serwerownia",
-  "impostor": "Heheszek",
+  "category": "Zwierzęta",
+  "word": "Narwal",
+  "impostor": "Kutasiaż",
   "roles": {
     "Heheszek": {
-      "role": "impostor",
-      "category": "Miejsca"
+      "role": "player",
+      "category": "Zwierzęta",
+      "word": "Narwal"
     },
     "YoungKesos": {
       "role": "player",
-      "category": "Miejsca",
-      "word": "Serwerownia"
+      "category": "Zwierzęta",
+      "word": "Narwal"
     },
     "Kutasiaż": {
-      "role": "player",
-      "category": "Miejsca",
-      "word": "Serwerownia"
+      "role": "impostor",
+      "category": "Zwierzęta"
     }
   }
 }
