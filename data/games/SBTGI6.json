@@ -6,7 +6,7 @@
     "YoungKesos",
     "Kutasiaż"
   ],
-  "status": "started",
+  "status": "round_result",
   "settings": {
     "hint_mode": "category",
     "round_limit": null,
@@ -22,7 +22,7 @@
   },
   "round": 0,
   "scores": {
-    "Heheszek": 0,
+    "Heheszek": 3,
     "YoungKesos": 0,
     "Kutasiaż": 0
   },
@@ -35,8 +35,8 @@
       "Komputer"
     ]
   },
-  "impostor_guess": "",
-  "guess_status": "none",
+  "impostor_guess": "serwerownia",
+  "guess_status": "exact",
   "votes": {},
   "voted_out": null,
   "reactions": {},
@@ -52,7 +52,7 @@
   "stats": {
     "Heheszek": {
       "times_impostor": 1,
-      "impostor_wins": 0,
+      "impostor_wins": 1,
       "impostor_losses": 0,
       "correct_votes": 0,
       "total_votes_received": 0,
